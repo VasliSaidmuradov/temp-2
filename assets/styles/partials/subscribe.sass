@@ -1,0 +1,40 @@
+.subscribe
+    position: relative
+    border-radius: 20px
+    overflow: hidden
+    background-color: #F7F9FA
+    padding: 52px 0
+    &:before,
+    &:after 
+        content: ''
+        width: 740px
+        height: 740px
+        position: absolute
+        border-radius: 999px
+    &:before 
+        border: 90px solid #8E6BF0
+        left: 0
+        top: 0
+        transform: translate(-60%, -60%)
+        opacity: 0.5
+    &:after 
+        border: 170px solid #F3AF48
+        right: 0
+        bottom: 0
+        transform: translate(60%, 60%)
+    .form
+        margin: auto
+    &-inner
+        max-width: 576px
+        margin: auto
+    &-title 
+        font-size: em(22)
+        font-weight: 600
+        color: var(--text-color)
+        text-align: center
+    &-subtitle
+        font-size: em(14)
+        font-weight: 500
+        color: var(--text-color)
+        margin: 24px 0 40px
+        text-align: center

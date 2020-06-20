@@ -1,0 +1,56 @@
+.about-page
+    .subscribe
+        margin-top: 80px
+    &-row 
+        display: flex
+        align-items: center
+        justify-content: space-between
+        max-width: 1180px
+        width: 100%
+        margin: auto
+        min-height: 480px
+    &-inner
+        border-radius: 40px 40px 0 0
+        overflow: hidden
+        position: relative
+        &.--white
+            &:after 
+                content: ''
+                width: 326px
+                height: 326px
+                border-radius: 999px
+                border: 70px solid #5AE0B6
+                position: absolute
+                right: 0
+                top: 50%
+                opacity: 0.5
+                transform: translate(50%, -50%)
+        &.--black
+            background-color: var(--text-color)
+            .about-page-txt,
+            .section-title
+                color: #ffffff
+            &:after 
+                content: ''
+                width: 743px
+                height: 743px
+                border-radius: 999px
+                border: 160px solid #5AE0B6
+                position: absolute
+                left: 0
+                top: 50%
+                transform: translate(-50%, -50%)
+    &-txt-wrp
+        max-width: 380px
+        position: relative
+        z-index: 1
+    &-img-wrp
+        position: relative
+        z-index: 1
+    &-img-wrp img 
+        max-width: 560px
+    &-txt 
+        font-size: em(14)
+        font-weight: 400
+        color: var(--text-color)
+        margin-top: 16px
