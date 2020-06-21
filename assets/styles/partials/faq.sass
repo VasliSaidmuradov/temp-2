@@ -1,0 +1,43 @@
+.faq
+    .section-title
+        margin-top: 40px
+        margin-bottom: 24px
+    &-container
+        max-width: 775px
+        width: 100%
+        margin: auto
+        margin-top: 60px
+    &-text 
+        font-size: em(14)
+        font-weight: 400
+        color: var(--text-color)
+    &-dropdown
+        padding: 24px
+        box-shadow: 0px 4px 20px rgba(92, 102, 113, 0.1)
+        border-radius: 12px
+        margin-bottom: 16px
+        cursor: pointer
+        user-select: none
+    &-question
+        font-size: em(16)
+        font-weight: 500
+        color: var(--text-color)
+        position: relative
+        &:after 
+            content: ''
+            width: 24px
+            height: 24px
+            background: url('/icons/arrow.svg') center no-repeat
+            background-size: contain
+            position: absolute
+            right: 0
+            top: 50%
+            transform: translateY(-50%)
+    &-answer
+        font-size: em(14)
+        font-weight: 400
+        color: var(--text-color)
+        padding-top: 20px
+        img 
+            margin: auto 
+            margin-top: 24px
