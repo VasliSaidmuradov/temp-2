@@ -31,6 +31,8 @@ export default {
   plugins: [
     { src: '~/plugins/swiper.js', mode: 'client' },
     { src: '~/plugins/vue-the-mask.js', ssr: false },
+    { src: '~/plugins/vue-star-component.js', ssr: false },
+    { src: '~/plugins/vue-plyr.js', ssr: false },
   ],
   /*
   ** Nuxt.js dev-modules

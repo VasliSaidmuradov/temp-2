@@ -3,7 +3,9 @@
         <app-header />
         <app-nav />
         <div class="layout-content">
-            <nuxt />
+            <transition name="fade">
+                <nuxt />
+            </transition>
         </div>
         <app-footer />
     </div>
