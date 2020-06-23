@@ -1,0 +1,51 @@
+.repay-type
+    box-shadow: 0px -4px 20px rgba(92, 102, 113, 0.1)
+    border-radius: 40px 40px 0px 0px
+    padding: 80px 0
+    margin-top: -30px
+    position: relative
+    background-color: #fff
+    &:after 
+        content: ''
+        width: 870px
+        height: 870px
+        border-radius: 999px
+        border: 160px solid #5AE0B6
+        position: absolute
+        right: 0
+        top: 50%
+        transform: translate(60%, -50%)
+    .section-title
+        margin-bottom: 20px
+    &-text 
+        font-size: em(16)
+        font-weight: 500
+        color: var(--text-color)
+    &-row
+        max-width: 790px
+        display: flex
+        justify-content: space-between
+        margin-bottom: 20px
+        &.--margin-top
+            margin-top: 60px
+        &.--margin-bottom
+            margin-bottom: 80px
+    &-col 
+        width: 376px
+        height: 185px
+        border-radius: 24px
+        background-color: #f7f9fa
+        padding-top: 46px
+        text-align: center
+        img 
+            margin: auto
+        .repay-type-text
+            max-width: 270px
+            margin: auto
+    &-subtitle
+        font-size: em(22)
+        font-weight: 600 
+        color: var(--text-color)
+        margin-bottom: 16px
+    &-list 
+        margin-bottom: 40px
