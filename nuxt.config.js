@@ -33,6 +33,8 @@ export default {
     { src: '~/plugins/vue-the-mask.js', ssr: false },
     { src: '~/plugins/vue-star-component.js', ssr: false },
     { src: '~/plugins/vue-plyr.js', ssr: false },
+    { src: '~/plugins/vue-round-slider.js', ssr: false },
+    { src: '~/plugins/vue-slider-component.js', ssr: false },
   ],
   /*
   ** Nuxt.js dev-modules
