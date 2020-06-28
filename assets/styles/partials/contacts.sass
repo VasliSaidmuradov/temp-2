@@ -26,3 +26,24 @@
         font-size: em(14)
         font-weight: 400
         color: #93989D
+@media (max-width: 1025px)
+    .contacts
+        .layout-container
+            padding: 0 20px
+@media (max-width: 769px)
+    .contacts
+        .layout-container
+            display: block
+            margin-top: 40px
+        .form
+            width: 100%
+        &-left 
+            margin-bottom: 40px
+            margin-right: 0
+@media (max-width: 426px)
+    .contacts
+        .section-title
+            padding: 0
+        &-right
+            padding-top: 40px
+            border-top: 1px solid var(--line-color)

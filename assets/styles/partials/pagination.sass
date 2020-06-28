@@ -9,6 +9,8 @@
         align-items: center
         svg 
             transform: rotate(-90deg)
+    &-item-wrp
+        display: flex
     &-item 
         width: 40px
         height: 40px
@@ -30,3 +32,14 @@
         margin-right: 32px
         svg 
             transform: rotate(90deg)
+@media (max-width: 426px)
+    .pagination
+        flex-wrap: wrap
+        &-item-wrp
+            width: 100%
+            justify-content: center
+            margin: 16px 0
+        &-prev
+            margin-right: 0
+        &-next 
+            padding-left: 0

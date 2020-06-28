@@ -21,10 +21,12 @@
                     <arrow />
                     Назад
                 </button>
-                <button class="pagination-item --active">1</button>
-                <button class="pagination-item">2</button>
-                <button class="pagination-item">3</button>
-                <button class="pagination-item">4</button>
+                <div class="pagination-item-wrp">
+                    <button class="pagination-item --active">1</button>
+                    <button class="pagination-item">2</button>
+                    <button class="pagination-item">3</button>
+                    <button class="pagination-item">4</button>
+                </div>
                 <button class="pagination-next">
                     Вперед
                     <arrow />

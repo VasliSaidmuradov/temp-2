@@ -49,3 +49,28 @@
         margin-bottom: 16px
     &-list 
         margin-bottom: 40px
+@media (max-width: 1025px)
+    .repay-type
+        padding: 80px 20px
+        &-row
+            max-width: 100%
+        &-col
+            width: 49%
+        &:after 
+            display: none
+@media (max-width: 426px)
+    .repay-type
+        .section-title
+            padding: 0
+        &-row 
+            margin-bottom: 0
+            display: block
+            &.--margin-bottom
+                margin-bottom: 60px
+        &-col 
+            margin-bottom: 20px
+            width: 100%
+        &-subtitle
+            font-size: 1em
+        &-text 
+            font-size: em(14)

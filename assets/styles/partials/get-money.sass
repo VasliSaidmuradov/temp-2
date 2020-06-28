@@ -24,3 +24,31 @@
         font-weight: 600
         color: #fff
         margin-bottom: 40px
+@media (max-width: 1025px)
+    .get-money
+        &:after 
+            border-width: 100px
+            transform: translate(60%, -30%)
+        .layout-container
+            padding: 0 20px
+@media (max-width: 769px)
+    .get-money
+        &:after 
+            width: 600px
+            height: 600px
+@media (max-width: 426px)
+    .get-money
+        height: 380px
+        &:after 
+            width: 360px
+            height: 360px
+            border-width: 60px
+            top: initial
+            bottom: 0
+            transform: translate(40%, 40%)
+        .layout-container
+            margin-top: 80px
+            position: relative
+            z-index: 2
+        &-title
+            font-size: em(22)
