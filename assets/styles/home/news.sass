@@ -23,3 +23,18 @@
         font-size: em(16)
         font-weight: 500
         color: var(--text-color)
+@media (max-width: 1025px)
+    .home-news
+        .home-slider-title
+            padding: 0 20px
+        .swiper-container
+            margin-left: 20px
+        .swiper-slide
+            width: 30%
+@media (max-width: 426px)
+    .home-news
+        &-text,
+        &-date
+            padding: 0
+        .swiper-slide
+            width: 70%

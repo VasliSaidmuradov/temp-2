@@ -29,7 +29,7 @@
                             handle-size="68"
                             line-cap="round"
                             width="8"
-                            :radius="450"
+                            :radius="radius"
                             max="5000"
                             min="130000"
                             startAngle="-120"
@@ -131,7 +131,7 @@
                             handle-size="68"
                             line-cap="round"
                             width="8"
-                            :radius="450"
+                            :radius="radius"
                             max="5000"
                             min="130000"
                             startAngle="-120"
@@ -225,16 +225,22 @@ export default {
         return {
             sliderValue: 5000,
             step: 25000,
-            radius: 400,
+            radius: 450,
             date: '5 дней',
             data: ['5 дней', '10 дней', '20 дней', '30 дней'],
             currentTab: 'first'
         }
     },
     mounted() {
-        // if (window.innerWidth < 480) {
-        //     this.radius = 150
-        // }
+        if (document.body.clientWidth <= 480) {
+            this.radius = 350
+        }
+        if (document.body.clientWidth <= 376) {
+            this.radius = 300
+        }
+        if (document.body.clientWidth <= 321) {
+            this.radius = 270
+        }
     },
     methods: {
         formattedTooltip(arg) {

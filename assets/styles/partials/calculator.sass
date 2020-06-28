@@ -193,3 +193,95 @@
             left: 50%
             top: 50%
             transform: translate(-50%, -50%)
+@media (max-width: 1025px)
+    .calculator
+        &-row
+            display: block
+        &-left,
+        &-right
+            width: 100%
+            max-width: 100%
+        &-right
+            margin-left: 0
+            .calculator-row
+                display: flex
+        &-reward
+            padding-bottom: 45px
+            margin-bottom: 0
+@media (max-width: 426px)
+    .calculator
+        &-btn
+            margin-right: 0
+            width: 50%
+        &-icon
+            margin-right: 20px
+        &-text 
+            font-size: 1em
+        &-left
+            padding: 20px 0
+        &-curved-slider
+            margin-top: -555px
+            margin-left: -140px
+        &-slider-wrp
+            .rs-tooltip
+                bottom: 11%
+        &-date-wrp
+            padding: 0 20px
+        &-tooltip-wrp
+            bottom: 115px
+            p 
+                margin-right: 30px
+                font-size: em(10)
+                &:nth-child(2),
+                &:nth-child(5)
+                    transform: translateY(30px)
+                &:nth-child(3),
+                &:nth-child(4)
+                    transform: translateY(45px)
+@media (max-width: 376px)
+    .calculator
+        &-btn 
+            padding: 19px 0
+        &-curved-slider
+            margin-top: -465px
+            margin-left: -113px
+        &-tooltip-wrp
+            bottom: 105px
+            p
+                margin-right: 25px
+                &:nth-child(2),
+                &:nth-child(5)
+                    transform: translateY(20px)
+                &:nth-child(3),
+                &:nth-child(4)
+                    transform: translateY(35px)
+        &-slider-wrp
+            .rs-handle:after
+                width: 70px
+                height: 40px
+        .vue-slider
+            padding: 30px 20px !important
+        .vue-slider-dot-handle:after
+            width: 70px
+            height: 40px
+        &-right
+            .calculator-row
+                padding: 20px
+@media (max-width: 321px)
+    .calculator
+        &-btn 
+            padding: 20px 10px
+        &-curved-slider
+            margin-left: -110px
+            margin-top: -410px
+        &-tooltip-wrp
+            bottom: 100px
+            p
+                margin-right: 17px
+        &-label
+            font-size: 0.7em
+        &-icon 
+            margin-right: 10px
+            svg 
+                width: 30px
+                height: 30px

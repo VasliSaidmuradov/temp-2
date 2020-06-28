@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="get-steps-block --black">
+        <div class="get-steps-block --black --z3">
             <div class="layout-container">
                 <div class="get-steps-row">
                     <div class="get-steps-left">
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <div class="get-steps-block --z2 --padding-bottom">
+        <div class="get-steps-block --z4 --padding-bottom">
             <div class="layout-container">
                 <div class="get-steps-row">
                     <div class="get-steps-left">

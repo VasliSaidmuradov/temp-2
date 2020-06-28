@@ -36,6 +36,15 @@ export default {
                 navigation: {
                     nextEl: '.home-news-next',
                     prevEl: '.home-news-prev'
+                },
+                breakpoints: {
+                    1025: {
+                        freeMode: false
+                    },
+                    320: {
+                        slidesPerView: 'auto',
+                        freeMode: true
+                    }
                 }
             }
         }

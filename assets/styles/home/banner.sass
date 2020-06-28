@@ -42,3 +42,27 @@
         color: var(--text-color)
         b 
             display: block
+@media (max-width: 1025px)
+    .home-banner
+        .swiper-slide
+            padding: 40px
+@media (max-width: 426px)
+    .home-banner
+        padding: 10px 10px 0 10px
+        .swiper-container
+            height: auto 
+            min-height: 500px
+        .swiper-slide
+            min-height: 500px
+            padding: 40px 20px
+        &-title
+            font-size: em(20)
+        &-inner
+            flex-shrink: initial
+        &-list 
+            margin: 20px 0
+            li 
+                margin-bottom: 15px
+        &-text 
+            font-size: em(12)
+            max-width: 240px

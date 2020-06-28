@@ -37,3 +37,31 @@
         display: inline-block
         &:last-child 
             margin-right: 0
+@media (max-width: 1025px)
+    .footer
+        .layout-container
+            padding: 0 20px
+@media (max-width: 769px)
+    .footer
+        padding: 60px 0
+        &-row
+            flex-wrap: wrap
+        &-col
+            width: 100%
+        &-subtitle
+            margin-top: 30px
+        &-socials
+            margin-bottom: 30px
+        &-logo
+            display: inline-block
+@media (max-width: 426px)
+    .footer
+        &-logo
+            max-width: 90px
+        &-copyright
+            margin-top: 40px
+            display: block
+            text-align: center
+            img 
+                margin: auto
+                margin-top: 16px

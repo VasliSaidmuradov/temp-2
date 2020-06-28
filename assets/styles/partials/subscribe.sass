@@ -27,6 +27,8 @@
     &-inner
         max-width: 576px
         margin: auto
+        position: relative
+        z-index: 2
     &-title 
         font-size: em(22)
         font-weight: 600
@@ -38,3 +40,18 @@
         color: var(--text-color)
         margin: 24px 0 40px
         text-align: center
+@media (max-width: 426px)
+    .subscribe
+        &:before 
+            width: 444px
+            height: 444px
+            border-width: 50px
+        &:after 
+            width: 300px
+            height: 300px
+            border-width: 70px
+        &-title
+            font-size: em(20)
+            padding: 0 20px
+        &-subtitle
+            padding: 0 20px

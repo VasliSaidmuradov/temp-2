@@ -23,6 +23,10 @@
                 </div>
             </div>
         </div>
+         <div class="home-reviews-mob-nav">
+            <button class="home-slider-prev home-reviews-prev"><slider-arrow /></button>
+            <button class="home-slider-next home-reviews-next"><slider-arrow /></button>
+        </div>
     </div>
 </template>
 
@@ -36,6 +40,17 @@ export default {
                 navigation: {
                     nextEl: '.home-reviews-next',
                     prevEl: '.home-reviews-prev'
+                },
+                breakpoints: {
+                    1025: {
+                        slidesPerView: 3
+                    },
+                    768: {
+                        slidesPerView: 2
+                    },
+                    320: {
+                        slidesPerView: 1
+                    }
                 }
             }
         }

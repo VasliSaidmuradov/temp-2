@@ -1,7 +1,7 @@
 <template>
     <header class="header">
         <div class="layout-container">
-            <nuxt-link to="/">
+            <nuxt-link to="/" class="header-logo">
                 <img src="/icons/logo.svg" alt="CashU logo">
             </nuxt-link>
             <h4 class="header-title">Быстрые <br> микрокредиты онлайн</h4>
@@ -27,6 +27,16 @@
                     <arrow />
                 </div>
             </div>
+            <button class="hamburger hamburger--3dy" 
+                :class="{'is-active' : isOpen}"
+                @click="toggleMenu"
+                type="button" 
+                aria-label="Menu" 
+                aria-controls="navigation">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
         </div>
     </header>
 </template>
@@ -38,6 +48,16 @@ import profileIcon from '@/static/icons/user.svg'
 import ruIcon from '@/static/icons/ru.svg'
 import arrow from '@/static/icons/arrow.svg'
 export default {
+    data() {
+        return {
+            isOpen: false
+        }
+    },
+    methods: {
+        toggleMenu() {
+            this.isOpen = !this.isOpen
+        }
+    },
     components: {
         phoneIcon,
         scheduleIcon,
