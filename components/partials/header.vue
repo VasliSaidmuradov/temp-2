@@ -1,5 +1,5 @@
 <template>
-    <header class="header">
+    <header class="header" :class="{'--open' : isOpen}">
         <div class="layout-container">
             <nuxt-link to="/" class="header-logo">
                 <img src="/icons/logo.svg" alt="CashU logo">
@@ -38,6 +38,7 @@
                 </span>
             </button>
         </div>
+        <mob-menu @closeMenu="toggleMenu"/>
     </header>
 </template>
 
@@ -47,6 +48,7 @@ import scheduleIcon from '@/static/icons/clock.svg'
 import profileIcon from '@/static/icons/user.svg'
 import ruIcon from '@/static/icons/ru.svg'
 import arrow from '@/static/icons/arrow.svg'
+import mobMenu from '@/components/partials/mobile-menu'
 export default {
     data() {
         return {
@@ -55,10 +57,12 @@ export default {
     },
     methods: {
         toggleMenu() {
+            document.body.classList.toggle('--hidden')
             this.isOpen = !this.isOpen
         }
     },
     components: {
+        mobMenu,
         phoneIcon,
         scheduleIcon,
         profileIcon,

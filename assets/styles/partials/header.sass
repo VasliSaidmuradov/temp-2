@@ -55,6 +55,16 @@
 @media (max-width: 1025px)
     .header
         padding: 15px 20px
+        position: fixed
+        width: 100%
+        top: 0
+        left: 0
+        z-index: 10
+        transition: height 0.4s ease
+        height: 84px
+        overflow: hidden
+        &.--open
+            height: 100vh
         &-phone,
         &-title,
         &-text,
@@ -67,5 +77,6 @@
     .header
         padding: 0 20px
         padding-right: 5px
+        height: 54px
         &-logo
             max-width: 90px
