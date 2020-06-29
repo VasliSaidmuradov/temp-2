@@ -1,0 +1,36 @@
+.payment
+    .page-title
+        text-align: center
+        padding-bottom: 40px
+        margin-top: 40px
+        margin-bottom: 40px
+        border-bottom: 1px solid var(--line-color)
+    &-container
+        max-width: 740px
+        width: 100%
+        margin: auto 
+    &-heading
+        font-size: em(22)
+        font-weight: 600
+        color: var(--text-color)
+        margin-bottom: 8px
+    &-text 
+        font-size: em(14)
+        font-weight: 400
+        color: var(--text-color)
+    &-image
+        width: 600px
+        margin: auto 
+        margin-top: 40px
+        margin-bottom: 80px
+        border-radius: 16px
+@media ( max-width: 769px )
+    .payment
+        .layout-container
+            width: auto
+            padding: 0 20px
+@media ( max-width: 426px )
+    .payment
+        &-image
+            margin-bottom: 40px
+    

@@ -1,0 +1,54 @@
+.calc-modal
+    position: fixed
+    z-index: 15
+    width: 100%
+    height: 100vh
+    top: 0
+    left: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    &-overlay
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        background: rgba(#000, 0.5)
+    &-inner
+        position: relative
+        z-index: 1
+        max-width: 1150px
+        width: 100%
+    &-close
+        position: absolute
+        right: 0
+        top: 0
+        background-color: transparent
+        padding: 0
+        cursor: pointer
+        z-index: 4
+    .calculator
+        max-width: 1150px
+    .calculator-right
+        margin-left: 0
+        border-radius: 0 12px 12px 0
+        overflow: hidden
+        box-shadow: none
+        flex-shrink: 0
+    .calculator-left
+        border-radius: 0 0 0 12px
+@media (max-width: 1025px)
+    .calc-modal
+        &-inner
+            background-color: #fff
+            height: 100%
+            overflow-y: auto
+        &-close
+            position: static
+            margin-left: auto
+            display: block
+            width: 32px
+            margin-top: 16px
+            margin-right: 16px
+    

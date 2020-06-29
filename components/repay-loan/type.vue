@@ -4,24 +4,24 @@
             <h3 class="section-title">Вернуть деньги также легко и просто,  как и получить!</h3>
             <p class="repay-type-text">Выберите удобный для Вас способ возврата займа:</p>
             <div class="repay-type-row --margin-top">
-                <div class="repay-type-col">
+                <nuxt-link to="/payment" class="repay-type-col">
                     <p class="repay-type-text">Платежные терминалы QIWI</p>
                     <img src="/icons/qiwi.svg" alt="CashU image">
-                </div>
-                <div class="repay-type-col">
+                </nuxt-link>
+                <nuxt-link to="/payment" class="repay-type-col">
                     <p class="repay-type-text">Платежные терминалы Касса 24</p>
                     <img src="/icons/kassa24.png" alt="CashU image">
-                </div>
+                </nuxt-link>
             </div>
             <div class="repay-type-row --margin-bottom">
-                <div class="repay-type-col">
+                <nuxt-link to="/payment" class="repay-type-col">
                     <p class="repay-type-text">Перевод на банковский счет (реквизиты для перевода ниже)</p>
                     <img src="/icons/card.svg" alt="CashU image">
-                </div>
-                <div class="repay-type-col">
+                </nuxt-link>
+                <nuxt-link to="/payment" class="repay-type-col">
                     <p class="repay-type-text">Погасить или продлить займ из Личного Кабинета</p>
                     <img src="/icons/user-green.svg" alt="CashU image">
-                </div>
+                </nuxt-link>
             </div>
             <h4 class="repay-type-subtitle">Реквизиты для банковского перевода:</h4>
             <ul class="repay-type-list">
