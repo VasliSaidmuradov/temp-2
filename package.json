@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
+    "gsap": "^3.3.4",
     "node-sass": "^4.14.1",
     "nuxt": "^2.0.0",
     "plyr": "^3.6.2",
@@ -20,6 +21,7 @@
     "vue-awesome-swiper": "^4.1.1",
     "vue-plyr": "^6.0.4",
     "vue-round-slider": "^1.0.0",
+    "vue-scrollmagic": "^1.2.0",
     "vue-slider-component": "^3.1.5",
     "vue-star-rating": "^1.6.1",
     "vue-svg-loader": "^0.16.0",

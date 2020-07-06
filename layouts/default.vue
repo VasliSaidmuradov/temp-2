@@ -3,6 +3,7 @@
         <transition name="modal-fade">
             <calc-modal v-if="isCalcModalOpen" @closeModal="closeCalcModal"/>
         </transition>
+        <notification />
         <lang-modal />
         <app-header />
         <app-nav />
@@ -20,6 +21,7 @@
 </template>
 
 <script>
+import notification from '@/components/partials/notification'
 import appHeader from '@/components/partials/header'
 import appNav from '@/components/partials/page-nav'
 import appFooter from '@/components/partials/footer'
@@ -48,6 +50,7 @@ export default {
         }
     },
     components: {
+        notification,
         icon,
         langModal,
         appHeader,

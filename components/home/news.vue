@@ -1,15 +1,15 @@
 <template>
-    <div class="home-news layout-container">
+    <div class="home-news layout-container" ref="animationBlock">
         <div class="home-slider-title">
-            <h3>Акции и новости</h3>
+            <h3 class="animation-item">Акции и новости</h3>
             <div class="home-slider-nav">
-                <button class="home-slider-prev home-news-prev"><slider-arrow /></button>
-                <button class="home-slider-next home-news-next"><slider-arrow /></button>
+                <button class="home-slider-prev animation-item home-news-prev"><slider-arrow /></button>
+                <button class="home-slider-next animation-item home-news-next"><slider-arrow /></button>
             </div>
         </div>
         <div v-swiper:homeNews="options">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="(item, index) in 6" :key="index">
+                <div class="swiper-slide animation-item" v-for="(item, index) in 6" :key="index">
                     <nuxt-link to>
                         <div class="home-news-img-wrp">
                             <img src="/img/news.png" alt="CashU image">
@@ -27,7 +27,9 @@
 
 <script>
 import sliderArrow from '@/static/icons/slider-arrow.svg'
+import animation from '@/mixins/animation'
 export default {
+    mixins: [animation],
     data() {
         return {
             options: {

@@ -1,14 +1,14 @@
 <template>
-    <div class="post-inner">
+    <div class="post-inner" ref="animationBlock">
         <div class="breadcrumbs">
             <nuxt-link to="/">Главная</nuxt-link>
             <nuxt-link to="/posts">Акции и новости</nuxt-link>
             <nuxt-link to>Нюансы монетизации субсидий</nuxt-link>
         </div>
         <div class="post-inner-container">
-            <h1 class="page-title">Нюансы монетизации субсидий</h1>
+            <h1 class="page-title animation-item">Нюансы монетизации субсидий</h1>
             <div class="post-inner-image">
-                <img src="/img/news.png" alt="CashU image">
+                <img src="/img/news.png" alt="CashU image" class="animation-item">
             </div>
             <div class="post-inner-content">
                 <p>
@@ -38,7 +38,9 @@
 
 <script>
 import getMoney from '@/components/partials/get-money'
+import animation from '@/mixins/animation'
 export default {
+    mixins: [animation],
     components: {
         getMoney
     }

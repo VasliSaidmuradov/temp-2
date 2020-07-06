@@ -1,17 +1,23 @@
 <template>
-    <div class="reviews">
+    <div class="reviews" ref="animationBlock">
+        <transition name="modal-fade">
+            <reviews-modal v-if="isModalOpen" @closeModal="closeModal" @sendReview="sendReview" />
+        </transition>
+        <transition name="modal-fade">
+            <reviews-success v-if="isSuccessOpen" @closeModal="closeSuccess" />
+        </transition>
         <div class="breadcrumbs">
             <nuxt-link to="/">Главная</nuxt-link>
             <nuxt-link to>Отзывы</nuxt-link>
         </div>
         <div class="layout-container">
-            <h1 class="page-title">
+            <h1 class="page-title animation-item">
                 Отзывы
-                <button class="button">Оставить отзыв</button>
+                <button class="button" @click="openModal">Оставить отзыв</button>
             </h1>
             <div class="reviews-row">
                 <div class="reviews-col">
-                    <div class="reviews-item">
+                    <div class="reviews-item animation-item">
                         <div class="reviews-name-wrp">
                             <div class="reviews-avatar">
                                 <img src="/icons/avatar-placeholder.svg" alt="CashU icon">
@@ -41,7 +47,7 @@
                     </div>
                 </div>
                 <div class="reviews-col">
-                    <div class="reviews-item">
+                    <div class="reviews-item animation-item">
                         <div class="reviews-name-wrp">
                             <div class="reviews-avatar">
                                 <img src="/icons/avatar-placeholder.svg" alt="CashU icon">
@@ -71,3 +77,37 @@
         </div>
     </div>
 </template>
+
+<script>
+import animation from '@/mixins/animation'
+import reviewsModal from '@/components/partials/reviews-modal'
+import reviewsSuccess from '@/components/partials/reviews-success'
+export default {
+    mixins: [animation],
+    data() {
+        return {
+            isModalOpen: false,
+            isSuccessOpen: false
+        }
+    },
+    methods: {
+        openModal() {
+            this.isModalOpen = true
+        },
+        closeModal() {
+            this.isModalOpen = false
+        },
+        closeSuccess() {
+            this.isSuccessOpen = false
+        },
+        sendReview() {
+            this.closeModal()
+            this.isSuccessOpen = true
+        }
+    },
+    components: {
+        reviewsModal,
+        reviewsSuccess
+    }
+}
+</script>

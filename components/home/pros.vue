@@ -1,8 +1,8 @@
 <template>
-    <div class="home-pros">
-        <h3 class="section-title">Почему микрокредиты CASHU выгоднее?</h3>
+    <div class="home-pros" ref="animationBlock">
+        <h3 class="section-title animation-item">Почему микрокредиты CASHU выгоднее?</h3>
         <div class="home-pros-row">
-            <div class="home-pros-col" v-for="(item, i) in pros" :key="i">
+            <div class="home-pros-col animation-item" v-for="(item, i) in pros" :key="i">
                 <div class="home-pros-img-wrp">
                     <img :src="item.img" alt="CashU image">
                 </div>
@@ -10,7 +10,7 @@
                 <p class="home-pros-text">{{item.text}}</p>
             </div>
         </div>
-        <div class="home-pros-col --last">
+        <div class="home-pros-col animation-item --last">
             <div class="home-pros-img-wrp">
                 <img src="/img/pros7.png" alt="CashU image">
             </div>
@@ -21,7 +21,9 @@
 </template>
 
 <script>
+import animation from '@/mixins/animation'
 export default {
+    mixins: [animation],
     data() {
         return {
             pros: [

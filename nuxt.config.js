@@ -11,6 +11,9 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
+    script: [
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js' },
+    ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
@@ -35,6 +38,7 @@ export default {
     { src: '~/plugins/vue-plyr.js', ssr: false },
     { src: '~/plugins/vue-round-slider.js', ssr: false },
     { src: '~/plugins/vue-slider-component.js', ssr: false },
+    { src: '~/plugins/vue-scrollmagic.js', ssr: false },
   ],
   /*
   ** Nuxt.js dev-modules

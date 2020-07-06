@@ -1,13 +1,13 @@
 <template>
-    <div class="posts">
+    <div class="posts" ref="animationBlock">
         <div class="breadcrumbs">
             <nuxt-link to="/">Главная</nuxt-link>
             <nuxt-link to>Акции и новости</nuxt-link>
         </div>
-        <h1 class="page-title">Акции и новости</h1>
+        <h1 class="page-title animation-item">Акции и новости</h1>
         <div class="layout-container">
             <div class="posts-row" v-for="(row, i) in 4" :key="i">
-                <nuxt-link class="posts-item" :to="`/posts/${index}`" v-for="(item, index) in 3" :key="index">
+                <nuxt-link class="posts-item animation-item" :to="`/posts/${index}`" v-for="(item, index) in 3" :key="index">
                     <div class="posts-img">
                         <img src="/img/news.png" alt="CashU image">
                     </div>
@@ -38,7 +38,9 @@
 
 <script>
 import arrow from '@/static/icons/arrow.svg'
+import animation from '@/mixins/animation'
 export default {
+    mixins: [animation],
     components: {
         arrow
     }

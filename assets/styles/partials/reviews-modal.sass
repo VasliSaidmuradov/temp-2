@@ -1,0 +1,106 @@
+.reviews-modal
+    position: fixed
+    width: 100%
+    height: 100vh
+    top: 0
+    left: 0
+    z-index: 15
+    display: flex
+    align-items: center 
+    justify-content: center
+    .section-title
+        margin-bottom: 30px
+    &-overlay
+        position: absolute
+        width: 100%
+        height: 100%
+        background-color: rgba(#000, 0.5)
+        top: 0
+        left: 0
+    &-inner
+        background-color: #fff
+        border-radius: 20px
+        padding: 40px
+        position: relative
+        z-index: 1
+    &-close 
+        position: absolute
+        right: 20px
+        top: 20px
+        z-index: 1
+        cursor: pointer
+        padding: 0
+        background-color: #fff
+    &-rating-wrp
+        display: flex
+        align-items: center
+        margin-bottom: 20px
+        p 
+            font-size: em(14)
+            font-weight: 400
+            color: var(--text-color)
+            margin-right: 10px
+    &-input
+        display: block
+        width: 360px
+        margin-bottom: 16px
+        border: 1px solid var(--line-color)
+        border-radius: 8px
+        padding: 16px
+        font-size: em(14)
+        font-weight: 400
+        color: var(--text-color)
+    textarea.reviews-modal-input
+        resize: none
+        height: 100px
+    &-file-wrp
+        background-color: #F7F9FA
+        border-radius: 8px
+        padding: 16px 0
+        font-size: em(14)
+        font-weight: 600
+        color: var(--text-color)
+        display: flex
+        align-items: center
+        justify-content: center
+        margin-bottom: 32px
+        user-select: none
+        cursor: pointer
+        input 
+            display: none
+        svg 
+            margin-left: 10px
+    .button
+        width: 100%
+    &-img
+        margin: auto
+    &-title
+        font-size: em(20)
+        font-weight: 600
+        color: var(--text-color)
+        margin-bottom: 30px
+        text-align: center
+    &-btn 
+        width: 300px
+        text-align: center
+        padding: 16px 0
+        background-color: #F7F9FA
+        border-radius: 8px
+        cursor: pointer
+        font-size: em(14)
+        font-weight: 600
+        color: var(--text-color)
+@media (max-width: 769px)
+    .reviews-modal
+        .section-title
+            padding: 0
+@media (max-width: 426px)
+    .reviews-modal
+        .section-title
+            margin-bottom: 20px
+        &-inner
+            padding: 20px
+            max-width: 90%
+            width: 100%
+        &-input
+            width: 100%
