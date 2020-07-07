@@ -50,6 +50,27 @@
             font-weight: 400
             color: var(--text-color)
             margin-left: 8px
+    &-lang
+        position: relative
+    &-lang-dropdown
+        position: absolute
+        top: 100%
+        right: 0
+        width: 160px
+        background-color: #fff
+        border-radius: 8px
+        box-shadow: 0px 4px 20px rgba(92, 102, 113, 0.1)
+        padding: 16px
+    &-lang-link
+        display: flex 
+        font-size: em(12)
+        font-weight: 400 
+        color: var(--text-color)
+        margin-bottom: 16px
+        svg 
+            margin-right: 12px
+        &:last-child 
+            margin-bottom: 0
     .hamburger
         display: none
 @media (max-width: 1025px)

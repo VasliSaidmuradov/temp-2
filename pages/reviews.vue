@@ -20,7 +20,7 @@
                     <div class="reviews-item animation-item">
                         <div class="reviews-name-wrp">
                             <div class="reviews-avatar">
-                                <img src="/icons/avatar-placeholder.svg" alt="CashU icon">
+                                <img src="/icons/avatar-placeholder.png" alt="CashU icon">
                             </div>
                             <div>
                                 <p class="reviews-name">Арсен Арсенов</p>
@@ -50,7 +50,7 @@
                     <div class="reviews-item animation-item">
                         <div class="reviews-name-wrp">
                             <div class="reviews-avatar">
-                                <img src="/icons/avatar-placeholder.svg" alt="CashU icon">
+                                <img src="/icons/avatar-placeholder.png" alt="CashU icon">
                             </div>
                             <div>
                                 <p class="reviews-name">Арсен Арсенов</p>

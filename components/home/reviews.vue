@@ -12,7 +12,7 @@
                 <div class="swiper-slide animation-item" v-for="(item, index) in 5" :key="index">
                     <div class="home-reviews-item">
                         <div class="home-reviews-name-wrp">
-                            <img src="/icons/avatar-placeholder.svg" alt="CashU image">
+                            <img src="/icons/avatar-placeholder.png" alt="CashU image">
                             <div class="home-reviews-name">
                                 <h4>Арсен Арсенов</h4>
                                 <p>Алматы</p>

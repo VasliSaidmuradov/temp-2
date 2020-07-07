@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer" ref="animationBlock">
+    <footer class="footer">
         <div class="layout-container">
             <div class="footer-row">
                 <div class="footer-col">
@@ -54,9 +54,19 @@ import vk from '@/static/icons/vk.svg'
 import facebook from '@/static/icons/facebook.svg'
 import phone from '@/static/icons/phone-filled.svg'
 import email from '@/static/icons/mail.svg'
-import animation from '@/mixins/animation'
 export default {
-    mixins: [animation],
+    mounted() {
+        let block = document.querySelector('.footer')
+        let item = block.querySelectorAll('.animation-item')
+        let footerScene = this.$scrollmagic.scene({
+            triggerElement: block,
+            triggerHook: 0.8
+        })
+        .setTween(
+            gsap.from(item, {opacity: 0, y: 15, duration: 0.4, stagger: 0.1, ease: 'back.out(3)'})
+        )
+        this.$scrollmagic.addScene(footerScene)
+    },
     components: {
         insta,
         vk,

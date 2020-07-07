@@ -20,11 +20,21 @@
                 <profile-icon />
                 Личный кабинет
             </nuxt-link>
-            <div class="header-langs animation-item" @click="showLangModal">
-                <div class="header-current-lang">
+            <div class="header-langs animation-item">
+                <div class="header-current-lang" @click="toggleLang">
                     <ru-icon />
                     <span>RU</span>
                     <arrow />
+                </div>
+                <div class="header-lang-dropdown" v-if="isLangOpen">
+                    <nuxt-link to class="header-lang-link" @click.native="toggleLang">
+                        <ru-icon />
+                        Русский
+                    </nuxt-link>
+                    <nuxt-link to class="header-lang-link" @click.native="toggleLang">
+                        <kz-icon />
+                        Казахский
+                    </nuxt-link>
                 </div>
             </div>
             <button class="hamburger hamburger--3dy" 
@@ -47,6 +57,7 @@ import phoneIcon from '@/static/icons/phone-filled.svg'
 import scheduleIcon from '@/static/icons/clock.svg'
 import profileIcon from '@/static/icons/user.svg'
 import ruIcon from '@/static/icons/ru.svg'
+import kzIcon from '@/static/icons/kz.svg'
 import arrow from '@/static/icons/arrow.svg'
 import mobMenu from '@/components/partials/mobile-menu'
 import animation from '@/mixins/animation'
@@ -54,6 +65,7 @@ export default {
     mixins: [animation],
     data() {
         return {
+            isLangOpen: false,
             isOpen: false
         }
     },
@@ -62,8 +74,8 @@ export default {
             document.body.classList.toggle('--hidden')
             this.isOpen = !this.isOpen
         },
-        showLangModal() {
-            this.$store.commit('lang/setModal', true)
+        toggleLang() {
+            this.isLangOpen = !this.isLangOpen
         }
     },
     components: {
@@ -72,7 +84,8 @@ export default {
         scheduleIcon,
         profileIcon,
         ruIcon,
-        arrow
+        arrow,
+        kzIcon
     }
 }
 </script>
