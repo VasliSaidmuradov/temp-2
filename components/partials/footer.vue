@@ -62,6 +62,7 @@ export default {
             triggerElement: block,
             triggerHook: 0.8
         })
+        .addIndicators()
         .setTween(
             gsap.from(item, {opacity: 0, y: 15, duration: 0.4, stagger: 0.1, ease: 'back.out(3)'})
         )
