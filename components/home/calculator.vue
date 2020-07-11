@@ -102,11 +102,17 @@
                 </div>
                 <div class="calculator-divider"></div>
                 <div class="calculator-reward">
-                    <div>
+                    <div class="calculator-reward-row">
                         <success />
-                        <p class="calculator-label">Вознаграждение</p>
-                        <p class="calculator-text">4 500 ₸</p>
+                        <div>
+                            <p class="calculator-label">Вознаграждение</p>
+                            <p class="calculator-text">4 500 ₸</p>
+                        </div>
                     </div>
+                </div>
+                <div class="calculator-promo-wrp">
+                    <input type="text" class="calculator-input" placeholder="Промокод">
+                    <button class="button" disabled>Применить</button>
                 </div>
             </div>
         </div>

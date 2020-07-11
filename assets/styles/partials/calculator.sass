@@ -78,6 +78,35 @@
         svg 
             width: 48px
             height: 48px
+            margin-right: 20px
+    &-reward-row
+        display: flex
+        justify-content: center
+        align-items: center
+        div 
+            text-align: left
+    &-promo-wrp
+        position: relative
+        max-width: 400px
+        width: 100%
+        margin: auto
+        .button
+            position: absolute
+            right: 6px
+            top: 50%
+            transform: translateY(-50%)
+            padding: 10px 24px
+            &:disabled 
+                opacity: 0.5 
+    &-input
+        font-size: em(14)
+        font-weight: 400
+        color: var(--text-color)
+        width: 100%
+        border: 1px solid var(--line-color)
+        padding: 16px
+        padding-right: 138px
+        border-radius: 8px
     &-slider-wrp
         overflow: hidden
         position: relative
@@ -203,6 +232,7 @@
             max-width: 100%
         &-right
             margin-left: 0
+            padding-bottom: 45px
             .calculator-row
                 display: flex
         &-reward
@@ -238,6 +268,16 @@
                 &:nth-child(3),
                 &:nth-child(4)
                     transform: translateY(45px)
+        &-promo-wrp
+            padding: 0 10px
+            .button
+                width: 100%
+                position: static
+                transform: none
+                margin-top: 15px
+                padding: 16px 0
+        &-input
+            padding-right: 16px
 @media (max-width: 376px)
     .calculator
         &-btn 
