@@ -32,6 +32,10 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/api' },
+    { src: '~/plugins/error' },
+    { src: '~/plugins/helpers' },
+
     { src: '~/plugins/swiper.js', mode: 'client' },
     { src: '~/plugins/vue-the-mask.js', ssr: false },
     { src: '~/plugins/vue-star-component.js', ssr: false },
@@ -65,6 +69,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
+    analyze: true,
     extend(config, { ctx, isClient }) {
       const svgRule = config.module.rules.find(rule => rule.test.test('.svg'));
 

@@ -1,5 +1,8 @@
 <template>
     <div class="home-page">
+        <!-- <pre>
+          {{ currentLang }}: {{ langs[currentLang] }}
+        </pre> -->
         <banner />
         <calculator />
         <pros />
@@ -16,6 +19,9 @@ import pros from '@/components/home/pros'
 import news from '@/components/home/news'
 import reviews from '@/components/home/reviews'
 import subscribe from '@/components/partials/subscribe'
+
+import { mapGetters } from 'vuex'
+
 export default {
     components: {
         banner,
@@ -24,6 +30,12 @@ export default {
         news,
         reviews,
         subscribe
+    },
+    computed: {
+      ...mapGetters({
+        langs: 'lang/GET_LANGS',
+        currentLang: 'lang/GET_CURRENT_LANG',
+      }),
     }
 }
 </script>

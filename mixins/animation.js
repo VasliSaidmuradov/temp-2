@@ -2,7 +2,7 @@ export default {
     mounted() {
         if (this.$refs.animationBlock) {
             let item = this.$refs.animationBlock.querySelectorAll('.animation-item')
-           
+
             const scene = this.$scrollmagic.scene({
                 triggerElement: this.$refs.animationBlock
             })

@@ -24,11 +24,11 @@ export default {
             isModalOpen: false
         }
     },
-    mounted() {
-        setTimeout(() => {
-            this.openModal()
-        },3000)
-    },
+    // mounted() {
+    //     setTimeout(() => {
+    //         this.openModal()
+    //     },3000)
+    // },
     methods: {
         openModal() {
             this.isModalOpen = true

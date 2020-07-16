@@ -4,44 +4,45 @@
             <nuxt-link to="/" class="header-logo animation-item">
                 <img src="/icons/logo.svg" alt="CashU logo">
             </nuxt-link>
-            <h4 class="header-title animation-item">Быстрые <br> микрокредиты онлайн</h4>
+            <h4 class="header-title animation-item" v-html="langs[currentLang]['header.fast_microcredits']"></h4>
             <a href="" class="header-phone animation-item">
                 <phone-icon />
                 +7 (701) 885-80-80
             </a>
             <p class="header-text animation-item">
                 <schedule-icon />
-                <span>
+                <span v-html="langs[currentLang]['header.schedule']">
                     Прием заявок круглосуточно, без выходных. <br>
                     Рассмотрение и отправка денег без выходных с 9:00 до 21:00.
                 </span>
             </p>
             <nuxt-link class="header-profile animation-item" to>
                 <profile-icon />
-                Личный кабинет
+                {{ langs[currentLang]['header.lc'] }}
             </nuxt-link>
             <div class="header-langs animation-item">
                 <div class="header-current-lang" @click="toggleLang">
-                    <ru-icon />
-                    <span>RU</span>
+                  <ru-icon v-show="currentLang === 'ru'" />
+                  <kz-icon v-show="currentLang === 'kk'" />
+                    <span>{{ currentLang.toUpperCase() }}</span>
                     <arrow />
                 </div>
                 <div class="header-lang-dropdown" v-if="isLangOpen">
-                    <nuxt-link to class="header-lang-link" @click.native="toggleLang">
+                    <nuxt-link to class="header-lang-link" @click.native="changeLang('ru')">
                         <ru-icon />
                         Русский
                     </nuxt-link>
-                    <nuxt-link to class="header-lang-link" @click.native="toggleLang">
+                    <nuxt-link to class="header-lang-link" @click.native="changeLang('kk')">
                         <kz-icon />
                         Казахский
                     </nuxt-link>
                 </div>
             </div>
-            <button class="hamburger hamburger--3dy" 
+            <button class="hamburger hamburger--3dy"
                 :class="{'is-active' : isOpen}"
                 @click="toggleMenu"
-                type="button" 
-                aria-label="Menu" 
+                type="button"
+                aria-label="Menu"
                 aria-controls="navigation">
                 <span class="hamburger-box">
                     <span class="hamburger-inner"></span>
@@ -61,13 +62,22 @@ import kzIcon from '@/static/icons/kz.svg'
 import arrow from '@/static/icons/arrow.svg'
 import mobMenu from '@/components/partials/mobile-menu'
 import animation from '@/mixins/animation'
+
+import { mapGetters } from 'vuex'
+
 export default {
     mixins: [animation],
     data() {
         return {
             isLangOpen: false,
-            isOpen: false
+            isOpen: false,
         }
+    },
+    computed: {
+        ...mapGetters({
+            langs: 'lang/GET_LANGS',
+            currentLang: 'lang/GET_CURRENT_LANG',
+        })
     },
     methods: {
         toggleMenu() {
@@ -76,6 +86,10 @@ export default {
         },
         toggleLang() {
             this.isLangOpen = !this.isLangOpen
+        },
+        changeLang(lang) {
+          this.$store.commit('lang/SET_CURRENT_LANG', lang)
+          this.toggleLang()
         }
     },
     components: {

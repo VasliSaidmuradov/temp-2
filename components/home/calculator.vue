@@ -1,10 +1,10 @@
 <template>
     <div class="calculator">
         <div class="calculator-nav">
-            <button class="calculator-btn" 
+            <button class="calculator-btn"
                 :class="{'--active' : currentTab === 'first'}"
                 @click="currentTab = 'first'">Первый микрокредит</button>
-            <button class="calculator-btn" 
+            <button class="calculator-btn"
                 :class="{'--active' : currentTab === 'repeated'}"
                 @click="currentTab = 'repeated'">Повторный микрокредит</button>
         </div>
@@ -57,12 +57,12 @@
                             :min="5"
                             :max="30"
                             :data="data"
-                            :marks="true" 
+                            :marks="true"
                             v-model="date" />
                     </client-only>
                 </div>
                 <div class="calculator-btn-wrp">
-                    <button class="button">Получить деньги</button>
+                    <button class="button" @click.prevent="calculate">Получить деньги</button>
                 </div>
             </div>
             <div class="calculator-right">
@@ -159,7 +159,7 @@
                             :min="5"
                             :max="30"
                             :data="data"
-                            :marks="true" 
+                            :marks="true"
                             v-model="date" />
                     </client-only>
                 </div>
@@ -212,6 +212,7 @@
                 </div>
             </div>
         </div>
+        : {{ paymentShedule }}
     </div>
 </template>
 
@@ -220,7 +221,16 @@ import rangeArrow from '@/static/icons/range-arrow.svg'
 import bag from '@/static/icons/bag.svg'
 import calender from '@/static/icons/calender.svg'
 import success from '@/static/icons/success.svg'
+
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
+    components: {
+        rangeArrow,
+        bag,
+        calender,
+        success,
+    },
     data() {
         return {
             sliderValue: 5000,
@@ -242,7 +252,15 @@ export default {
             this.radius = 270
         }
     },
+    computed: {
+        ...mapGetters({
+            paymentShedule: 'calculator/GET_PAYMENT_SHEDULE',
+        }),
+    },
     methods: {
+        ...mapActions({
+            fetchPaymentShedule: 'calculator/fetchPaymentShedule',
+        }),
         formattedTooltip(arg) {
             return arg.value + '₸'
         },
@@ -254,12 +272,9 @@ export default {
             if (this.sliderValue <= 5000) return
             this.sliderValue -= this.step
         },
+        calculate() {
+            this.fetchPaymentShedule();
+        }
     },
-    components: {
-        rangeArrow,
-        bag,
-        calender,
-        success
-    }
 }
 </script>
