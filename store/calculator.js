@@ -8,13 +8,15 @@ export const mutations = {
 
 export const actions = {
   async fetchPaymentShedule(store, payload) {
-    const query = {
-      amount: 20000,
-      term: 20,
-    }
-    const resp = await this.$axios.get(`https://api.cashu.kz/public/payment-schedule/simulate?amount=${query.amount}&term=${query.term}`);
-    console.log('resp: ', resp)
-    store.commit('SET_PAYMENT_SHEDULE', resp)
+    const url = 'https://api.cashu.kz/public/payment-schedule/simulate';
+    const query = `?amount=${payload.amount}&term=${payload.term}&group=${payload.group}${payload.promoCode ? '&promoCode=' + payload.promoCode : ''}`
+    console.log('payload: ', payload);
+    console.log('req URL: ', `${url}${query}`);
+
+    return
+    const resp = await this.$axios.get(`${url}${query}`);
+    console.log('resp: ', resp.data);
+    store.commit('SET_PAYMENT_SHEDULE', resp.data);
   }
 }
 

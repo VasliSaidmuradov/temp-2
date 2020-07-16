@@ -2,7 +2,7 @@ export const state = () => ({
   data: {},
 })
 
-export const mutation = {
+export const mutations = {
   SET_ERROR: (state, payload) => {
     state.data = Object.assign({}, state.data, payload)
   }

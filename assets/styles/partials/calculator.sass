@@ -1,12 +1,12 @@
 .calculator
     max-width: 1180px
-    margin: auto 
+    margin: auto
     width: 100%
     position: relative
     z-index: 3
     &-nav
         display: flex
-    &-btn 
+    &-btn
         padding: 19px 16px
         border-radius: 12px 12px 0 0
         background-color: #fff
@@ -18,7 +18,7 @@
         &.--active
             color: #ED622B
             position: relative
-            &:after 
+            &:after
                 content: ''
                 width: 100%
                 height: 20px
@@ -27,9 +27,9 @@
                 left: 0
                 bottom: -20px
                 z-index: 1
-    &-row 
+    &-row
         display: flex
-    &-left 
+    &-left
         padding: 23px 30px
         max-width: 676px
         width: 100%
@@ -54,14 +54,14 @@
             width: 60%
     &-icon
         margin-right: 37px
-        svg 
+        svg
             width: 40px
             height: 40px
-    &-label 
+    &-label
         font-size: em(14)
         font-weight: 400
         color: #93989D
-    &-text 
+    &-text
         font-size: em(18)
         font-weight: 600
         color: var(--text-color)
@@ -75,7 +75,7 @@
     &-reward
         text-align: center
         margin-bottom: 44px
-        svg 
+        svg
             width: 48px
             height: 48px
             margin-right: 20px
@@ -83,7 +83,7 @@
         display: flex
         justify-content: center
         align-items: center
-        div 
+        div
             text-align: left
     &-promo-wrp
         position: relative
@@ -96,8 +96,8 @@
             top: 50%
             transform: translateY(-50%)
             padding: 10px 24px
-            &:disabled 
-                opacity: 0.5 
+            &:disabled
+                opacity: 0.5
     &-input
         font-size: em(14)
         font-weight: 400
@@ -124,7 +124,7 @@
             box-shadow: none
             background-color: transparent
             position: relative
-            &:after 
+            &:after
                 content: ''
                 width: 90px
                 height: 60px
@@ -145,7 +145,7 @@
         bottom: 125px
         left: 50%
         transform: translateX(-50%)
-        p 
+        p
             margin-right: 40px
             &:last-child
                  margin-right: 0
@@ -159,7 +159,7 @@
         margin-top: -760px
         margin-left: -150px
     &-decrease,
-    &-increase 
+    &-increase
         background-color: transparent
         position: absolute
         top: 0
@@ -167,11 +167,11 @@
         padding: 0
         width: 60px
         height: 60px
-    &-decrease 
+    &-decrease
         left: 0
-    &-increase 
+    &-increase
         right: 0
-        svg 
+        svg
             transform: rotate(-180deg)
     &-date-tooltip
         padding: 15px
@@ -184,6 +184,13 @@
     &-date-wrp
         max-width: 556px
         margin: auto
+    &-date-marks
+        display: flex
+        justify-content: space-between
+        color: #93989D
+        font-size: 0.75em
+        margin-top: -10px
+        padding: 0 10px
     &-btn-wrp
         margin-top: 25px
         text-align: center
@@ -195,7 +202,7 @@
             background-color: var(--color-base)
             position: absolute
             top: 30px
-        &:before 
+        &:before
             left: 0
     .vue-slider-mark-label
         margin-top: 20px !important
@@ -212,11 +219,11 @@
         background-color: transparent
         box-shadow: none
         position: relative
-        &:after 
+        &:after
             content: ''
             width: 80px
             height: 60px
-            background: url('/icons/range-slider-handle.svg') center no-repeat 
+            background: url('/icons/range-slider-handle.svg') center no-repeat
             background-size: contain
             position: absolute
             left: 50%
@@ -245,7 +252,7 @@
             width: 50%
         &-icon
             margin-right: 20px
-        &-text 
+        &-text
             font-size: 1em
         &-left
             padding: 20px 0
@@ -259,7 +266,7 @@
             padding: 0 20px
         &-tooltip-wrp
             bottom: 115px
-            p 
+            p
                 margin-right: 30px
                 font-size: em(10)
                 &:nth-child(2),
@@ -280,7 +287,7 @@
             padding-right: 16px
 @media (max-width: 376px)
     .calculator
-        &-btn 
+        &-btn
             padding: 19px 0
         &-curved-slider
             margin-top: -465px
@@ -309,7 +316,7 @@
                 padding: 20px
 @media (max-width: 321px)
     .calculator
-        &-btn 
+        &-btn
             padding: 20px 10px
         &-curved-slider
             margin-left: -110px
@@ -320,8 +327,8 @@
                 margin-right: 17px
         &-label
             font-size: 0.7em
-        &-icon 
+        &-icon
             margin-right: 10px
-            svg 
+            svg
                 width: 30px
                 height: 30px
