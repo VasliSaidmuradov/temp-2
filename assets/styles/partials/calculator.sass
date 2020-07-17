@@ -4,6 +4,11 @@
     width: 100%
     position: relative
     z-index: 3
+    .--old-price
+        text-decoration-line: line-through
+        color: #93989D
+    .--sale
+        color: #ED622B
     &-nav
         display: flex
     &-btn
@@ -43,6 +48,7 @@
         box-shadow: 0px 4px 20px rgba(92, 102, 113, 0.1)
         border-radius: 12px
         margin-left: 24px
+        padding-bottom: 20px
         .calculator-row
             padding: 23px 30px
             &:first-child
@@ -79,6 +85,23 @@
             width: 48px
             height: 48px
             margin-right: 20px
+        &-wrap
+            display: flex
+            justify-content: space-between
+            padding: 10px 5px
+            max-width: 400px
+            margin: 0 auto
+        &-label
+            font-weight: 500
+            font-size: 14px
+            line-height: 22px
+        &-sum
+            font-weight: 600
+            font-size: 18px
+            line-height: 26px
+        &.mb-20
+            margin-bottom: 20px
+
     &-reward-row
         display: flex
         justify-content: center
@@ -192,7 +215,7 @@
         margin-top: -10px
         padding: 0 10px
     &-btn-wrp
-        margin-top: 25px
+        margin-top: 40px
         text-align: center
     .vue-slider
         &:before

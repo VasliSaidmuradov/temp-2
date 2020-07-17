@@ -104,11 +104,24 @@
                             <p class="calculator-text">{{ term.val }} дней</p>
                         </div>
                     </div>
-                    <!-- {{ (new Date("2020-07-20") - new Date()) }} -->
                 </div>
                 <div class="calculator-divider"></div>
                 <div class="calculator-reward">
-                    <div class="calculator-reward-row">
+                    <div v-if="'' || paymentShedule && !paymentShedule.promoCodeStatus === 'ok'">
+                      <div class="calculator-reward-wrap">
+                        <span class="calculator-reward-label">Вознаграждение</span>
+                        <span class="calculator-reward-sum --old-price">
+                          {{ paymentShedule ? $formatMoney(paymentShedule.interest) : 0 }}
+                        </span>
+                      </div>
+                      <div class="calculator-reward-wrap --sale">
+                        <span class="calculator-reward-label">Со скидкой 30%</span>
+                        <span class="calculator-reward-sum">
+                          {{ paymentShedule ? $formatMoney(paymentShedule.interest * 0.7) : 0 }}
+                        </span>
+                      </div>
+                    </div>
+                    <div v-else class="calculator-reward-row">
                         <success />
                         <div>
                             <p class="calculator-label">Вознаграждение</p>
@@ -232,7 +245,7 @@
         </div> -->
         <!-- <pre>{{ isSendingRequest }}</pre> -->
         <!-- <pre>{{ promoCode }}</pre> -->
-        <pre>{{ paymentShedule }}</pre>
+        <!-- <pre>{{ paymentShedule }}</pre> -->
     </div>
 </template>
 

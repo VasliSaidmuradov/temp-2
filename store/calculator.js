@@ -13,7 +13,6 @@ export const actions = {
     console.log('payload: ', payload);
     console.log('req URL: ', `${url}${query}`);
 
-    return
     const resp = await this.$axios.get(`${url}${query}`);
     console.log('resp: ', resp.data);
     store.commit('SET_PAYMENT_SHEDULE', resp.data);
@@ -21,5 +20,8 @@ export const actions = {
 }
 
 export const getters = {
-  GET_PAYMENT_SHEDULE: state => state.paymentShedule,
+  GET_PAYMENT_SHEDULE: state => state.paymentShedule ? {
+      ...state.paymentShedule,
+      interest: Math.round(state.paymentShedule.interest)
+  } : null,
 }
