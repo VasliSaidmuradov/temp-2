@@ -8,40 +8,38 @@
                     </nuxt-link>
                 </div>
                 <div class="footer-col">
-                    <p class="footer-subtitle animation-item">Мы в социальных сетях</p>
+                    <div class="footer-subtitle animation-item" v-html="langs[currentLang]['footer.on_social_media']"></div>
                     <div class="footer-socials">
-                        <a href="" class="animation-item" target="_blank"><insta /></a>
-                        <a href="" class="animation-item" target="_blank"><vk /></a>
-                        <a href="" class="animation-item" target="_blank"><facebook /></a>
+                        <a :href="settings.instagram.value[currentLang]" class="animation-item" target="_blank"><insta /></a>
+                        <a :href="settings.vk.value[currentLang]" class="animation-item" target="_blank"><vk /></a>
+                        <a :href="settings.facebook.value[currentLang]" class="animation-item" target="_blank"><facebook /></a>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <nuxt-link class="footer-link animation-item" to="/about">О нас</nuxt-link>
-                    <nuxt-link class="footer-link animation-item" to="/documentation">Документация</nuxt-link>
-                    <nuxt-link class="footer-link animation-item" to="/get-loan">Как получить микрокредит</nuxt-link>
-                    <nuxt-link class="footer-link animation-item" to=/repay-loan>Как погасить микрокредит</nuxt-link>
+                <div v-for="(menuItems, index) in $chunk(footerMenu, 4)" :key="index" class="footer-col">
+                    <nuxt-link
+                      v-for="item in menuItems"
+                      :key="item.id"
+                      class="footer-link animation-item"
+                      :to="item.page.slug"
+                      >
+                      {{ item.name }}
+                    </nuxt-link>
                 </div>
                 <div class="footer-col">
-                    <nuxt-link class="footer-link animation-item" to="/posts">Акции и новости</nuxt-link>
-                    <nuxt-link class="footer-link animation-item" to="/reviews">Отзывы</nuxt-link>
-                    <nuxt-link class="footer-link animation-item" to="/faq">Часто задаваемые вопросы</nuxt-link>
-                    <nuxt-link class="footer-link animation-item" to="/contacts">Контакты</nuxt-link>
-                </div>
-                <div class="footer-col">
-                    <p class="footer-subtitle animation-item">Телефон</p>
+                    <p class="footer-subtitle animation-item">{{ langs[currentLang]['footer.phone'] }}</p>
                     <a href="" class="footer-link animation-item --icon">
                         <phone />
-                        +7 (701) 885-80-80
+                        {{ settings.phone.value[currentLang] }}
                     </a>
-                    <p class="footer-subtitle animation-item">E-mail</p>
+                    <p class="footer-subtitle animation-item">{{ langs[currentLang]['footer.email'] }}</p>
                     <a href="" class="footer-link animation-item --icon">
                         <email />
-                        info@cashu.kz
+                        {{ settings.email.value[currentLang] }}
                     </a>
                 </div>
             </div>
             <div class="footer-copyright">
-                <p class="footer-subtitle animation-item">Сервис быстрых онлайн займов в Казахстане</p>
+                <p class="footer-subtitle animation-item">{{ langs[currentLang]['footer.service_fast_loans'] }}</p>
                 <a href="https://brandstudio.kz" class="animation-item" target="_blank"><img src="/icons/brandstudio.png" alt="CashU logo"></a>
             </div>
         </div>
@@ -54,6 +52,8 @@ import vk from '@/static/icons/vk.svg'
 import facebook from '@/static/icons/facebook.svg'
 import phone from '@/static/icons/phone-filled.svg'
 import email from '@/static/icons/mail.svg'
+import { mapGetters } from 'vuex'
+
 export default {
     mounted() {
         let block = document.querySelector('.footer')
@@ -73,6 +73,14 @@ export default {
         facebook,
         phone,
         email
+    },
+    computed: {
+      ...mapGetters({
+        langs: 'lang/GET_LANGS',
+        footerMenu: 'menu/GET_FOOTER_MENU',
+        currentLang: "lang/GET_CURRENT_LANG",
+        settings: 'settings/GET_SETTINGS',
+      }),
     }
 }
 </script>

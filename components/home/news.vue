@@ -1,33 +1,46 @@
+
+
 <template>
-    <div class="home-news layout-container" ref="animationBlock">
-        <div class="home-slider-title">
-            <h3 class="animation-item">Акции и новости</h3>
-            <div class="home-slider-nav">
-                <button class="home-slider-prev animation-item home-news-prev"><slider-arrow /></button>
-                <button class="home-slider-next animation-item home-news-next"><slider-arrow /></button>
-            </div>
+
+<div class="home-news layout-container" ref="animationBlock">
+    <div class="home-slider-title">
+        <h3 class="animation-item">Акции и новости</h3>
+        <!-- {{ currentLang }} -->
+        <div class="home-slider-nav">
+            <button class="home-slider-prev animation-item home-news-prev">
+                <slider-arrow />
+            </button>
+            <button class="home-slider-next animation-item home-news-next">
+                <slider-arrow />
+            </button>
         </div>
-        <div v-swiper:homeNews="options">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide animation-item" v-for="(item, index) in 6" :key="index">
-                    <nuxt-link to>
-                        <div class="home-news-img-wrp">
-                            <img src="/img/news.png" alt="CashU image">
-                        </div>
-                        <p class="home-news-date">5 июня 2020</p>
-                        <p class="home-news-text">
-                            Обязательное страхование имущества – быть или не быть?
-                        </p>
-                    </nuxt-link>
-                </div>
+    </div>
+    <div v-swiper:homeNews="options">
+        <div class="swiper-wrapper">
+          <!-- {{ posts }} -->
+            <div class="swiper-slide animation-item" v-for="post in posts.data" :key="post.id">
+                <nuxt-link :to="`/articles/${post.slug}`">
+                    <div class="home-news-img-wrp">
+                        <img :src="post.image ? post.image : require('@/static/img/news.png')" alt="CashU image">
+                    </div>
+                    <p class="home-news-date">{{ $formatDate(post.created_at) }}</p>
+                    <p class="home-news-text">
+                        {{ post.name[currentLang] }}
+                    </p>
+                </nuxt-link>
             </div>
         </div>
     </div>
+</div>
+
 </template>
 
 <script>
+
 import sliderArrow from '@/static/icons/slider-arrow.svg'
 import animation from '@/mixins/animation'
+import { mapGetters } from 'vuex'
+
 export default {
     mixins: [animation],
     data() {
@@ -53,6 +66,13 @@ export default {
     },
     components: {
         sliderArrow
+    },
+    computed: {
+      ...mapGetters({
+        posts: 'posts/GET_POSTS',
+        currentLang: 'lang/GET_CURRENT_LANG',
+      }),
     }
 }
+
 </script>

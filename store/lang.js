@@ -12,7 +12,7 @@ export const mutations = {
 
 export const actions = {
   async fetchLangs(store) {
-    const resp = await this.$api.get('langs')
+    const resp = await this.$api.get('/langs')
     store.commit('SET_LANGS', resp)
   }
 }

@@ -1,7 +1,7 @@
 export default function({ $axios, store, app }, inject) {
   inject('api', {
     cache: {},
-    baseURL: process.env.NODE_ENV === 'development' ? 'http://demo-10.brandstudio.kz/api/' : 'http://demo-10.brandstudio.kz/api/',
+    baseURL: process.env.NODE_ENV === 'development' ? 'http://demo-10.brandstudio.kz/api' : 'http://demo-10.brandstudio.kz/api',
 
     async get(url, data = {}, error = 'default') {
       app.$setError(error, null)

@@ -10,12 +10,24 @@ export const mutations = {
 
 export const actions = {
   async fetchPost(store, payload) {
-    const resp = await this.$api.get(`articles/${payload}`);
-    store.commit('SET_POST', resp)
+    const resp = await this.$api.get(`/articles/${payload}`);
+    console.log('post: ', resp);
+    store.commit('SET_POST', resp);
   },
-  async fetchPosts(store) {
-    const resp = await this.$api.get('articles');
-    store.commit('SET_POSTS', resp)
+  async fetchPosts(store, payload) {
+    if (typeof payload === 'string') {
+      if (payload.indexOf('?') != -1) {
+        payload += '&'
+      } else {
+        payload += '?'
+      }
+      payload += 'per_page=12'
+      const resp = await this.$api.get(payload);
+      store.commit('SET_POSTS', resp)
+    } else {
+      const resp = await this.$api.get('/articles', payload);
+      store.commit('SET_POSTS', resp)
+    }
   }
 }
 

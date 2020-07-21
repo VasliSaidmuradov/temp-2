@@ -14,7 +14,7 @@
         <nav class="mob-menu-nav">
             <nuxt-link class="mob-menu-link" @click.native="closeMenu" to="/get-loan">Как получить микрокредит</nuxt-link>
             <nuxt-link class="mob-menu-link" @click.native="closeMenu" to="/repay-loan">Как погасить микрокредит</nuxt-link>
-            <nuxt-link class="mob-menu-link" @click.native="closeMenu" to="/posts">Акции и новости</nuxt-link>
+            <nuxt-link class="mob-menu-link" @click.native="closeMenu" to="/articles">Акции и новости</nuxt-link>
             <nuxt-link class="mob-menu-link" @click.native="closeMenu" to="/reviews">Отзывы</nuxt-link>
             <nuxt-link class="mob-menu-link" @click.native="closeMenu" to="/about">О нас</nuxt-link>
             <nuxt-link class="mob-menu-link" @click.native="closeMenu" to="/faq">Вопрос-ответ</nuxt-link>
@@ -27,7 +27,7 @@
         </a>
         <p class="mob-menu-schedule">
             <schedule-icon />
-            Прием заявок круглосуточно, без выходных. 
+            Прием заявок круглосуточно, без выходных.
             Рассмотрение и отправка денег без выходных с 9:00 до 21:00;
         </p>
         <h3 class="mob-menu-heading">Быстрые микрокредиты онлайн</h3>

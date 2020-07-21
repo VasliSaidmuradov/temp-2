@@ -1,3 +1,3 @@
-export default async function({ store }) {
-  await store.dispatch('posts/fetchPosts', { per_page: 12 })
+export default async function({ store, route }) {
+  await store.dispatch('posts/fetchPosts', route.fullPath);
 }

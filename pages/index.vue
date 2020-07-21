@@ -1,12 +1,10 @@
 <template>
     <div class="home-page">
-        <!-- <pre>
-          {{ currentLang }}: {{ langs[currentLang] }}
-        </pre> -->
+        <pre>{{ slides }}</pre>
         <banner />
         <calculator />
         <pros />
-        <news />
+        <Posts />
         <reviews />
         <subscribe />
     </div>
@@ -16,7 +14,7 @@
 import banner from '@/components/home/banner'
 import calculator from '@/components/home/calculator'
 import pros from '@/components/home/pros'
-import news from '@/components/home/news'
+import Posts from '@/components/home/news'
 import reviews from '@/components/home/reviews'
 import subscribe from '@/components/partials/subscribe'
 
@@ -27,14 +25,17 @@ export default {
         banner,
         calculator,
         pros,
-        news,
+        Posts,
         reviews,
         subscribe
     },
+    middleware: ['home'],
     computed: {
       ...mapGetters({
         langs: 'lang/GET_LANGS',
         currentLang: 'lang/GET_CURRENT_LANG',
+        page: 'pages/GET_PAGE',
+        slides: 'pages/GET_SLIDES',
       }),
     }
 }
