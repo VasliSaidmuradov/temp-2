@@ -8,7 +8,7 @@ export const mutations = {
 
 export const actions = {
   async fetchPaymentShedule(store, payload) {
-    return
+    // return
     const url = 'https://api.cashu.kz/public/payment-schedule/simulate';
     const query = `?amount=${payload.amount}&term=${payload.term}&group=${payload.group}${payload.promoCode ? '&promoCode=' + payload.promoCode : ''}`
     // console.log('payload: ', payload);

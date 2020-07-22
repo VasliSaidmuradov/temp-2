@@ -1,6 +1,6 @@
 <template>
     <div class="home-page">
-        <pre>{{ slides }}</pre>
+        <!-- <pre>{{ langs }}</pre> -->
         <banner />
         <calculator />
         <pros />
@@ -36,6 +36,7 @@ export default {
         currentLang: 'lang/GET_CURRENT_LANG',
         page: 'pages/GET_PAGE',
         slides: 'pages/GET_SLIDES',
+        extras: 'pages/GET_EXTRAS',
       }),
     }
 }

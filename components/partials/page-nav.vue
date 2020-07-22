@@ -5,7 +5,7 @@
           :key="item.id"
           class="page-nav-link animation-item"
           :to="`/${item.page.slug}`"
-          >{{ item.name }}
+          >{{ item.name[currentLang] }}
         </nuxt-link>
     </nav>
 </template>
@@ -19,7 +19,7 @@ export default {
     computed: {
       ...mapGetters({
         headerMenu: 'menu/GET_MENU',
-        footerMenu: 'menu/GET_FOOTER_MENU',
+        currentLang: 'lang/GET_CURRENT_LANG',
       }),
     }
 }

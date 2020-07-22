@@ -1,14 +1,15 @@
 .home-pros
     background-color: #F7F9FA
     border-radius: 24px
-    margin: auto 
+    margin: auto
     max-width: 1400px
     width: 100%
     margin-top: 40px
     padding: 60px 80px
-    &-row 
+    &-row
         display: flex
-        flex-wrap: wrap 
+        flex-wrap: wrap
+        justify-content: center
     &-col
         width: 33.3%
         padding: 0 25px
@@ -19,28 +20,28 @@
             margin-top: 40px
             position: relative
             &:after,
-            &:before 
+            &:before
                 content: ''
                 width: 375px
                 height: 1px
                 background: var(--line-color)
                 position: absolute
                 top: 50%
-            &:after 
+            &:after
                 left: 100%
-            &:before 
+            &:before
                 right: 100%
-    &-img-wrp img 
+    &-img-wrp img
         margin: auto
         height: 185px
-    &-text 
+    &-text
         font-size: em(14)
         font-weight: 400
         color: var(--text-color)
     &-title
         margin: 25px 0
         font-size: em(22)
-        font-weight: 600 
+        font-weight: 600
         color: var(--text-color)
         min-height: 65px
 @media (max-width: 1025px)
@@ -55,7 +56,7 @@
             text-align: center
 @media (max-width: 426px)
     .home-pros
-        &-col 
+        &-col
             width: 100%
             padding: 0 20px
         &-title

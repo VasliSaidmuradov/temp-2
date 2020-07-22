@@ -9,7 +9,6 @@ export const mutations = {
 export const actions = {
   async fetchPage(store, payload) {
     const resp = await this.$api.get(`/pages${payload}`);
-    console.log('pages resp', resp);
     store.commit('SET_PAGE', resp);
   },
 }
@@ -26,7 +25,6 @@ export const getters = {
       ? state.page.extras[store.lang.currentLang].blocks
       : (state.page.extras[Object.keys(state.page.extras)[0]])
     );
-    console.log('extras: ', data);
     return data
   },
   GET_SLIDES: (state, getters, store) => {
@@ -42,7 +40,6 @@ export const getters = {
     data.forEach(el => {
       if (el.options) {
         el.options = JSON.parse(el.options);
-        console.log('el:', el.options);
       }
     })
     return data

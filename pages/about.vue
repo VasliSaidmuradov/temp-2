@@ -18,14 +18,14 @@
                     </p>
                 </div>
                 <div class="about-page-img-wrp">
-                    <img :src="blocks[0].image ? blocks[0].image : require('@/static/img/about1.png')" alt="CashU image" class="animation-item">
+                    <img :src="blocks[0].image ? $imageLink(blocks[0].image) : require('@/static/img/about1.png')" alt="CashU image" class="animation-item">
                 </div>
             </div>
         </div>
         <div v-if="blocks[1]" class="about-page-inner --black">
             <div class="about-page-row">
                 <div class="about-page-img-wrp">
-                    <img :src="blocks[1].image ? blocks[1].image : require('@/static/img/about2.png')" alt="CashU image" class="animation-item">
+                    <img :src="blocks[1].image ? $imageLink(blocks[1].image) : require('@/static/img/about2.png')" alt="CashU image" class="animation-item">
                 </div>
                 <div class="about-page-txt-wrp">
                     <h3 class="section-title animation-item">{{ blocks[1].name }}</h3>

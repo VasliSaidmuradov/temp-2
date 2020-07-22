@@ -18,4 +18,13 @@ export default function({ app, store }, inject) {
   inject('formatMoney', (value) => {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
   })
+
+  inject('parseString', (str = '') => {
+    return !str ? [] : JSON.parse(str);
+  })
+
+  inject('imageLink', (link) => {
+    const url = 'http://demo-10.brandstudio.kz/';
+    return `${url}${link}`;
+  })
 }

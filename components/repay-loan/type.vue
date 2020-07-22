@@ -1,46 +1,70 @@
 <template>
     <div class="repay-type" ref="animationBlock">
+        <!-- <pre>{{ page }}</pre> -->
+        <!-- <pre>{{ blockOne }}</pre> -->
+        <!-- <pre>{{ blockTwo }}</pre> -->
+
         <div class="layout-container">
-            <h3 class="section-title animation-item">Вернуть деньги также легко и просто,  как и получить!</h3>
-            <p class="repay-type-text animation-item">Выберите удобный для Вас способ возврата займа:</p>
-            <div class="repay-type-row --margin-top">
-                <nuxt-link to="/payment" class="repay-type-col animation-item">
-                    <p class="repay-type-text">Платежные терминалы QIWI</p>
-                    <img src="/icons/qiwi.svg" alt="CashU image">
+            <h3
+              v-if="page.extras[currentLang] && page.extras[currentLang]['name_in_second']"
+              class="section-title animation-item"
+              >
+              {{ page.extras[currentLang]['name_in_second'] }}
+            </h3>
+            <p
+              v-if="page.extras[currentLang] && page.extras[currentLang]['description_in_second']"
+              class="repay-type-text animation-item"
+              >
+              {{ page.extras[currentLang]['description_in_second'] }}
+            </p>
+
+            <div class="repay-type-wrap">
+              <div class="repay-type-row" v-for="items in $chunk(blockOne, 2)">
+                <nuxt-link
+                  v-for="(item, index) in items"
+                  :key="index"
+                  :to="item.link ? item.link : ''"
+                  class="repay-type-col animation-item">
+                    <p class="repay-type-text">{{ item.name }}</p>
+                    <img :src="item.image ? $imageLink(item.image) : require('@/static/icons/kassa24.png')" alt="CashU image">
                 </nuxt-link>
-                <nuxt-link to="/payment" class="repay-type-col animation-item">
-                    <p class="repay-type-text">Платежные терминалы Касса 24</p>
-                    <img src="/icons/kassa24.png" alt="CashU image">
-                </nuxt-link>
+              </div>
             </div>
-            <div class="repay-type-row --margin-bottom">
-                <nuxt-link to="/payment" class="repay-type-col animation-item">
-                    <p class="repay-type-text">Перевод на банковский счет (реквизиты для перевода ниже)</p>
-                    <img src="/icons/card.svg" alt="CashU image">
-                </nuxt-link>
-                <nuxt-link to="/payment" class="repay-type-col animation-item">
-                    <p class="repay-type-text">Погасить или продлить займ из Личного Кабинета</p>
-                    <img src="/icons/user-green.svg" alt="CashU image">
-                </nuxt-link>
+            <div v-for="(item, index) in blockTwo" :key="index">
+              <h4 class="repay-type-subtitle animation-item">
+                {{ item.name }}
+              </h4>
+              <div class="repay-type-list" v-html="item.description"></div>
             </div>
-            <h4 class="repay-type-subtitle animation-item">Реквизиты для банковского перевода:</h4>
-            <ul class="repay-type-list">
-                <li><p class="repay-type-text animation-item">• Получатель: ТОО «МФО «СashU»</p></li>
-                <li><p class="repay-type-text animation-item">• БИН: 1234567899323</p></li>
-            </ul>
-            <h4 class="repay-type-subtitle animation-item">Банковский счёт:</h4>
-            <ul class="repay-type-list">
-                <li><p class="repay-type-text animation-item">• ИИК KZ1234567890234</p></li>
-                <li><p class="repay-type-text animation-item">• БИК HSBKKZKX</p></li>
-                <li><p class="repay-type-text animation-item">• АО «Народный Банк Казахстана» (оплатить можно через любой банк на территории РК)</p></li>
-            </ul>
         </div>
     </div>
 </template>
 
 <script>
 import animation from '@/mixins/animation'
+import { mapGetters } from 'vuex'
+
 export default {
-    mixins: [animation]
+    mixins: [animation],
+    props: {
+      page: Object,
+    },
+    computed: {
+      ...mapGetters({
+        currentLang: 'lang/GET_CURRENT_LANG',
+        langs: 'lang/GET_LANGS',
+      }),
+      blockOne() {
+        const block = this.page.extras ? this.page.extras[this.currentLang].block_in_second : ''
+        if (!block) return {};
+        // console.log(block);
+        return this.$parseString(block);
+      },
+      blockTwo() {
+        const block = this.page.extras ? this.page.extras[this.currentLang].second_block_in_second : '';
+      if (!block) return {};
+        return this.$parseString(block);
+      }
+    }
 }
 </script>

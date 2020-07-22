@@ -41,6 +41,7 @@ export const actions = {
 
         const menu = await this.$api.get('/menu-items');
         // console.log('fetch menu: ', menu);
+        // return
         store.commit('SET_MENU', menu);
         store.commit('SET_FOOTER_MENU', menu);
     }

@@ -22,7 +22,7 @@
                       class="footer-link animation-item"
                       :to="item.page.slug"
                       >
-                      {{ item.name }}
+                      {{ item.name[currentLang] }}
                     </nuxt-link>
                 </div>
                 <div class="footer-col">

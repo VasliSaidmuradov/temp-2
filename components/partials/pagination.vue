@@ -6,7 +6,7 @@
       ? {path: $route.path, query: Object.assign({}, $route.query, { page: `${paginator.current_page - 1}` })}
       : {path: $route.path, query: Object.assign({}, $route.query, { page: `${paginator.current_page}` })} "
   >
-    <arrow /> Назад
+    <arrow /> {{ langs[currentLang]['body.back'] }}
   </nuxt-link>
   <div class="pagination-item-wrp">
     <nuxt-link
@@ -25,7 +25,7 @@
       ? {path: $route.path, query: Object.assign({}, $route.query, {page: `${paginator.current_page + 1}`})}
       : {path: $route.path, query: Object.assign({}, $route.query, {page: `${paginator.current_page}`})}"
   >
-    Вперед
+    {{ langs[currentLang]['body.next'] }}
     <arrow />
   </nuxt-link>
 </div>
@@ -35,7 +35,8 @@
 <script>
 
 import {
-  mapActions
+  mapActions,
+  mapGetters
 }
 from 'vuex'
 import arrow from '@/static/icons/arrow.svg'
@@ -54,6 +55,12 @@ export default {
   },
   components: {
     arrow,
+  },
+  computed: {
+    ...mapGetters({
+      currentLang: 'lang/GET_CURRENT_LANG',
+      langs: 'lang/GET_LANGS',
+    }),
   },
   methods: {
     ...mapActions({
@@ -74,25 +81,6 @@ export default {
       }
     }
   },
-  mounted() {
-    if (process.client) {
-      // document.addEventListener("scroll", async () => {
-      //   if (this.isBusy) {
-      //     return;
-      //   }
-      //   await this.changePage()
-        // if (
-        //   this.$refs.pagination &&
-        //   this.$refs.pagination.getBoundingClientRect().bottom - 300 <
-        //     window.innerHeight
-        // ) {
-          // this.isBusy = true;
-          // await this.paginate(this.paginator);
-          // this.isBusy = false;
-        // }
-      // });
-    }
-  }
 }
 
 </script>

@@ -1,68 +1,56 @@
 <template>
     <div class="loan-steps" ref="animationBlock">
+        <!-- <pre>{{ page }}</pre> -->
+        <!-- <pre>{{ steps }}</pre> -->
+
         <div class="loan-steps-container">
-            <h3 class="section-title animation-item">Легко и просто!</h3>
-            <h4 class="loan-steps-subtitle animation-item">Для этого достаточно сделать всего 4 шага:</h4>
-            <div class="loan-steps-row animation-item">
+            <h3
+              v-if="page.extras[currentLang] && page.extras[currentLang]['name_in_third']"
+              class="section-title animation-item"
+              >
+              {{ page.extras[currentLang]['name_in_third'] }}
+            </h3>
+            <h4
+              v-if="page.extras[currentLang] && page.extras[currentLang]['description_in_third']"
+              class="loan-steps-subtitle animation-item">{{ page.extras[currentLang]['description_in_third'] }}</h4>
+
+            <div v-for="(step, i) in steps" :key='i' class="loan-steps-row animation-item">
                 <div class="loan-steps-left">
-                    <counter1 />
+                    <span class="loan-steps-count">{{ i + 1 }}</span>
                     <p class="loan-steps-text">
-                        Выбрать необходимые для вас сумму и срок, используя калькулятор, который будет сопровождать Вас на любой странице сайта
+                        {{ step.name }}
                     </p>
                 </div>
                 <div class="loan-steps-right">
-                    <img src="/img/loan-steps1.png" alt="CashU image">
-                </div>
-            </div>
-            <div class="loan-steps-row animation-item">
-                <div class="loan-steps-left">
-                    <counter2 />
-                    <p class="loan-steps-text">
-                        Зарегистрироваться и заполнить анкету, указав свои данные
-                    </p>
-                </div>
-                <div class="loan-steps-right">
-                    <img src="/img/loan-steps1.png" alt="CashU image">
-                </div>
-            </div>
-            <div class="loan-steps-row animation-item">
-                <div class="loan-steps-left">
-                    <counter3 />
-                    <p class="loan-steps-text">
-                        Зарегистрироваться и заполнить анкету, указав свои данные
-                    </p>
-                </div>
-                <div class="loan-steps-right">
-                    <img src="/img/loan-steps1.png" alt="CashU image">
-                </div>
-            </div>
-            <div class="loan-steps-row animation-item">
-                <div class="loan-steps-left">
-                    <counter4 />
-                    <p class="loan-steps-text">
-                        Получить деньги на банковский счет, либо на банковскую карту.
-                    </p>
-                </div>
-                <div class="loan-steps-right">
-                    <img src="/img/loan-steps1.png" alt="CashU image">
+                    <img :src="step.image ? $imageLink(step.image) : require('@/static/img/loan-steps1.png')" alt="CashU image">
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
-import counter1 from '@/static/icons/1.svg'
-import counter2 from '@/static/icons/2.svg'
-import counter3 from '@/static/icons/3.svg'
-import counter4 from '@/static/icons/4.svg'
 import animation from '@/mixins/animation'
+import {
+    mapGetters
+}
+from 'vuex'
+
 export default {
-    mixins: [animation],
-    components: {
-        counter1,
-        counter2,
-        counter3,
-        counter4,
-    }
+  props: {
+    page: Object,
+  },
+  mixins: [animation],
+  components: {},
+  computed: {
+    ...mapGetters({
+      currentLang: 'lang/GET_CURRENT_LANG',
+      langs: 'lang/GET_LANGS',
+    }),
+    steps() {
+      const block = this.page.extras ? this.page.extras[this.currentLang].block_in_third : '';
+      if (!block) return '';
+      return this.$parseString(block);
+    },
+  }
 }
 </script>

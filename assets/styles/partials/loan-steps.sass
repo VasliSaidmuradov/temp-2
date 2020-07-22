@@ -15,26 +15,34 @@
         color: var(--text-color)
         margin-top: 16px
         margin-bottom: 30px
-    &-row 
+    &-row
         display: flex
         justify-content: space-between
         padding: 30px 0
         border-bottom: 1px solid var(--line-color)
-    &-text 
+    &-count
+        // width: 80px
+        // height: 80px
+        margin-right: 24px
+        font-size: 100px
+        font-weight: 600
+        line-height: 100px
+        color: #EDEFF2
+    &-text
         font-size: em(16)
         font-weight: 400
         color: var(--text-color)
-    &-left 
+    &-left
         max-width: 476px
         display: flex
         align-items: center
-        svg 
+        svg
             flex-shrink: 0
             width: 80px
             height: 80px
             margin-right: 24px
     &-right
-        img 
+        img
             width: 276px
     &-container
         max-width: 975px
@@ -53,16 +61,16 @@
             max-width: 100%
             margin-bottom: 40px
         &-right
-            img 
+            img
                 margin: auto
 @media (max-width: 426px)
     .loan-steps
-        &-left 
+        &-left
             align-items: flex-start
             svg
                 margin-right: 16px
                 width: 40px
                 height: 40px
         &-right
-            img 
+            img
                 width: 100%

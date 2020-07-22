@@ -2,7 +2,8 @@
     <div class="home-reviews layout-container" ref="animationBlock">
         <div class="home-slider-title">
             <h3 class="animation-item">Отзывы</h3>
-            <!-- {{ reviews }} -->
+            <!-- <pre>{{ reviews }}</pre> -->
+
             <div class="home-slider-nav">
                 <button class="home-slider-prev animation-item home-reviews-prev"><slider-arrow /></button>
                 <button class="home-slider-next animation-item home-reviews-next"><slider-arrow /></button>
@@ -14,7 +15,7 @@
                     <div class="home-reviews-item">
                         <div class="home-reviews-name-wrp">
                             <img
-                            :src="review.image ? review.image : require('@/static/icons/avatar-placeholder.png')"
+                            :src="review.image ? $imageLink(review.image) : require('@/static/icons/avatar-placeholder.png')"
                             :alt="review.name">
                             <div class="home-reviews-name">
                                 <h4>{{ review.name }}</h4>

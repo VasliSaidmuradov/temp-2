@@ -1,74 +1,102 @@
 <template>
     <div class="get-steps">
-        <div class="get-steps-block --black --circle">
+      <!-- >> <pre>{{ page }}</pre> -->
+      <!-- >> <pre>{{ steps }}</pre> -->
+
+      <div v-for="(stepList, i) in $chunk(steps, 4)">
+        <div v-if="stepList[0]" class="get-steps-block --black --circle">
             <div class="layout-container">
                 <div class="get-steps-row">
                     <div class="get-steps-left">
-                        <h3 class="section-title animation-item">Шаг 1. Выберете необходимую сумму и срок!</h3>
-                        <p class="get-steps-text animation-item">Калькулятор автоматически рассчитает сумму и срок возврата, более того, будут указаны сумма вознаграждения (только для повторных займов) и сумма комиссии за верификацию. При возврате займа Вы не получите никаких сюрпризов в виде скрытых комиссий. </p>
+                        <h3 class="section-title animation-item">{{ stepList[0].name }}</h3>
+                        <div class="get-steps-text animation-item" v-html="stepList[0].desription"></div>
                         <h4 class="get-steps-heading animation-item --block">
-                            Мы всегда следуем нашим принципам: <b>Прозрачность и честность!</b>
+                            {{ stepList[0].footer_word }} <b>{{ stepList[0].footer_word_b }}</b>
                         </h4>
                     </div>
                     <div class="get-steps-right"></div>
                 </div>
             </div>
         </div>
-        <div class="get-steps-block --z2">
+        <div v-if="stepList[1]" class="get-steps-block --z2">
             <div class="layout-container">
                 <div class="get-steps-row">
                     <div class="get-steps-left">
-                        <h3 class="section-title animation-item">Шаг 2. Заполнение анкеты</h3>
-                        <p class="get-steps-text animation-item">Вы попадете на страницу заполнения анкеты, где необходимо будет указать свои данные. Заполнение анкеты займет не более 5 минут, при этом никаких подтверждающих документов, удостоверяющих Вашу личность, а также справок о доходах, либо месте работы от Вас не потребуется! Единственное условие – указать о себе правдивые данные, т.к. это будет влиять на скорость рассмотрения заявки</p>
+                        <h3 class="section-title animation-item">{{ stepList[1].name }}</h3>
+                        <div class="get-steps-text animation-item" v-html="stepList[1].desription"></div>
                         <h4 class="get-steps-heading animation-item --block">
-                            Мы постараемся удовлетворить <b>Все Ваши пожелания!</b>
+                            {{ stepList[1].footer_word }} <b>{{ stepList[1].footer_word_b }}</b>
                         </h4>
                     </div>
                     <div class="get-steps-right">
-                        <img class="animation-item" src="/img/get-steps1.png" alt="CashU image">
+                        <img
+                          class="animation-item"
+                          :src="stepList[1].image ? $imageLink(stepList[1].image) : require('@/static/img/get-steps1.png')" alt="CashU image">
                     </div>
                 </div>
             </div>
         </div>
-        <div class="get-steps-block --black --z3">
+        <div v-if="stepList[2]" class="get-steps-block --black --z3">
             <div class="layout-container">
                 <div class="get-steps-row">
                     <div class="get-steps-left">
-                        <h3 class="section-title animation-item">Шаг 3. Подписание договора</h3>
-                        <p class="get-steps-text animation-item">На указанный Вами телефон поступит SMS-сообщение с цифровым кодом, с помощью которого Вы сможете подписать договор получения займа, предварительно ознакомившись с ним в личном кабинете. Все условия, выбранные Вами будут прописаны в договоре, Вам ничего не придется заполнять вручную, распечатывать и ставить свою подпись.</p>
+                        <h3 class="section-title animation-item">{{ stepList[2].name }}</h3>
+                        <div class="get-steps-text animation-item" v-html="stepList[2].desription"></div>
                         <h4 class="get-steps-heading animation-item">
-                            Подписать договор — <b>легко!</b>
+                            {{ stepList[2].footer_word }} <b>{{ stepList[2].footer_word_b }}</b>
                         </h4>
                     </div>
                     <div class="get-steps-right">
-                        <img src="/img/get-steps2.png" alt="CashU image" class="animation-item">
+                        <img
+                          :src="stepList[2].image ? $imageLink(stepList[2].image) : require('@/static/img/get-steps1.png')"
+                          alt="CashU image"
+                          class="animation-item">
                     </div>
                 </div>
             </div>
         </div>
-        <div class="get-steps-block --z4 --padding-bottom">
+        <div v-if="stepList[3]" class="get-steps-block --z4 --padding-bottom">
             <div class="layout-container">
                 <div class="get-steps-row">
                     <div class="get-steps-left">
-                        <h3 class="section-title animation-item">Шаг 4. Получение денег</h3>
+                        <h3 class="section-title animation-item">{{ stepList[3].name }}</h3>
+                        <div class="get-steps-text animation-item" v-html="stepList[3].desription"></div>
                         <p class="get-steps-text animation-item">
-                            В случае одобрения займа, Вы получите необходимую сумму на банковский счет либо банковскую карту, которые Вы указали в анкете, в течении нескольких часов (скорость зачисления зависит от Вашего банка). Мы отправляем деньги с 9:00 до 18:00 по будням. Рассматриваем заявки круглосуточно и без выходных. 
-                        </p>
-                        <p class="get-steps-text animation-item">
-                            Money Express выдает займ даже тем, у кого плохая кредитная история, либо вообще ее нет. 
+                            {{ stepList[3].footer_word }} <b>{{ stepList[3].footer_word_b }}</b>
                         </p>
                     </div>
                     <div class="get-steps-right">
-                        <img src="/img/get-steps3.png" alt="CashU image" class="animation-item">
+                        <img
+                        :src="stepList[3].image ? $imageLink(stepList[3].image) : require('@/static/img/get-steps1.png')"
+                        alt="CashU image"
+                        class="animation-item">
                     </div>
                 </div>
             </div>
         </div>
+      </div>
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
+    props: {
+      page: Object,
+    },
+    computed: {
+      ...mapGetters({
+        currentLang: 'lang/GET_CURRENT_LANG',
+        langs: 'lang/GET_LANGS',
+      }),
+      steps() {
+        const block = this.page.extras ? this.page.extras[this.currentLang].block_in_third : '';
+        // console.log('>>> ', block)
+        if (!block) return [];
+        return this.$parseString(block);
+      }
+    },
     mounted() {
         let block = document.querySelectorAll('.get-steps-block')
         block.forEach((b) => {
@@ -81,6 +109,7 @@ export default {
             )
             this.$scrollmagic.addScene(stepsScene)
         })
-    }
+    },
+
 }
 </script>

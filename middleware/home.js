@@ -6,7 +6,7 @@ export default async function({ store }) {
 
   if (!posts || posts.data.length <=2) {
     queue.push(store.dispatch('posts/fetchPosts', {
-      per_page: 4,
+      per_page: 6,
     }))
   }
 

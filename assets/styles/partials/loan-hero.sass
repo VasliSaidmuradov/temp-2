@@ -5,6 +5,14 @@
     display: flex
     align-items: center
     justify-content: center
+    &-image
+        width: 390px
+        // height: 390px
+        max-height: 390px
+        img
+            width: 100%
+            // height: 100%
+            // object-fit: cover
     &.--yellow
         background-color: #FFF7EC
     &-row
@@ -14,20 +22,22 @@
     &-title
         font-size: em(28)
         font-weight: 600
-        color: #fff 
+        color: #fff
         &.--black
             color: var(--text-color)
 @media (max-width: 1025px)
     .loan-hero
         &-row
             padding: 0 20px
-            img 
-                max-width: 250px
+        &-image
+            width: 250px
+            // height: 250px
+            max-height: 250px
 @media (max-width: 769px)
     .loan-hero
-        &-row 
+        &-row
             display: block
             text-align: center
-            img 
-                margin: auto
-                margin-top: 40px
+        &-image
+            margin: auto
+            margin-top: 40px

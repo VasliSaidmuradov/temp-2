@@ -7,13 +7,17 @@
             <reviews-success v-if="isSuccessOpen" @closeModal="closeSuccess" />
         </transition>
         <div class="breadcrumbs">
-            <nuxt-link to="/">Главная</nuxt-link>
-            <nuxt-link to>Отзывы</nuxt-link>
+            <nuxt-link to="/">{{ langs[currentLang]['body.main_page'] }}</nuxt-link>
+            <nuxt-link to>{{ page.title[currentLang] }}</nuxt-link>
         </div>
+
+        <!-- <pre>{{ page }}</pre> -->
+        <!-- <pre>{{ langs[currentLang] }}</pre> -->
+
         <div class="layout-container">
             <h1 class="page-title animation-item">
-                Отзывы
-                <button class="button" @click="openModal">Оставить отзыв</button>
+                {{ page.title[currentLang] }}
+                <button class="button" @click="openModal">{{ langs[currentLang]['body.leave_feeback'] }}</button>
             </h1>
             <div
               v-if="reviews.data.length"
@@ -68,7 +72,7 @@ import { mapGetters } from 'vuex'
 
 export default {
     mixins: [animation],
-    middleware: ['reviews'],
+    middleware: ['reviews', 'page'],
     data() {
         return {
             isModalOpen: false,
@@ -97,6 +101,9 @@ export default {
     computed: {
       ...mapGetters({
         reviews: 'reviews/GET_REVIEWS',
+        page: 'pages/GET_PAGE',
+        currentLang: 'lang/GET_CURRENT_LANG',
+        langs: 'lang/GET_LANGS',
       })
     }
 }

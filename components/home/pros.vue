@@ -1,64 +1,30 @@
 <template>
     <div class="home-pros" ref="animationBlock">
-        <h3 class="section-title animation-item">Почему микрокредиты CASHU выгоднее?</h3>
+        <h3 class="section-title animation-item">{{ langs[currentLang]['body.why_profitable'] }}</h3>
         <div class="home-pros-row">
-            <div class="home-pros-col animation-item" v-for="(item, i) in pros" :key="i">
+            <div class="home-pros-col animation-item" v-for="(item, i) in extras" :key="i">
                 <div class="home-pros-img-wrp">
-                    <img :src="item.img" alt="CashU image">
+                    <img :src="item.image ? $imageLink(item.image) : require('@/static/img/pros1.png')" alt="CashU image">
                 </div>
-                <h4 class="home-pros-title">{{item.title}}</h4>
-                <p class="home-pros-text">{{item.text}}</p>
+                <h4 class="home-pros-title">{{ item.name }}</h4>
+                <p class="home-pros-text">{{ item.description }}</p>
             </div>
-        </div>
-        <div class="home-pros-col animation-item --last">
-            <div class="home-pros-img-wrp">
-                <img src="/img/pros7.png" alt="CashU image">
-            </div>
-            <h4 class="home-pros-title">Выгодные акции по финансовым продуктам!</h4>
-            <p class="home-pros-text">Мы стараемся предвосхищать пожелания наших клиентов и поэтому запускаем выгодные акции и конкурсы по финансовым продуктам на нашем сайте и на страничках социальных сетей.</p>
         </div>
     </div>
 </template>
 
 <script>
 import animation from '@/mixins/animation'
+import { mapGetters } from 'vuex'
+
 export default {
     mixins: [animation],
-    data() {
-        return {
-            pros: [
-                {
-                    img: '/img/pros1.png',
-                    title: 'Микрокредиты без процентов',
-                    text: 'Каждый Ваш третий микрокредит, взятый у нас будет бесплатным! 0% по микрокредиту и никаких других процентов и комиссий за дополнительные услуги! Сколько возьмете – столько вернете!'
-                },
-                {
-                    img: '/img/pros2.png',
-                    title: 'Мгновенное принятие решения',
-                    text: 'Автоматизированная умная система принятия решения позволяет мгновенно одобрить или отказать по поданной заявке на получение микрокредита. Вам не нужно будет ждать нашего решения несколько часов. Мы ценим время наших клиентов!'
-                },
-                {
-                    img: '/img/pros3.png',
-                    title: 'Высокая вероятность одобрения',
-                    text: 'Интеллектуальная скоринговая система позволяет значительно повысить уровень одобрения.'
-                },
-                {
-                    img: '/img/pros4.png',
-                    title: 'Мы работаем без выходных в режиме NONSTOP!',
-                    text: 'Мы знаем, что проблемы могут возникнуть в любое время и поэтому мы работаем без выходных – 24/7! В любое время Вы можете обратиться к нам за финансовой помощью!'
-                },
-                {
-                    img: '/img/pros5.png',
-                    title: 'Первый микрокредит на карту!',
-                    text: 'Даже если Вы первый раз берете онлайн микрокредит у нас, мы отправим вам деньги сразу на банковскую карту до 20.00 в любой день недели! Вам не надо будет вспоминать свой IBAN счет и ориентироваться на график работы банков.'
-                },
-                {
-                    img: '/img/pros6.png',
-                    title: 'Удобная система лояльности',
-                    text: 'Наш сервис в первую очередь создан для удобства пользователей. Мы разработали гибкую систему лояльности и продолжаем ее совершенствовать.'
-                }
-            ]
-        }
+    computed: {
+      ...mapGetters({
+        extras: 'pages/GET_EXTRAS',
+        langs: 'lang/GET_LANGS',
+        currentLang: 'lang/GET_CURRENT_LANG',
+      }),
     }
 }
 </script>
