@@ -84,7 +84,7 @@
                     <div class="calculator-col">
                         <div class="calculator-col-inner">
                             <p class="calculator-label">Сумма к возврату</p>
-                            <p class="calculator-text">{{ paymentShedule ? paymentShedule.interest : 0 }} ₸</p>
+                            <p class="calculator-text">{{ paymentShedule ? paymentShedule.interestWithoutDiscount : 0 }} ₸</p>
                         </div>
                     </div>
                 </div>
@@ -111,13 +111,13 @@
                       <div class="calculator-reward-wrap">
                         <span class="calculator-reward-label">Вознаграждение</span>
                         <span class="calculator-reward-sum --old-price">
-                          {{ paymentShedule ? $formatMoney(paymentShedule.interest) : 0 }}
+                          {{ paymentShedule ? $formatMoney(paymentShedule.interestWithoutDiscount) : 0 }}
                         </span>
                       </div>
                       <div class="calculator-reward-wrap --sale">
-                        <span class="calculator-reward-label">Со скидкой 30%</span>
+                        <span class="calculator-reward-label">Со скидкой {{ paymentShedule.interestDiscountPercent }}%</span>
                         <span class="calculator-reward-sum">
-                          {{ paymentShedule ? $formatMoney(paymentShedule.interest * 0.7) : 0 }}
+                          {{ paymentShedule ? $formatMoney(paymentShedule.interestWithDiscount) : 0 }}
                         </span>
                       </div>
                     </div>
@@ -125,7 +125,7 @@
                         <success />
                         <div>
                             <p class="calculator-label">Вознаграждение</p>
-                            <p class="calculator-text">{{ paymentShedule ? $formatMoney(paymentShedule.interest) : 0 }} ₸</p>
+                            <p class="calculator-text">{{ paymentShedule ? $formatMoney(paymentShedule.interestWithoutDiscount) : 0 }} ₸</p>
                         </div>
                     </div>
                 </div>
