@@ -32,7 +32,7 @@
         :disabled="!isSending && !isFormValidate"
         @click.prevent="send"
         class="button"
-        :class="{ '--disabled': !isSending && !isFormValidate }"
+        :class="{ '--disabled-button': !isSending && !isFormValidate }"
         >{{ langs[currentLang]['body.submit'] }}</button>
     </form>
   </div>
@@ -58,7 +58,6 @@ export default {
       },
 			file: null,
       isSending: false,
-      // isFormValidate: false,
     };
   },
   computed: {
@@ -107,8 +106,3 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-  .--disabled {
-    background-color: rgba(#5AE0B6, 0.3);
-  }
-</style>
