@@ -22,19 +22,19 @@
                       class="footer-link animation-item"
                       :to="item.page.slug"
                       >
-                      {{ item.name[currentLang] }}
+                      <span>{{ item.name[currentLang] }}</span>
                     </nuxt-link>
                 </div>
                 <div class="footer-col">
                     <p class="footer-subtitle animation-item">{{ langs[currentLang]['footer.phone'] }}</p>
                     <a href="" class="footer-link animation-item --icon">
                         <phone />
-                        {{ settings.phone.value[currentLang] }}
+                        <span>{{ settings.phone.value[currentLang] }}</span>
                     </a>
                     <p class="footer-subtitle animation-item">{{ langs[currentLang]['footer.email'] }}</p>
                     <a href="" class="footer-link animation-item --icon">
                         <email />
-                        {{ settings.email.value[currentLang] }}
+                        <span>{{ settings.email.value[currentLang] }}</span>
                     </a>
                 </div>
             </div>

@@ -3,15 +3,18 @@
     align-items: center
     justify-content: center
     &-prev,
-    &-next 
+    &-next
         background-color: transparent
         display: flex
         align-items: center
-        svg 
+        font-size: em(14)
+        font-weight: 400
+        color: var(--text-color)
+        svg
             transform: rotate(-90deg)
     &-item-wrp
         display: flex
-    &-item 
+    &-item
         width: 40px
         height: 40px
         display: flex
@@ -26,11 +29,11 @@
         &.--active
             background-color: var(--color-base)
             color: #fff
-    &-next 
+    &-next
         margin-left: 32px
     &-prev
         margin-right: 32px
-        svg 
+        svg
             transform: rotate(90deg)
 @media (max-width: 426px)
     .pagination
@@ -41,5 +44,5 @@
             margin: 16px 0
         &-prev
             margin-right: 0
-        &-next 
+        &-next
             padding-left: 0

@@ -3,7 +3,7 @@
     padding: 100px 0 30px
     margin-top: 80px
     &-inner
-        margin: auto 
+        margin: auto
         max-width: 1180px
         width: 100%
     &-row,
@@ -15,29 +15,47 @@
         margin-top: 50px
     &-logo
         display: inline-block
-    &-link 
+    &-link
         display: block
-        font-size: em(14)
-        font-weight: 400
-        color: var(--text-color)
         margin-bottom: 16px
+        span
+            font-size: em(14)
+            font-weight: 400
+            color: var(--text-color)
+            position: relative
+            display: inline-block
+            &:hover
+                &:after
+                    transform-origin: left center
+                    transform: scale(1)
+            &:after
+                content: ''
+                width: 100%
+                height: 1px
+                background: #818690
+                transition: transform .4s cubic-bezier(.4, 0, .2, 1)
+                transform-origin: right center
+                position: absolute
+                left: 0
+                bottom: 0
+                transform: scaleX(0)
         &.--icon
             display: flex
             align-items: center
             margin-bottom: 24px
             svg
                 margin-right: 8px
-            path 
+            path
                 fill: #93989D
-    &-subtitle 
+    &-subtitle
         font-size: em(12)
         font-weight: 400
         color: #93989D
         margin-bottom: 10px
-    &-socials a 
+    &-socials a
         margin-right: 16px
         display: inline-block
-        &:last-child 
+        &:last-child
             margin-right: 0
 @media (max-width: 1025px)
     .footer
@@ -65,6 +83,6 @@
             margin-top: 40px
             display: block
             text-align: center
-            img 
+            img
                 margin: auto
                 margin-top: 16px
