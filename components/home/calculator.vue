@@ -41,7 +41,7 @@
                             v-model="sliderValue"
                             :tooltip-format="formattedTooltip"
                             tooltip-color="#132333"
-                            step="500"
+                            step="1000"
                         />
                     </client-only>
                     <button class="calculator-increase" @click="increase">
@@ -105,10 +105,10 @@
                     </div>
                 </div>
                 <div class="calculator-btn-wrp">
-                    <a class="button" href="https://my.cashu.kz/auth/registration" target="_blank">
+                    <button class="button" @click="sendMoney">
                       {{ langs[currentLang]['calculator.get_money'] }}
                       <span style="font-size: 1.2em; padding-left: 0.5em;">{{ paymentShedule ? paymentShedule.totalReturnAmount : 0 }} ₸</span>
-                    </a>
+                    </button>
                 </div>
             </div>
             <div class="calculator-right">
@@ -411,7 +411,11 @@ export default {
           }
 
           this.timeoutId = setTimeout(this.calculate(), 800);
-        }
+        },
+        sendMoney() {
+          let url = 'https://my.cashu.kz/auth/registration';
+          window.open(`${url}?loanAmount=${this.sliderValue}&period=${this.term.val}`, '_blank');
+        },
     },
 }
 </script>

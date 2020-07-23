@@ -3,7 +3,7 @@
         <div class="layout-container">
           <!-- <pre>{{ langs[currentLang] }}</pre> -->
             <h3 class="get-money-title animation-item">{{ langs[currentLang]['body.much_easier'] }}</h3>
-            <nuxt-link class="button animation-item" to>{{ langs[currentLang]['body.get_money'] }}</nuxt-link>
+            <a class="button animation-item" href="https://my.cashu.kz/auth/registration" target="_blank">{{ langs[currentLang]['body.get_money'] }}</a>
         </div>
     </div>
 </template>
@@ -21,6 +21,12 @@ export default {
         langs: 'lang/GET_LANGS',
         currentLang: 'lang/GET_CURRENT_LANG',
       })
-    }
+    },
+    // methods: {
+    //   sendMoney() {
+    //     let url = 'https://my.cashu.kz/auth/registration';
+    //     window.open(`${url}?loanAmount=5000&period=5`, '_blank');
+    //   },
+    // }
 }
 </script>
