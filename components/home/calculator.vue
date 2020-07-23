@@ -66,11 +66,51 @@
                       <span v-for="(mark, index) in marks" :key="index">{{ mark[currentLang] }}</span>
                     </div>
                 </div>
+                <div class="calculator-mobile">
+                    <div class="calculator-promo-wrp">
+                        <input v-model="promoCode" type="text" class="calculator-input" placeholder="Промокод">
+                        <button class="button" :disabled="!promoCode" @click="applyPromoCode">
+                          {{ langs[currentLang]['calculator.apply'] }}
+                        </button>
+                    </div>
+                    <div class="calculator-list-wrp">
+                        <transition name="modal-fade">
+                            <div class="calculator-preloader">
+                                <img src="/icons/preloader.png" alt="CashU icon">
+                                <p>Идет расчет ...</p>
+                            </div>
+                        </transition>
+                        <ul class="calculator-list">
+                            <li>
+                                <p class="calculator-list-text">Дата возврата</p>
+                                <p class="calculator-list-text --large">03.08.2020</p>
+                            </li>
+                            <li>
+                                <p class="calculator-list-text">Вознаграждение</p>
+                                <p class="calculator-list-text --large --gray">9 000</p>
+                            </li>
+                            <li>
+                                <p class="calculator-list-text --red">Со скидкой 30%</p>
+                                <p class="calculator-list-text --large --red">6 000 ₸</p>
+                            </li>
+                            <li>
+                                <p class="calculator-list-text">Сумма к возврату</p>
+                                <p class="calculator-list-text --large">66 000 ₸</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="calculator-btn-wrp">
                     <button :disabled="isSendingRequest" class="button" @click="calculate">{{ langs[currentLang]['calculator.get_money'] }}</button>
                 </div>
             </div>
             <div class="calculator-right">
+                <transition name="modal-fade">
+                    <div class="calculator-preloader">
+                        <img src="/icons/preloader.png" alt="CashU icon">
+                        <p>Идет расчет ...</p>
+                    </div>
+                </transition>
                 <div class="calculator-row">
                     <div class="calculator-col">
                         <div class="calculator-icon">
@@ -162,12 +202,12 @@ export default {
             radius: 450,
             term: { val: 5, text: { ru: '5 дней', kk: '5 күн'} },
             marks: [
-              { ru: '5 дней', kk: '5 күн'},
-              { ru: '10 дней', kk: '10 күн'},
-              { ru: '15 дней', kk: '15 күн'},
-              { ru: '20 дней', kk: '20 күн'},
-              { ru: '25 дней', kk: '25 күн'},
-              { ru: '30 дней', kk: '30 күн'}
+                { ru: '5 дней', kk: '5 күн'},
+                { ru: '10 дней', kk: '10 күн'},
+                { ru: '15 дней', kk: '15 күн'},
+                { ru: '20 дней', kk: '20 күн'},
+                { ru: '25 дней', kk: '25 күн'},
+                { ru: '30 дней', kk: '30 күн'}
             ],
             data: [
               {
