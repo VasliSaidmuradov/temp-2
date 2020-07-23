@@ -90,7 +90,7 @@
                                 <p class="calculator-list-text --large --gray">{{ paymentShedule ? $formatMoney(paymentShedule.interestWithoutDiscount) : 0 }} ₸</p>
                             </li>
                             <li v-if="paymentShedule && paymentShedule.promoCodeStatus === 'ok'">
-                                <p class="calculator-list-text --red">Со скидкой {{ paymentShedule.interestDiscountPercent }}%</p>
+                                <p class="calculator-list-text --red">{{ langs[currentLang]['body.discount'] }} {{ paymentShedule.interestDiscountPercent }}%</p>
                                 <p class="calculator-list-text --large --red">{{ paymentShedule ? $formatMoney(paymentShedule.interestWithDiscount) : 0 }} ₸</p>
                             </li>
                             <li v-if="paymentShedule && paymentShedule.promoCodeStatus !== 'ok'">
@@ -107,7 +107,7 @@
                 <div class="calculator-btn-wrp">
                     <button class="button" @click="sendMoney">
                       {{ langs[currentLang]['calculator.get_money'] }}
-                      <span style="font-size: 1.2em; padding-left: 0.5em;">{{ paymentShedule ? paymentShedule.totalReturnAmount : 0 }} ₸</span>
+                      <span class="calculator-btn-amount">{{ paymentShedule ? paymentShedule.totalReturnAmount : 0 }} ₸</span>
                     </button>
                 </div>
             </div>
@@ -162,7 +162,7 @@
                         </span>
                       </div>
                       <div class="calculator-reward-wrap --sale">
-                        <span class="calculator-reward-label">Со скидкой {{ paymentShedule.interestDiscountPercent }}%</span>
+                        <span class="calculator-reward-label">{{ langs[currentLang]['body.discount'] }} {{ paymentShedule.interestDiscountPercent }}%</span>
                         <span class="calculator-reward-sum">
                           {{ paymentShedule ? $formatMoney(paymentShedule.interestWithDiscount) : 0 }} ₸
                         </span>
