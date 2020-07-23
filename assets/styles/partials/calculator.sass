@@ -49,6 +49,7 @@
         border-radius: 12px
         margin-left: 24px
         padding-bottom: 20px
+        position: relative
         .calculator-row
             padding: 23px 30px
             &:first-child
@@ -101,7 +102,6 @@
             line-height: 26px
         &.mb-20
             margin-bottom: 20px
-
     &-reward-row
         display: flex
         justify-content: center
@@ -126,7 +126,7 @@
         font-weight: 400
         color: var(--text-color)
         width: 100%
-        border: 1px solid var(--line-color)
+        border: 1px dashed var(--line-color)
         padding: 16px
         padding-right: 138px
         border-radius: 8px
@@ -217,6 +217,28 @@
     &-btn-wrp
         margin-top: 40px
         text-align: center
+    &-preloader
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        z-index: 1
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        background-color: #fff
+        img
+            max-width: 50px
+            animation: rotate 2.5s linear infinite
+        p
+            font-size: em(14)
+            font-weight: 500
+            color: var(--color-base)
+            margin-top: 8px
+    &-mobile
+        display: none
     .vue-slider
         &:before
             content: ''
@@ -252,22 +274,56 @@
             left: 50%
             top: 50%
             transform: translate(-50%, -50%)
+@keyframes rotate
+    from
+        transform: rotate(0deg)
+    to
+        transform: rotate(359deg)
 @media (max-width: 1025px)
     .calculator
         &-row
             display: block
-        &-left,
-        &-right
+        &-left
             width: 100%
             max-width: 100%
         &-right
-            margin-left: 0
-            padding-bottom: 45px
-            .calculator-row
-                display: flex
+            display: none
         &-reward
             padding-bottom: 45px
             margin-bottom: 0
+        &-mobile
+            display: block
+        &-promo-wrp
+            padding: 0 20px
+            margin-top: 24px
+            .button
+                right: 26px
+        &-list-wrp
+            position: relative
+        &-list
+            padding: 0 20px
+            margin-top: 40px
+            &-text
+                font-size: em(14)
+                font-weight: 500
+                color: var(--text-color)
+                &.--large
+                    font-size: em(16)
+                    font-weight: 600
+                &.--gray
+                    color: #93989D
+                    text-decoration: line-through
+                &.--red
+                    color: #ED622B
+            li
+                display: flex
+                align-items: center
+                justify-content: space-between
+                margin-bottom: 8px
+        &-btn-wrp
+            padding: 0 20px
+            .button
+                width: 100%
 @media (max-width: 426px)
     .calculator
         &-btn
@@ -298,14 +354,6 @@
                 &:nth-child(3),
                 &:nth-child(4)
                     transform: translateY(45px)
-        &-promo-wrp
-            padding: 0 10px
-            .button
-                width: 100%
-                position: static
-                transform: none
-                margin-top: 15px
-                padding: 16px 0
         &-input
             padding-right: 16px
 @media (max-width: 376px)
