@@ -17,13 +17,13 @@
                 </p>
               </li>
             </ul>
-            <nuxt-link
-              v-if="slide.file"
+            <a
+              v-if="slide.link"
               class="button animation-item"
-              to
+              :href="slide.link"
               >
               {{ langs[currentLang]['body.details'] }}
-            </nuxt-link>
+            </a>
           </div>
           <div class="home-banner-img-wrp">
             <img

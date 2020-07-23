@@ -85,13 +85,17 @@
                                 <p class="calculator-list-text">{{ langs[currentLang]['calculator.refund_date'] }}</p>
                                 <p class="calculator-list-text --large">{{ paymentShedule ? $formatDate(paymentShedule.dueDate) : '-' }}</p>
                             </li>
-                            <li>
+                            <li v-if="paymentShedule && paymentShedule.promoCodeStatus === 'ok'">
                                 <p class="calculator-list-text">{{ langs[currentLang]['calculator.reward'] }}</p>
                                 <p class="calculator-list-text --large --gray">{{ paymentShedule ? $formatMoney(paymentShedule.interestWithoutDiscount) : 0 }} ₸</p>
                             </li>
-                            <li>
+                            <li v-if="paymentShedule && paymentShedule.promoCodeStatus === 'ok'">
                                 <p class="calculator-list-text --red">Со скидкой {{ paymentShedule.interestDiscountPercent }}%</p>
                                 <p class="calculator-list-text --large --red">{{ paymentShedule ? $formatMoney(paymentShedule.interestWithDiscount) : 0 }} ₸</p>
+                            </li>
+                            <li v-if="paymentShedule && paymentShedule.promoCodeStatus !== 'ok'">
+                                <p class="calculator-list-text">{{ langs[currentLang]['calculator.reward'] }}</p>
+                                <p class="calculator-list-text --large">{{ paymentShedule ? $formatMoney(paymentShedule.interestWithoutDiscount) : 0 }} ₸</p>
                             </li>
                             <li>
                                 <p class="calculator-list-text">{{ langs[currentLang]['calculator.refund_amount'] }}</p>
@@ -101,7 +105,10 @@
                     </div>
                 </div>
                 <div class="calculator-btn-wrp">
-                    <a class="button" href="https://my.cashu.kz/auth/registration" target="_blank">{{ langs[currentLang]['calculator.get_money'] }}</a>
+                    <a class="button" href="https://my.cashu.kz/auth/registration" target="_blank">
+                      {{ langs[currentLang]['calculator.get_money'] }}
+                      <span style="font-size: 1.2em; padding-left: 0.5em;">{{ paymentShedule ? paymentShedule.totalReturnAmount : 0 }} ₸</span>
+                    </a>
                 </div>
             </div>
             <div class="calculator-right">
