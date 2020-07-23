@@ -255,6 +255,7 @@ export default {
             currentGroup: 'BASIC',
             isSendingRequest: false,
             isCodeApplied: false,
+            timeoutId: null
         }
     },
     mounted() {
@@ -271,7 +272,32 @@ export default {
     watch: {
       currentTab(val) {
         if (val === 'first') {
+        }
+      },
+      sliderValue: function(val) {
+        try {
+          if (this.timeoutId) {
+            clearTimeout(this.timeoutId);
+          }
 
+          this.timeoutId = setTimeout(() => {
+            this.calculate(val);
+          }, 900);
+        } catch(e) {
+          console.log(e);
+        }
+      },
+      "term.val": function(val) {
+        try {
+          if (this.timeoutId) {
+            clearTimeout(this.timeoutId);
+          }
+
+          this.timeoutId = setTimeout(() => {
+            this.calculate(val);
+          }, 900);
+        } catch (e) {
+          console.log(e);
         }
       }
     },
@@ -309,7 +335,7 @@ export default {
               group: this.currentGroup,
             }
             this.isSendingRequest = true;
-            console.log('req data: ', requestData)
+            // console.log('req data: ', requestData);
             try {
               await this.fetchPaymentShedule(requestData);
             } catch(error) {
@@ -317,6 +343,13 @@ export default {
               } finally {
               setTimeout(() => this.isSendingRequest = false, 200);
             }
+        },
+        reCalc(e) {
+          if (this.timeoutId) {
+            clearTimeout(this.timeoutId);
+          }
+
+          this.timeoutId = setTimeout(this.calculate(), 800);
         }
     },
 }
