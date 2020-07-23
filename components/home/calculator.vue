@@ -74,41 +74,41 @@
                         </button>
                     </div>
                     <div class="calculator-list-wrp">
-                        <transition name="modal-fade">
+                        <transition v-if="loading" name="modal-fade">
                             <div class="calculator-preloader">
                                 <img src="/icons/preloader.png" alt="CashU icon">
-                                <p>Идет расчет ...</p>
+                                <p>{{ langs[currentLang]['body.aaccounting'] }}</p>
                             </div>
                         </transition>
                         <ul class="calculator-list">
                             <li>
-                                <p class="calculator-list-text">Дата возврата</p>
-                                <p class="calculator-list-text --large">03.08.2020</p>
+                                <p class="calculator-list-text">{{ langs[currentLang]['calculator.refund_date'] }}</p>
+                                <p class="calculator-list-text --large">{{ paymentShedule ? $formatDate(paymentShedule.dueDate) : '-' }}</p>
                             </li>
                             <li>
-                                <p class="calculator-list-text">Вознаграждение</p>
-                                <p class="calculator-list-text --large --gray">9 000</p>
+                                <p class="calculator-list-text">{{ langs[currentLang]['calculator.reward'] }}</p>
+                                <p class="calculator-list-text --large --gray">{{ paymentShedule ? $formatMoney(paymentShedule.interestWithoutDiscount) : 0 }} ₸</p>
                             </li>
                             <li>
-                                <p class="calculator-list-text --red">Со скидкой 30%</p>
-                                <p class="calculator-list-text --large --red">6 000 ₸</p>
+                                <p class="calculator-list-text --red">Со скидкой {{ paymentShedule.interestDiscountPercent }}%</p>
+                                <p class="calculator-list-text --large --red">{{ paymentShedule ? $formatMoney(paymentShedule.interestWithDiscount) : 0 }} ₸</p>
                             </li>
                             <li>
-                                <p class="calculator-list-text">Сумма к возврату</p>
-                                <p class="calculator-list-text --large">66 000 ₸</p>
+                                <p class="calculator-list-text">{{ langs[currentLang]['calculator.refund_amount'] }}</p>
+                                <p class="calculator-list-text --large">{{ paymentShedule ? paymentShedule.totalReturnAmount : 0 }} ₸</p>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="calculator-btn-wrp">
-                    <button :disabled="isSendingRequest" class="button" @click="calculate">{{ langs[currentLang]['calculator.get_money'] }}</button>
+                    <a class="button" href="https://my.cashu.kz/auth/registration" target="_blank">{{ langs[currentLang]['calculator.get_money'] }}</a>
                 </div>
             </div>
             <div class="calculator-right">
-                <transition name="modal-fade">
+                <transition v-if="loading" name="modal-fade">
                     <div class="calculator-preloader">
                         <img src="/icons/preloader.png" alt="CashU icon">
-                        <p>Идет расчет ...</p>
+                        <p>{{ langs[currentLang]['body.aaccounting'] }}</p>
                     </div>
                 </transition>
                 <div class="calculator-row">
@@ -295,7 +295,8 @@ export default {
             currentGroup: 'BASIC',
             isSendingRequest: false,
             isCodeApplied: false,
-            timeoutId: null
+            timeoutId: null,
+            loading: false,
         }
     },
     mounted() {
@@ -314,30 +315,36 @@ export default {
         if (val === 'first') {
         }
       },
-      sliderValue: function(val) {
+      sliderValue: function() {
         try {
+          this.loading = true;
           if (this.timeoutId) {
             clearTimeout(this.timeoutId);
           }
 
-          this.timeoutId = setTimeout(() => {
-            this.calculate(val);
-          }, 900);
+          this.timeoutId = setTimeout(async () => {
+            await this.calculate();
+          }, 500);
         } catch(e) {
           console.log(e);
+        } finally {
+          setTimeout(() => this.loading = false, 200);
         }
       },
-      "term.val": function(val) {
+      "term.val": function() {
         try {
+          this.loading = true;
           if (this.timeoutId) {
             clearTimeout(this.timeoutId);
           }
 
-          this.timeoutId = setTimeout(() => {
-            this.calculate(val);
-          }, 900);
+          this.timeoutId = setTimeout(async () => {
+            await this.calculate();
+          }, 500);
         } catch (e) {
           console.log(e);
+        } finally {
+          setTimeout(() => this.loading = false, 200);
         }
       }
     },
@@ -363,9 +370,17 @@ export default {
             if (this.sliderValue <= 5000) return
             this.sliderValue -= this.step
         },
-        applyPromoCode() {
-            this.code = this.promoCode
-            this.isCodeApplied = true
+        async applyPromoCode() {
+            this.code = this.promoCode;
+            this.isCodeApplied = true;
+            try {
+              this.loading = true;
+              await this.calculate();
+            } catch (e) {
+              console.log(e);
+            } finally {
+              setTimeout(() => this.loading = false, 200);
+            }
         },
         async calculate() {
             const requestData = {
@@ -375,7 +390,6 @@ export default {
               group: this.currentGroup,
             }
             this.isSendingRequest = true;
-            // console.log('req data: ', requestData);
             try {
               await this.fetchPaymentShedule(requestData);
             } catch(error) {

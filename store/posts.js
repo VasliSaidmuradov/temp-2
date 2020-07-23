@@ -21,7 +21,7 @@ export const actions = {
       } else {
         payload += '?'
       }
-      payload += 'per_page=12'
+      payload += 'per_page=9'
       const resp = await this.$api.get(payload);
       store.commit('SET_POSTS', resp)
     } else {

@@ -2,35 +2,39 @@
     <div class="mob-menu">
         <div class="mob-menu-lang-wrp">
             <div class="mob-menu-current-lang">
-                <ru-icon />
-                RU
+                <div v-show="currentLang === 'ru'">
+                  <ru-icon />
+                  Русский
+                </div>
+                <div v-show="currentLang === 'kk'">
+                  <kz-icon />
+                  Қазақша
+                </div>
             </div>
-            <button @click="showModal">Изменить</button>
+            <button @click="showModal">{{ langs[currentLang]['body.change'] }}</button>
         </div>
-        <nuxt-link to class="mob-menu-profile" @click.native="closeMenu">
+        <button class="mob-menu-profile" @click="loginLink">
             <profile-icon />
-            Личный кабинет
-        </nuxt-link>
+            {{ langs[currentLang]['header.lc'] }}
+        </button>
         <nav class="mob-menu-nav">
-            <nuxt-link class="mob-menu-link" @click.native="closeMenu" to="/get-loan">Как получить микрокредит</nuxt-link>
-            <nuxt-link class="mob-menu-link" @click.native="closeMenu" to="/repay-loan">Как погасить микрокредит</nuxt-link>
-            <nuxt-link class="mob-menu-link" @click.native="closeMenu" to="/articles">Акции и новости</nuxt-link>
-            <nuxt-link class="mob-menu-link" @click.native="closeMenu" to="/reviews">Отзывы</nuxt-link>
-            <nuxt-link class="mob-menu-link" @click.native="closeMenu" to="/about">О нас</nuxt-link>
-            <nuxt-link class="mob-menu-link" @click.native="closeMenu" to="/faq">Вопрос-ответ</nuxt-link>
-            <nuxt-link class="mob-menu-link" @click.native="closeMenu" to="/documentation">Документация</nuxt-link>
-            <nuxt-link class="mob-menu-link" @click.native="closeMenu" to="/contacts">Контакты</nuxt-link>
+          <nuxt-link
+            v-for="item in headerMenu"
+            :key="item.id"
+            class="mob-menu-link"
+            :to="`/${item.page.slug}`"
+            >{{ item.name[currentLang] }}
+          </nuxt-link>
         </nav>
         <a href="" class="mob-menu-phone">
             <phone-icon />
-            +7 (701) 885-80-80
+            {{ settings.phone.value[currentLang] }}
         </a>
         <p class="mob-menu-schedule">
             <schedule-icon />
-            Прием заявок круглосуточно, без выходных.
-            Рассмотрение и отправка денег без выходных с 9:00 до 21:00;
+            <span v-html="langs[currentLang]['header.schedule']"></span>
         </p>
-        <h3 class="mob-menu-heading">Быстрые микрокредиты онлайн</h3>
+        <h3 class="mob-menu-heading" v-html="langs[currentLang]['header.fast_microcredits']"></h3>
     </div>
 </template>
 
@@ -39,12 +43,24 @@ import profileIcon from '@/static/icons/user.svg'
 import phoneIcon from '@/static/icons/phone-filled.svg'
 import scheduleIcon from '@/static/icons/clock.svg'
 import ruIcon from '@/static/icons/ru.svg'
+import kzIcon from '@/static/icons/kz.svg'
+import { mapGetters } from 'vuex'
+
 export default {
     components: {
         ruIcon,
+        kzIcon,
         profileIcon,
         phoneIcon,
         scheduleIcon
+    },
+    computed: {
+      ...mapGetters({
+        headerMenu: 'menu/GET_MENU',
+        langs: 'lang/GET_LANGS',
+        currentLang: 'lang/GET_CURRENT_LANG',
+        settings: 'settings/GET_SETTINGS',
+      })
     },
     methods: {
         closeMenu() {
@@ -52,6 +68,10 @@ export default {
         },
         showModal() {
             this.$store.commit('lang/setModal', true)
+        },
+        loginLink() {
+          console.log('dsd')
+            window.location.assign("https://my.cashu.kz/auth/login");
         }
     }
 }

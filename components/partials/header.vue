@@ -11,15 +11,12 @@
             </a>
             <p class="header-text animation-item">
                 <schedule-icon />
-                <span v-html="langs[currentLang]['header.schedule']">
-                    Прием заявок круглосуточно, без выходных. <br>
-                    Рассмотрение и отправка денег без выходных с 9:00 до 21:00.
-                </span>
+                <span v-html="langs[currentLang]['header.schedule']"></span>
             </p>
-            <nuxt-link class="header-profile animation-item" to>
+            <a class="header-profile animation-item" href="https://my.cashu.kz/auth/login" target="_blank">
                 <profile-icon />
                 {{ langs[currentLang]['header.lc'] }}
-            </nuxt-link>
+            </a>
             <div class="header-langs animation-item">
                 <div class="header-current-lang" @click="toggleLang">
                   <ru-icon v-show="currentLang === 'ru'" />
@@ -34,7 +31,7 @@
                     </nuxt-link>
                     <nuxt-link to class="header-lang-link" @click.native="changeLang('kk')">
                         <kz-icon />
-                        Казахский
+                        Қазақша
                     </nuxt-link>
                 </div>
             </div>

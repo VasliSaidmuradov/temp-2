@@ -9,7 +9,7 @@
                 </nuxt-link>
                 <nuxt-link class="lang-modal-item" to @click.native="changeLang('kk')">
                     <kz-icon />
-                    Казахский
+                    Қазақша
                 </nuxt-link>
             </div>
         </div>
