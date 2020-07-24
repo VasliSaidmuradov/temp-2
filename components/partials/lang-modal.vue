@@ -27,7 +27,8 @@ export default {
     },
     computed: {
         ...mapGetters({
-            isOpen: 'lang/getModal'
+            isOpen: 'lang/getModal',
+            currentLang: 'lang/GET_CURRENT_LANG',
         })
     },
     methods: {
@@ -37,6 +38,9 @@ export default {
         changeLang(lang) {
             this.$store.commit('lang/SET_CURRENT_LANG', lang)
             this.closeModal()
+            if (process.browser) {
+              localStorage.setItem('lang', this.currentLang)
+            }
         }
     },
 }

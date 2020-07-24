@@ -7,13 +7,23 @@ export const state = () => ({
 export const mutations = {
     setModal: (state, payload) => state.modalOpen = payload,
     SET_LANGS: (state, payload) => state.langs = payload,
-    SET_CURRENT_LANG: (state, payload) => state.currentLang = payload,
+    SET_CURRENT_LANG: (state, payload) => {
+      state.currentLang = payload
+    },
 }
 
 export const actions = {
   async fetchLangs(store) {
     const resp = await this.$api.get('/langs')
     store.commit('SET_LANGS', resp)
+  },
+  getLangFromLocalStorage() {
+    if (process.browser) {
+      if (localStorage.getItem('lang')) {
+        const lang = localStorage.getItem('lang')
+        console.log(lang)
+      }
+    }
   }
 }
 

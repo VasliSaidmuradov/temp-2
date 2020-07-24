@@ -1,6 +1,6 @@
 <template>
     <div class="calculator">
-        <!-- <pre>{{ langs[currentLang] }}</pre> -->
+        <!-- <pre>{{ $roundMoney(5002.9) }}</pre> -->
         <div class="calculator-nav">
             <button class="calculator-btn"
                 :class="{'--active' : currentTab === 'first'}"
@@ -87,19 +87,19 @@
                             </li>
                             <li v-if="paymentShedule && paymentShedule.promoCodeStatus === 'ok'">
                                 <p class="calculator-list-text">{{ langs[currentLang]['calculator.reward'] }}</p>
-                                <p class="calculator-list-text --large --gray">{{ paymentShedule ? $formatMoney(paymentShedule.interestWithoutDiscount) : 0 }} ₸</p>
+                                <p class="calculator-list-text --large --gray">{{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.interestWithoutDiscount)) : 0 }} ₸</p>
                             </li>
                             <li v-if="paymentShedule && paymentShedule.promoCodeStatus === 'ok'">
                                 <p class="calculator-list-text --red">{{ langs[currentLang]['body.discount'] }} {{ paymentShedule.interestDiscountPercent }}%</p>
-                                <p class="calculator-list-text --large --red">{{ paymentShedule ? $formatMoney(paymentShedule.interestWithDiscount) : 0 }} ₸</p>
+                                <p class="calculator-list-text --large --red">{{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.interestWithDiscount)) : 0 }} ₸</p>
                             </li>
                             <li v-if="paymentShedule && paymentShedule.promoCodeStatus !== 'ok'">
                                 <p class="calculator-list-text">{{ langs[currentLang]['calculator.reward'] }}</p>
-                                <p class="calculator-list-text --large">{{ paymentShedule ? $formatMoney(paymentShedule.interestWithoutDiscount) : 0 }} ₸</p>
+                                <p class="calculator-list-text --large">{{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.interestWithoutDiscount)) : 0 }} ₸</p>
                             </li>
                             <li>
                                 <p class="calculator-list-text">{{ langs[currentLang]['calculator.refund_amount'] }}</p>
-                                <p class="calculator-list-text --large">{{ paymentShedule ? paymentShedule.totalReturnAmount : 0 }} ₸</p>
+                                <p class="calculator-list-text --large">{{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.totalReturnAmount)) : 0 }} ₸</p>
                             </li>
                         </ul>
                     </div>
@@ -107,7 +107,7 @@
                 <div class="calculator-btn-wrp">
                     <button class="button" @click="sendMoney">
                       {{ langs[currentLang]['calculator.get_money'] }}
-                      <span class="calculator-btn-amount">{{ paymentShedule ? paymentShedule.totalReturnAmount : 0 }} ₸</span>
+                      <span class="calculator-btn-amount">{{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.totalReturnAmount)) : 0 }} ₸</span>
                     </button>
                 </div>
             </div>
@@ -125,13 +125,13 @@
                         </div>
                         <div class="calculator-col-inner">
                             <p class="calculator-label">{{ langs[currentLang]['calculator.you_take'] }}</p>
-                            <p class="calculator-text">{{ paymentShedule ? paymentShedule.principal : 0 }} ₸</p>
+                            <p class="calculator-text">{{ paymentShedule ? $formatMoney(paymentShedule.principal) : 0 }} ₸</p>
                         </div>
                     </div>
                     <div class="calculator-col">
                         <div class="calculator-col-inner">
                             <p class="calculator-label">{{ langs[currentLang]['calculator.refund_amount'] }}</p>
-                            <p class="calculator-text">{{ paymentShedule ? paymentShedule.totalReturnAmount : 0 }} ₸</p>
+                            <p class="calculator-text">{{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.totalReturnAmount)) : 0 }} ₸</p>
                         </div>
                     </div>
                 </div>
@@ -158,13 +158,13 @@
                       <div class="calculator-reward-wrap">
                         <span class="calculator-reward-label">{{ langs[currentLang]['calculator.reward'] }}</span>
                         <span class="calculator-reward-sum --old-price">
-                          {{ paymentShedule ? $formatMoney(paymentShedule.interestWithoutDiscount) : 0 }} ₸
+                          {{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.interestWithoutDiscount)) : 0 }} ₸
                         </span>
                       </div>
                       <div class="calculator-reward-wrap --sale">
                         <span class="calculator-reward-label">{{ langs[currentLang]['body.discount'] }} {{ paymentShedule.interestDiscountPercent }}%</span>
                         <span class="calculator-reward-sum">
-                          {{ paymentShedule ? $formatMoney(paymentShedule.interestWithDiscount) : 0 }} ₸
+                          {{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.interestWithDiscount)) : 0 }} ₸
                         </span>
                       </div>
                     </div>
@@ -172,7 +172,7 @@
                         <success />
                         <div>
                             <p class="calculator-label">{{ langs[currentLang]['calculator.reward'] }}</p>
-                            <p class="calculator-text">{{ paymentShedule ? $formatMoney(paymentShedule.interestWithoutDiscount) : 0 }} ₸</p>
+                            <p class="calculator-text">{{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.interestWithoutDiscount)) : 0 }} ₸</p>
                         </div>
                     </div>
                 </div>

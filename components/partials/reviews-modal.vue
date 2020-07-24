@@ -7,7 +7,7 @@
       </button>
       <h3 class="section-title">{{ currentLang === 'ru' ? 'Отзыв' : 'Пікір' }}</h3>
       <div class="reviews-modal-rating-wrp">
-        <p>Оценка:</p>
+        <p>{{ langs[currentLang]['body.rating'] }}:</p>
         <client-only>
           <star-rating
             v-model="review.rating"
@@ -77,7 +77,7 @@ export default {
       const form = document.forms.reviewForm;
       let data = { ...this.review };
 			let formData = new FormData();
-			
+
       if (this.file) formData.append("file", this.file[0], this.file[0].name);
       Object.keys(data).map((el) => {
       	formData.append(el, data[el]);

@@ -27,4 +27,8 @@ export default function({ app, store }, inject) {
     const url = 'http://demo-10.brandstudio.kz/';
     return `${url}${link}`;
   })
+
+  inject('roundMoney', (value, fixTo = 0) => {
+    return value ? +value.toFixed(fixTo) : 0
+  })
 }

@@ -7,6 +7,7 @@ export default function({ $axios, store, app }, inject) {
       app.$setError(error, null)
 
       let key = this.getCacheKey(url, data)
+      // console.log(':: ', key)
       if (this.getFromCache(key)) {
         return this.getFromCache(key)
       }

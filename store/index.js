@@ -15,6 +15,7 @@ export const actions = {
       dispatch('calculator/fetchPaymentShedule', paymentRequestData),
       dispatch('menu/fetchMenu'),
       dispatch('settings/fetchSettings'),
+      dispatch('banners/fetchBanners'),
     ]
 
     await Promise.all(queue)

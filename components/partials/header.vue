@@ -87,6 +87,9 @@ export default {
         changeLang(lang) {
           this.$store.commit('lang/SET_CURRENT_LANG', lang)
           this.toggleLang()
+          if (process.browser) {
+            localStorage.setItem('lang', this.currentLang)
+          }
         }
     },
     components: {
@@ -97,6 +100,6 @@ export default {
         ruIcon,
         arrow,
         kzIcon
-    }
+    },
 }
 </script>
