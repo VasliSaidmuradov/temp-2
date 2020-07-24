@@ -9,7 +9,7 @@
                 </button>
                 <h3 class="notification-title">{{ banners[0].title[currentLang] }}</h3>
                 <div class="notification-text" v-html="banners[0].name[currentLang]"></div>
-                <img :src="'http://demo-10.brandstudio.kz/uploads/' + banners[0].image[currentLang]" alt="CashU image" class="notification-image">
+                <img :src="'https://admin.cashu.kz/uploads/' + banners[0].image[currentLang]" alt="CashU image" class="notification-image">
             </div>
         </div>
     </transition>

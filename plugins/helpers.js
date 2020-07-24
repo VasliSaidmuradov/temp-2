@@ -24,7 +24,7 @@ export default function({ app, store }, inject) {
   })
 
   inject('imageLink', (link) => {
-    const url = 'http://demo-10.brandstudio.kz/';
+    const url = 'https://admin.cashu.kz/';
     return `${url}${link}`;
   })
 
