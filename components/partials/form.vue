@@ -37,11 +37,9 @@ export default {
   },
   methods: {
     async send() {
-      // const data = { ...this.data };
-      // const url = 'http://demo-10.brandstudio.kz/api'
       try {
         this.isSending = true;
-        const resp = await this.$axios.post('http://demo-10.brandstudio.kz/api/subscribe', this.data);
+        const resp = await this.$axios.post('https://admin.cashu.kz/api/subscribe', this.data);
       } catch (error) {
         console.log(error);
       } finally {

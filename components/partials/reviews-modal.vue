@@ -91,7 +91,7 @@ export default {
               "multipart/form-data; boundary=" + formData._boundary,
           },
         };
-        const resp = await this.$axios.post('http://demo-10.brandstudio.kz/api/feedback', formData, header);
+        const resp = await this.$axios.post('https://admin.cashu.kz/api/feedback', formData, header);
 				// console.log(resp);
         this.$emit("sendReview");
       } catch (error) {
