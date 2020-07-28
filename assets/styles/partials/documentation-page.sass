@@ -8,11 +8,11 @@
         margin-top: 100px
         .layout-container
             border-top: none
-    &-row 
+    &-row
         margin-top: 60px
         display: flex
         flex-wrap: wrap
-    &-item 
+    &-item
         width: 200px
         height: 240px
         margin-right: 44px
@@ -23,7 +23,7 @@
         font-weight: 500
         color: var(--text-color)
         border-radius: 8px
-        &:after 
+        &:after
             content: ''
             width: 0
             height: 0
@@ -33,14 +33,14 @@
             position: absolute
             right: 0
             top: 0
-        svg 
+        svg
             width: 24px
             height: 24px
             position: absolute
             left: 16px
             bottom: 24px
             z-index: 1
-        &:last-child 
+        &:last-child
             margin-right: 0
 @media (max-width: 1025px)
     .documentation
@@ -61,13 +61,14 @@
             padding-top: 40px
         .get-money
             margin-top: 40px
-        &-row 
+        &-row
             margin-top: 0
         &-item
-            margin-right: 0
-            width: 200px
-            margin: auto 
+            margin-right: 10px
+            width: 48%
             margin-bottom: 20px
-            &:last-child 
-                margin: auto
+            &:nth-child(even)
+                margin-right: 0
+            &:last-child
+                margin-right: 0
                 margin-bottom: 20px

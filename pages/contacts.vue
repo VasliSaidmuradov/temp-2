@@ -15,11 +15,11 @@
         </div>
         <div class="contacts-right">
             <p class="contacts-label animation-item">{{ langs[currentLang]['contacts.phone'] }}</p>
-            <a href="" class="contacts-text --icon animation-item">
+            <a :href="`tel:${settings.phone.value[currentLang]}`" class="contacts-text --icon animation-item">
                 <phone /> {{ settings.phone.value[currentLang] }}
             </a>
             <p class="contacts-label animation-item">{{ langs[currentLang]['contacts.email'] }}</p>
-            <a href="" class="contacts-text --icon animation-item">
+            <a :href="`mailto:${settings.email.value[currentLang]}`" class="contacts-text --icon animation-item">
                 <email /> {{ settings.email.value[currentLang] }}
             </a>
             <p class="contacts-label animation-item">{{ langs[currentLang]['contacts.address'] }}</p>

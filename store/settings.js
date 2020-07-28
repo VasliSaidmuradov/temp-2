@@ -9,8 +9,6 @@ export const mutations = {
 export const actions = {
   async fetchSettings(store) {
     const resp = await this.$api.get('/settings');
-    let data = {...resp};
-    let arr = [...resp];
     let obj = {}
 
     for (let i in resp) {

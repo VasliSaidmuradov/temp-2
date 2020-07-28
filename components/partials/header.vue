@@ -5,9 +5,9 @@
                 <img src="/icons/logo.svg" alt="CashU logo">
             </nuxt-link>
             <h4 class="header-title animation-item" v-html="langs[currentLang]['header.fast_microcredits']"></h4>
-            <a href="" class="header-phone animation-item">
+            <a :href="`tel:${settings.phone.value[currentLang]}`" class="header-phone animation-item">
                 <phone-icon />
-                +7 (701) 885-80-80
+                {{settings.phone.value[currentLang]}}
             </a>
             <p class="header-text animation-item">
                 <schedule-icon />
@@ -37,7 +37,7 @@
             </div>
             <button class="hamburger hamburger--3dy"
                 :class="{'is-active' : isOpen}"
-                @click="toggleMenu"
+                @click="openMenu"
                 type="button"
                 aria-label="Menu"
                 aria-controls="navigation">
@@ -46,7 +46,6 @@
                 </span>
             </button>
         </div>
-        <mob-menu @closeMenu="toggleMenu"/>
     </header>
 </template>
 
@@ -57,7 +56,6 @@ import profileIcon from '@/static/icons/user.svg'
 import ruIcon from '@/static/icons/ru.svg'
 import kzIcon from '@/static/icons/kz.svg'
 import arrow from '@/static/icons/arrow.svg'
-import mobMenu from '@/components/partials/mobile-menu'
 import animation from '@/mixins/animation'
 
 import { mapGetters } from 'vuex'
@@ -72,17 +70,17 @@ export default {
     },
     computed: {
         ...mapGetters({
+            settings: 'settings/GET_SETTINGS',
             langs: 'lang/GET_LANGS',
             currentLang: 'lang/GET_CURRENT_LANG',
         })
     },
     methods: {
-        toggleMenu() {
-            document.body.classList.toggle('--hidden')
-            this.isOpen = !this.isOpen
-        },
         toggleLang() {
             this.isLangOpen = !this.isLangOpen
+        },
+        openMenu() {
+            this.$store.commit('menu/SET_MENU_MODAL', true)
         },
         changeLang(lang) {
           this.$store.commit('lang/SET_CURRENT_LANG', lang)
@@ -93,7 +91,6 @@ export default {
         }
     },
     components: {
-        mobMenu,
         phoneIcon,
         scheduleIcon,
         profileIcon,

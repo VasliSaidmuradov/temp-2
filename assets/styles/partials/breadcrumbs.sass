@@ -1,16 +1,16 @@
 .breadcrumbs
     max-width: 1180px
     width: 100%
-    margin: auto 
+    margin: auto
     padding: 20px 0
-    a 
+    a
         font-size: em(12)
         font-weight: 400
         color: #93989D
         display: inline-block
         margin-right: 38px
         position: relative
-        &:after 
+        &:after
             content: ''
             width: 6px
             height: 6px
@@ -22,12 +22,10 @@
             transform: translateY(-50%)
     a:last-child
         color: var(--text-color)
-        &:after 
+        &:after
             display: none
 @media (max-width: 1025px)
     .breadcrumbs
         padding: 20px
 @media (max-width: 769px)
     .breadcrumbs
-        overflow-x: auto
-        white-space: nowrap

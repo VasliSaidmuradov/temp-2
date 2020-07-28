@@ -27,12 +27,12 @@
                 </div>
                 <div class="footer-col">
                     <p class="footer-subtitle animation-item">{{ langs[currentLang]['footer.phone'] }}</p>
-                    <a href="" class="footer-link animation-item --icon">
+                    <a :href="`tel:${settings.phone.value[currentLang]}`" class="footer-link animation-item --icon">
                         <phone />
                         <span>{{ settings.phone.value[currentLang] }}</span>
                     </a>
                     <p class="footer-subtitle animation-item">{{ langs[currentLang]['footer.email'] }}</p>
-                    <a href="" class="footer-link animation-item --icon">
+                    <a :href="`mailto:${settings.email.value[currentLang]}`" class="footer-link animation-item --icon">
                         <email />
                         <span>{{ settings.email.value[currentLang] }}</span>
                     </a>
@@ -40,7 +40,9 @@
             </div>
             <div class="footer-copyright">
                 <p class="footer-subtitle animation-item">{{ langs[currentLang]['footer.service_fast_loans'] }}</p>
-                <a href="https://brandstudio.kz" class="animation-item" target="_blank"><img src="/icons/brandstudio.png" alt="CashU logo"></a>
+                <p class="footer-subtitle animation-item">
+                    Разработано в <a href="https://brandstudio.kz" target="_blank"><b>BRAND</b>STUDIO</a>
+                </p>
             </div>
         </div>
     </footer>

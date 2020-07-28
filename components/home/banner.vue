@@ -3,6 +3,7 @@
     <!-- <pre>{{ langs[currentLang] }}</pre> -->
     <!-- <pre>{{ slides }}</pre> -->
     <div v-swiper:banner="options">
+      <div class="home-banner-pagination"></div>
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="slide in slides" :key="slide.id">
           <div class="home-banner-inner">
@@ -25,11 +26,11 @@
               {{ langs[currentLang]['body.details'] }}
             </a>
           </div>
-          <div class="home-banner-img-wrp">
-            <img
-              :src="slide.image
-                ? $imageLink(slide.image)
-                : require('@/static/img/banner.png')" alt="CashU image">
+          <div class="home-banner-img">
+            <img :src="slide.image ? $imageLink(slide.image) : require('@/static/img/banner.png')" alt="CashU image">
+          </div>
+          <div class="home-banner-img-mob">
+            <img :src="slide.mob_image ? $imageLink(slide.mob_image) : require('@/static/img/banner.png')" alt="CashU image">
           </div>
         </div>
       </div>
@@ -47,7 +48,12 @@ export default {
   data() {
     return {
       options: {
-        spaceBetween: 20
+        spaceBetween: 20,
+        pagination: {
+          el: '.home-banner-pagination',
+          type: 'bullets',
+          clickable: true
+        }
       }
     }
   },

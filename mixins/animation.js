@@ -5,7 +5,7 @@ export default {
 
             const scene = this.$scrollmagic.scene({
                 triggerElement: this.$refs.animationBlock,
-                triggerHook: 0.7
+                triggerHook: 0.9
             })
             .setTween(
                 gsap.from(item, {opacity: 0, y: 15, duration: 0.4, delay: 0.3, stagger: 0.1, ease: 'back.out(3)'})

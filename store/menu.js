@@ -1,6 +1,7 @@
 export const state = () => ({
     menu: null,
     footerMenu: null,
+    isMenuOpen: false
 })
 
 export const getters = {
@@ -13,12 +14,14 @@ export const getters = {
     GET_FOOTER_MENU(state) {
         return state.footerMenu
     },
+    GET_MENU_MODAL: state => state.isMenuOpen
 }
 
 export const mutations = {
     SET_MENU: (state, payload) => {
-      state.menu = payload.filter(menu => menu.level)
+        state.menu = payload.filter(menu => menu.level)
     },
+    SET_MENU_MODAL: (state, payload) => state.isMenuOpen = payload,
     SET_FOOTER_MENU: (state, payload) => {
         state.footerMenu = payload.filter(menu => !menu.level)
 

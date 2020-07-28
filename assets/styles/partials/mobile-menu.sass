@@ -1,13 +1,36 @@
 .mob-menu
-    background-color: #fff
-    position: absolute
-    top: 90px
+    position: fixed
+    top: 0
     left: 0
-    width: 100%
-    height: calc(100vh - 84px)
-    padding: 20px 20px 10vh
-    overflow-y: auto
+    z-index: 11
     display: none
+    width: 100%
+    height: 100vh
+    &-overlay
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        background-color: rgba(#000, 0.5)
+    &-inner
+        position: relative
+        z-index: 1
+        margin-left: auto
+        width: 85%
+        height: 100vh
+        overflow-y: auto
+        background-color: #fff
+        padding: 20px 20px 10vh
+        border-radius: 16px 0 0 0
+    &-close
+        text-align: right
+        button
+            padding: 0
+            background-color: transparent
+            display: inline-block
+            width: 32px
+            height: 32px
     &-lang-wrp
         display: flex
         align-items: center
@@ -20,16 +43,22 @@
             color: var(--text-color)
     &-current-lang
         display: flex
-        align-items: center
+        flex-direction: column
         font-size: em(12)
         font-weight: 400
         color: var(--text-color)
-        padding-right: 16px
-        border-right: 1px solid var(--line-color)
-        margin-right: 16px
         svg
             border-radius: 999px
             margin-right: 10px
+    &-lang
+        display: flex
+        align-items: center
+        margin-bottom: 20px
+        opacity: 0.5
+        &.--active
+            opacity: 1
+        &:last-child
+            margin-bottom: 0
     &-profile
         font-size: em(12)
         font-weight: 500
@@ -44,21 +73,21 @@
         background: rgba(237, 98, 43, 0.1)
     &-nav
         margin: 50px 0
-    &-link 
+    &-link
         font-size: em(16)
         font-weight: 500
         color: var(--text-color)
         opacity: 0.8
         display: block
         padding: 8px 0
-    &-phone 
+    &-phone
         font-size: em(16)
         font-weight: 500
         color: var(--text-color)
         display: flex
         align-items: center
         margin-bottom: 16px
-        svg 
+        svg
             margin-right: 16px
     &-schedule
         display: flex
@@ -67,7 +96,7 @@
         font-weight: 400
         color: var(--text-color)
         margin-bottom: 16px
-        svg 
+        svg
             margin-right: 16px
             flex-shrink: 0
     &-heading
@@ -79,7 +108,5 @@
         display: block
 @media (max-width: 426px)
     .mob-menu
-        height: calc(100vh - 54px)
-        top: 60px
         &-profile
             width: 100%
