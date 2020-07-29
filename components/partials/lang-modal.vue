@@ -39,9 +39,11 @@ export default {
         })
     },
     mounted() {
-        setTimeout(() => {
+        if (!localStorage.getItem('lang')) {
+          setTimeout(() => {
             this.$store.commit('lang/setModal', true)
-        }, 1000)
+          }, 1000)
+        }
     },
     methods: {
         closeModal() {

@@ -9,7 +9,7 @@ export const mutations = {
 export const actions = {
   async fetchBanners(store) {
     const resp = await this.$api.get('/banners')
-    console.log('banners: ', resp)
+    // console.log('banners: ', resp)
     store.commit('SET_BANNERS', resp)
   },
 }

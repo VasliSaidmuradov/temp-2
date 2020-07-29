@@ -9,7 +9,7 @@
                 :class="{'--active' : currentTab === 'repeated'}"
                 @click="currentTab = 'repeated', currentGroup = 'REGULAR'">{{ langs[currentLang]['calculator.repeated_loan'] }}</button>
         </div>
-        <div class="calculator-row"> <!-- v-if="currentTab === 'first'" -->
+        <div class="calculator-row">
             <div class="calculator-left">
                 <div class="calculator-slider-wrp">
                     <button class="calculator-decrease" @click="decrease">
@@ -26,7 +26,7 @@
                     <client-only>
                         <round-slider
                             class="calculator-curved-slider"
-                            editable-tooltip="false"
+                            editable-tooltip="true"
                             handle-size="68"
                             line-cap="round"
                             width="8"
@@ -50,21 +50,36 @@
                 </div>
                 <div class="calculator-date-wrp">
                     <!-- <pre>{{ sliderValue }}</pre> -->
-                    <div class="calculator-date-tooltip"> {{ term.text[currentLang] }} </div>
+                    <!-- <div class="calculator-date-tooltip">{{ term.text[currentLang] }} </div> -->
+                    
+                    <input
+                      type="number"
+                      :min="minMaxTerm[0]"
+                      :max="minMaxTerm[1]"
+                      v-model="dateVal"
+                      @change="onDateChange"
+                      @input="clearErrorMsg"
+                      class="calculator-date-tooltip"
+                      >
                     <client-only>
                         <vue-slider
                             :tooltip="'none'"
                             :contained="true"
                             :dotSize="60"
-                            :min="5"
-                            :max="30"
-                            :data="data"
+                            :min="minMaxTerm[0]"
+                            :max="minMaxTerm[1]"
                             :marks="false"
-                            v-model="term" />
+                            v-model="dateVal"
+                            @error="error"
+                            @change="clearErrorMsg"
+                            class="calculator-date-slider"
+                            />
                     </client-only>
+                   
                     <div class="calculator-date-marks">
                       <span v-for="(mark, index) in marks" :key="index">{{ mark[currentLang] }}</span>
                     </div>
+                    <p>{{ errorMsg }}</p>
                 </div>
                 <div class="calculator-mobile">
                     <div class="calculator-promo-wrp">
@@ -107,7 +122,7 @@
                 <div class="calculator-btn-wrp">
                     <button class="button" @click="sendMoney">
                       {{ langs[currentLang]['calculator.get_money'] }}
-                      <span class="calculator-btn-amount">{{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.totalReturnAmount)) : 0 }} ₸</span>
+                      <span class="calculator-btn-amount">{{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.principal)) : 0 }} ₸</span>
                     </button>
                 </div>
             </div>
@@ -148,7 +163,7 @@
                     <div class="calculator-col">
                         <div class="calculator-col-inner">
                             <p class="calculator-label">{{ langs[currentLang]['calculator.for_period'] }}</p>
-                            <p class="calculator-text">{{ term.val }} {{ langs[currentLang]['calculator.days'] }}</p>
+                            <p class="calculator-text">{{ dateVal }} {{ langs[currentLang]['calculator.days'] }}</p>
                         </div>
                     </div>
                 </div>
@@ -188,6 +203,14 @@
 </template>
 
 <script>
+const ERROR_TYPE = {
+    VALUE: 1,
+    INTERVAL: 2,
+    MIN: 3,
+    MAX: 4,
+    ORDER: 5,
+  }
+
 import rangeArrow from '@/static/icons/range-arrow.svg'
 import bag from '@/static/icons/bag.svg'
 import calender from '@/static/icons/calender.svg'
@@ -204,9 +227,11 @@ export default {
     },
     data() {
         return {
+            dateVal: 5,
             sliderValue: 5000,
             step: 25000,
             radius: 450,
+            daysLang: { ru: 'дней', kk: 'күн'},
             term: { val: 5, text: { ru: '5 дней', kk: '5 күн'} },
             marks: [
                 { ru: '5 дней', kk: '5 күн'},
@@ -216,87 +241,7 @@ export default {
                 { ru: '25 дней', kk: '25 күн'},
                 { ru: '30 дней', kk: '30 күн'}
             ],
-            data: [
-              {
-                val: 5,
-                text: { ru: '5 дней', kk: '5 күн'}
-              },{
-                val: 6,
-                text: { ru: '6 дней', kk: '6 күн'}
-              },{
-                val: 7,
-                text: { ru: '7 дней', kk: '7 күн'}
-              },{
-                val: 8,
-                text: { ru: '8 дней', kk: '8 күн'}
-              },{
-                val: 9,
-                text: { ru: '9 дней', kk: '9 күн'}
-              },{
-                val: 10,
-                text: { ru: '10 дней', kk: '10 күн'}
-              },{
-                val: 11,
-                text: { ru: '11 дней', kk: '11 күн'}
-              },{
-                val: 12,
-                text: { ru: '12 дней', kk: '12 күн'}
-              },{
-                val: 13,
-                text: { ru: '13 дней', kk: '13 күн'}
-              },{
-                val: 14,
-                text: { ru: '14 дней', kk: '14 күн'}
-              },{
-                val: 15,
-                text: { ru: '15 дней', kk: '15 күн'}
-              },{
-                val: 16,
-                text: { ru: '16 дней', kk: '16 күн'}
-              },{
-                val: 17,
-                text: { ru: '17 дней', kk: '17 күн'}
-              },{
-                val: 18,
-                text: { ru: '18 дней', kk: '18 күн'}
-              },{
-                val: 19,
-                text: { ru: '19 дней', kk: '19 күн'}
-              },{
-                val: 20,
-                text: { ru: '20 дней', kk: '20 күн'}
-              },{
-                val: 21,
-                text: { ru: '21 дней', kk: '21 күн'}
-              },{
-                val: 22,
-                text: { ru: '22 дней', kk: '22 күн'}
-              },{
-                val: 23,
-                text: { ru: '23 дней', kk: '23 күн'}
-              },{
-                val: 24,
-                text: { ru: '24 дней', kk: '24 күн'}
-              },{
-                val: 25,
-                text: { ru: '25 дней', kk: '25 күн'}
-              },{
-                val: 26,
-                text: { ru: '26 дней', kk: '26 күн'}
-              },{
-                val: 27,
-                text: { ru: '27 дней', kk: '27 күн'}
-              },{
-                val: 28,
-                text: { ru: '28 дней', kk: '28 күн'}
-              },{
-                val: 29,
-                text: { ru: '29 дней', kk: '29 күн'}
-              },{
-                val: 30,
-                text: { ru: '30 дней', kk: '30 күн'}
-              }
-            ],
+            minMaxTerm: [5, 30],
             currentTab: 'first',
             promoCode: null,
             currentGroup: 'BASIC',
@@ -304,6 +249,7 @@ export default {
             isCodeApplied: false,
             timeoutId: null,
             loading: false,
+            errorMsg: '',
         }
     },
     mounted() {
@@ -377,6 +323,29 @@ export default {
             if (this.sliderValue <= 5000) return
             this.sliderValue -= this.step
         },
+        error(type, msg) {
+          switch (type) {
+            case ERROR_TYPE.MIN:
+              this.errorMsg = 'Минимальный срок 5 дней'
+              break
+            case ERROR_TYPE.MAX:
+              this.errorMsg = 'Максимальный срок 30 дней'
+              break
+            case ERROR_TYPE.VALUE:
+              this.errorMsg = ''
+              break
+          }
+          // this.errorMsg = msg;
+        },
+        clearErrorMsg() {
+          this.errorMsg = ''
+        },
+        onDateInput(e) {
+          return
+        },
+        onDateChange(value) {
+          return
+        },
         async applyPromoCode() {
             this.code = this.promoCode;
             this.isCodeApplied = true;
@@ -414,7 +383,7 @@ export default {
         },
         sendMoney() {
           let url = 'https://my.cashu.kz/auth/registration';
-          window.open(`${url}?loanAmount=${this.sliderValue}&period=${this.term.val}`, '_blank');
+          window.open(`${url}?loanAmount=${this.sliderValue}&period=${this.term.val}&lang=${this.currentLang}`, '_blank');
         },
     },
 }

@@ -31,7 +31,9 @@
             transition: transform 0.3s ease
             transform: rotateY(90deg)
         &-amount
-            display: none
+            display: inline
+            font-size: 1.2em
+            padding-left: 0.5em
         &.--active
             color: #ED622B
             &:after
@@ -202,12 +204,14 @@
             transform: rotate(-180deg)
     &-date-tooltip
         padding: 15px
+        padding-bottom: 30px
         border-radius: 8px 8px 0 0
         border: 1px solid var(--line-color)
         font-size: em(14)
-        font-weight: 400
+        font-weight: 600
         color: var(--text-color)
         margin-bottom: -30px
+        width: 100%;
     &-date-wrp
         max-width: 556px
         margin: auto
@@ -244,6 +248,7 @@
     &-mobile
         display: none
     .vue-slider
+        margin-top: -1px
         &:before
             content: ''
             width: 32px
@@ -328,10 +333,6 @@
             padding: 0 20px
             .button
                 width: 100%
-        &-btn-amount
-            display: inline
-            font-size: 1.2em
-            padding-left: 0.5em
 @media (max-width: 815px)
     .calculator
         &-increase,

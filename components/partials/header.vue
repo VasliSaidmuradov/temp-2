@@ -13,7 +13,7 @@
                 <schedule-icon />
                 <span v-html="langs[currentLang]['header.schedule']"></span>
             </p>
-            <a class="header-profile animation-item" href="https://my.cashu.kz/auth/login" target="_blank">
+            <a class="header-profile animation-item" :href="`https://my.cashu.kz/auth/login?lang=${currentLang}`" target="_blank">
                 <profile-icon />
                 {{ langs[currentLang]['header.lc'] }}
             </a>

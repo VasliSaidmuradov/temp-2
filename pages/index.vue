@@ -1,6 +1,5 @@
 <template>
     <div class="home-page">
-        <!-- <pre>{{ langs }}</pre> -->
         <banner />
         <calculator />
         <pros />

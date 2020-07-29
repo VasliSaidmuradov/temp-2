@@ -29,11 +29,13 @@ export default {
         }
     },
     mounted() {
-        const ms = 1000;
+        if (this.banners.length) {
+          const ms = 1000;
 
-        setTimeout(() => {
-            this.openModal()
-        }, this.banners[0].timer * ms)
+          setTimeout(() => {
+              this.openModal()
+          }, this.banners[0].timer * ms)
+        }
     },
     computed: {
       ...mapGetters({
