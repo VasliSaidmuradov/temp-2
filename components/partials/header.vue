@@ -62,7 +62,6 @@ import { mapGetters } from 'vuex'
 
 export default {
     components: {
-        mobMenu,
         phoneIcon,
         scheduleIcon,
         profileIcon,
