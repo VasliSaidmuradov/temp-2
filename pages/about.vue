@@ -56,7 +56,8 @@ export default {
         block.forEach((b) => {
             let item = b.querySelectorAll('.animation-item')
             let aboutScene = this.$scrollmagic.scene({
-                    triggerElement: b
+                    triggerElement: b,
+                    triggerHook: 0.8
                 })
                 .setTween(
                     gsap.from(item, {

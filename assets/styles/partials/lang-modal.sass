@@ -5,9 +5,6 @@
     height: 100vh
     top: 0
     left: 0
-    display: flex
-    align-items: center
-    justify-content: center
     &-overlay
         position: absolute
         width: 100%
@@ -15,20 +12,75 @@
         top: 0
         left: 0
         background-color: rgba(#000, 0.5)
+    .layout-container
+        max-width: 1360px
+        position: absolute
+        left: 50%
+        top: 75px
+        z-index: 1
+        transform: translateX(-50%)
+        display: flex
+        justify-content: flex-end
     &-inner
         background-color: #fff
         box-shadow: 0px 4px 20px rgba(92, 102, 113, 0.1)
         border-radius: 8px
-        width: 300px
-        padding: 10px 0
+        width: 240px
+        padding: 20px
         position: relative
-        z-index: 1
-    &-item 
+        &:after
+            content: ''
+            width: 12px
+            height: 6px
+            background: url('/icons/triangle.png') center no-repeat
+            background-size: cover
+            position: absolute
+            top: -6px
+            right: 40px
+    &-txt
+        text-align: center
+        font-size: em(14)
+        font-weight: 500
+        color: var(--text-color)
+    &-item
         font-size: em(14)
         font-weight: 400
         color: var(--text-color)
         display: flex
         align-items: center
-        padding: 12px
-        svg 
+        padding: 10px
+        background-color: #F7F9FA
+        border-radius: 28px
+        margin-top: 8px
+        &:first-of-type
+            margin-top: 20px
+        svg
             margin-right: 10px
+    &-close
+        background-color: transparent
+        padding: 0
+        width: 32px
+        height: 32px
+        margin-left: auto
+        display: block
+@media (max-width: 1367px)
+    .lang-modal
+        .layout-container
+            padding: 0 40px
+@media (max-width: 815px)
+    .lang-modal
+        .layout-container
+            width: 100%
+            top: 0
+            left: 0
+            padding: 0
+            transform: translateX(0)
+        &-inner
+            width: 100%
+            border-radius: 0 0 20px 20px
+            &:after
+                display: none
+        &-item
+            max-width: 250px
+            margin: auto
+            margin-top: 8px

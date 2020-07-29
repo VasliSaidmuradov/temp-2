@@ -1,16 +1,22 @@
 <template>
   <div class="loan-hero" ref="animationBlock">
-    <div class="layout-container">
+    <div class="loan-hero-image">
+      <img :src="page.extras[currentLang].image
+                ? $imageLink(page.extras[currentLang].image)
+                : require('@/static/img/repay-loan-hero.png')"
+        alt="CashU image">
+    </div>
+    <div class="loan-hero-image-mob">
+      <img :src="page.extras[currentLang].mob_image
+                ? $imageLink(page.extras[currentLang].mob_image)
+                : require('@/static/img/repay-loan-hero.png')"
+        alt="CashU image">
+    </div>
+    <!-- <div class="layout-container">
       <div class="loan-hero-row">
         <p class="loan-hero-title animation-item">{{ page.extras[currentLang].name_in_first }}</p>
-        <div class="loan-hero-image">
-          <img
-            :src="page.extras[currentLang].image ? $imageLink(page.extras[currentLang].image) : require('@/static/img/repay-loan-hero.png')"
-            alt="CashU image"
-            class="animation-item">
-        </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

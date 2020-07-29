@@ -1,18 +1,15 @@
 .loan-hero
-    min-height: 500px
-    border-radius: 40px 40px 0px 0px
     background-color: var(--color-base)
-    display: flex
-    align-items: center
-    justify-content: center
-    &-image
-        width: 390px
-        // height: 390px
-        max-height: 390px
+    border-radius: 40px 40px 0px 0px
+    &-image,
+    &-image-mob
         img
             width: 100%
-            // height: 100%
-            // object-fit: cover
+            height: 500px
+            object-fit: cover
+            border-radius: 40px 40px 0px 0px
+    &-image-mob
+        display: none
     &.--yellow
         background-color: #FFF7EC
     &-row
@@ -30,14 +27,14 @@
         &-row
             padding: 0 20px
         &-image
-            width: 250px
-            // height: 250px
-            max-height: 250px
+            display: none
+        &-image-mob
+            display: block
 @media (max-width: 769px)
     .loan-hero
         &-row
             display: block
             text-align: center
-        &-image
-            margin: auto
-            margin-top: 40px
+        &-image-mob
+            img
+                height: 375px

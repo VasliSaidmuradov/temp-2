@@ -19,21 +19,23 @@
         font-weight: 500
         color: #93989D
         margin-right: 8px
-        box-shadow: 0px 4px 20px rgba(92, 102, 113, 0.1)
+        position: relative
+        &:after
+            content: ''
+            width: 100%
+            height: 2px
+            background: #ED622B
+            position: absolute
+            bottom: 0
+            left: 0
+            transition: transform 0.3s ease
+            transform: rotateY(90deg)
         &-amount
             display: none
         &.--active
             color: #ED622B
-            position: relative
             &:after
-                content: ''
-                width: 100%
-                height: 20px
-                background-color: #fff
-                position: absolute
-                left: 0
-                bottom: -20px
-                z-index: 1
+                transform: rotateY(0)
     &-row
         display: flex
     &-left
@@ -330,6 +332,18 @@
             display: inline
             font-size: 1.2em
             padding-left: 0.5em
+@media (max-width: 815px)
+    .calculator
+        &-increase,
+        &-decrease
+            display: none
+        &-label
+            opacity: 0
+            visibility: hidden
+            &:first-child,
+            &:last-child
+                opacity: 1
+                visibility: visible
 @media (max-width: 426px)
     .calculator
         &-btn
@@ -341,16 +355,18 @@
             font-size: 1em
         &-left
             padding: 20px 0
+            padding-top: 0
         &-curved-slider
-            margin-top: -555px
+            margin-top: -590px
             margin-left: -140px
         &-slider-wrp
+            padding-bottom: 35px
             .rs-tooltip
-                bottom: 11%
+                bottom: 7%
         &-date-wrp
             padding: 0 20px
         &-tooltip-wrp
-            bottom: 115px
+            bottom: 110px
             p
                 margin-right: 30px
                 font-size: em(10)
@@ -362,6 +378,9 @@
                     transform: translateY(45px)
         &-input
             padding-right: 16px
+        &-list,
+        &-btn-wrp
+            margin-top: 20px
 @media (max-width: 376px)
     .calculator
         &-btn

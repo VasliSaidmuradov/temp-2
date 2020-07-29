@@ -1,7 +1,7 @@
 .about-page
     .subscribe
         margin-top: 80px
-    &-row 
+    &-row
         display: flex
         align-items: center
         justify-content: space-between
@@ -14,32 +14,31 @@
         overflow: hidden
         position: relative
         &.--white
-            &:after 
+            &:after
                 content: ''
-                width: 326px
-                height: 326px
-                border-radius: 999px
-                border: 70px solid #5AE0B6
+                width: 205px
+                height: 235px
+                background: url('/icons/u-icon.svg') center no-repeat
+                background-size: cover
                 position: absolute
                 right: 0
                 top: 50%
-                opacity: 0.5
-                transform: translate(50%, -50%)
+                transform: translate(30%, -50%)
         &.--black
             background-color: var(--text-color)
             .about-page-txt,
             .section-title
                 color: #ffffff
-            &:after 
+            &:after
                 content: ''
-                width: 743px
-                height: 743px
-                border-radius: 999px
-                border: 160px solid #5AE0B6
+                width: 200px
+                height: 221px
+                background: url('/icons/c-icon.svg') center no-repeat
+                background-size: cover
                 position: absolute
                 left: 0
                 top: 50%
-                transform: translate(-50%, -50%)
+                transform: translate(-40%, -50%)
     &-txt-wrp
         max-width: 380px
         position: relative
@@ -47,19 +46,19 @@
     &-img-wrp
         position: relative
         z-index: 1
-    &-img-wrp img 
+    &-img-wrp img
         max-width: 560px
-    &-txt 
+    &-txt
         font-size: em(14)
         font-weight: 400
         color: var(--text-color)
         margin-top: 16px
 @media (max-width: 1025px)
     .about-page
-        &-row 
+        &-row
             padding: 0 20px
         &-img-wrp
-            img 
+            img
                 max-width: 400px
 @media (max-width: 769px)
     .about-page
@@ -68,7 +67,7 @@
             padding: 50px 20px
         &-inner
             &.--black
-                &:after 
+                &:after
                     width: 600px
                     height: 600px
                     border-width: 100px
@@ -78,26 +77,26 @@
             max-width: 100%
         &-img-wrp
             width: 100%
-            img 
+            img
                 margin: auto
 @media (max-width: 426px)
     .about-page
         .section-title
             padding: 0
         &-img-wrp
-            img 
+            img
                 max-width: 300px
         &-inner
             &.--white
-                &:after 
+                &:after
                     width: 216px
                     height: 216px
                     border-width: 40px
             &.--black
-                &:after 
+                &:after
                     width: 216px
                     height: 216px
                     border-width: 40px
                     top: 30%
-                .about-page-img-wrp img 
+                .about-page-img-wrp img
                     max-width: 220px

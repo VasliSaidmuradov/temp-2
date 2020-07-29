@@ -40,7 +40,9 @@
             </div>
             <div class="footer-copyright">
                 <p class="footer-subtitle animation-item">{{ langs[currentLang]['footer.service_fast_loans'] }}</p>
-                <a href="https://brandstudio.kz" class="animation-item" target="_blank"><img src="/icons/brandstudio.png" alt="CashU logo"></a>
+                <p class="footer-subtitle animation-item">
+                    Разработано в <a href="https://brandstudio.kz" target="_blank"><b>BRAND</b>STUDIO</a>
+                </p>
             </div>
         </div>
     </footer>

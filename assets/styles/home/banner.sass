@@ -12,6 +12,18 @@
         padding: 40px 130px
         display: flex
         border-radius: 20px
+    .swiper-pagination-bullet
+        background: #fff
+        opacity: 0.5
+        &-active
+            opacity: 1
+    &-pagination
+        position: absolute
+        bottom: auto !important
+        top: 30px
+        z-index: 3
+        display: flex
+        justify-content: center
     &-inner
         position: relative
         z-index: 1
@@ -19,38 +31,53 @@
         flex-shrink: 0
     &-title
         font-size: em(32)
-        font-weight: 600 
+        font-weight: 600
         color: var(--text-color)
-    &-img-wrp
-        flex: 1
-        display: flex
-        justify-content: center
-        align-items: center
-    &-list 
+    &-img,
+    &-img-mob
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        img
+            width: 100%
+            height: 100%
+            object-fit: cover
+            border-radius: 20px
+    &-img-mob
+        display: none
+    &-list
         margin: 50px 0
-    &-list li 
+    &-list li
         margin-bottom: 20px
         display: flex
-        svg 
+        svg
             width: 24px
             height: 24px
             flex-shrink: 0
             margin-right: 16px
-    &-text 
+    &-text
         font-size: em(16)
         font-weight: 400
         color: var(--text-color)
-        b 
+        b
             display: block
 @media (max-width: 1025px)
     .home-banner
         .swiper-slide
             padding: 40px
+@media (max-width: 815px)
+    .home-banner
+        &-img
+            display: none
+        &-img-mob
+            display: block
 @media (max-width: 426px)
     .home-banner
         padding: 10px 10px 0 10px
         .swiper-container
-            height: auto 
+            height: auto
             min-height: 500px
         .swiper-slide
             min-height: 500px
@@ -59,10 +86,10 @@
             font-size: em(20)
         &-inner
             flex-shrink: initial
-        &-list 
+        &-list
             margin: 20px 0
-            li 
+            li
                 margin-bottom: 15px
-        &-text 
+        &-text
             font-size: em(12)
             max-width: 240px
