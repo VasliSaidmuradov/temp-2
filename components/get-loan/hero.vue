@@ -3,13 +3,13 @@
     <div class="loan-hero-image">
       <img :src="page.extras[currentLang].image
                 ? $imageLink(page.extras[currentLang].image)
-                : require('@/static/img/repay-loan-hero.png')"
+                : ''"
         alt="CashU image">
     </div>
     <div class="loan-hero-image-mob">
       <img :src="page.extras[currentLang].mob_image
                 ? $imageLink(page.extras[currentLang].mob_image)
-                : require('@/static/img/repay-loan-hero.png')"
+                : ''"
         alt="CashU image">
     </div>
     <!-- <div class="layout-container">

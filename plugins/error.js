@@ -1,4 +1,4 @@
-export default function({ store }, inject) {
+export default function ({ store }, inject) {
   inject('setError', (key, error) => {
     let err = {}
     err[key] = error

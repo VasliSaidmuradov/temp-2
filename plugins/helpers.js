@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-export default function({ app, store }, inject) {
+export default function ({ app, store }, inject) {
   moment.locale('ru')
 
   inject('chunk', (array = [], chunkSize = 3) => {

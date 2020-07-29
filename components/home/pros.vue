@@ -4,7 +4,7 @@
         <div class="home-pros-row">
             <div class="home-pros-col animation-item" v-for="(item, i) in extras" :key="i">
                 <div class="home-pros-img-wrp">
-                    <img :src="item.image ? $imageLink(item.image) : require('@/static/img/pros1.png')" alt="CashU image">
+                    <img :src="item.image ? $imageLink(item.image) : ''" alt="CashU image">
                 </div>
                 <h4 class="home-pros-title">{{ item.name }}</h4>
                 <p class="home-pros-text">{{ item.description }}</p>

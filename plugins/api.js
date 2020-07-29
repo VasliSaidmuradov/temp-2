@@ -25,22 +25,22 @@ export default function ({ $axios, store, app }, inject) {
       }
     },
 
-    async post(url, data = {}, error){
+    async post(url, data = {}, error) {
       data['_method'] = 'POST'
-      return await this.sendRequest(url, data. error)
+      return await this.sendRequest(url, data.error)
     },
 
-    async put(url, data = {}, error = 'default'){
+    async put(url, data = {}, error = 'default') {
       data['_method'] = 'PUT'
       return await this.sendRequest(url, data, error)
     },
 
-    async sendRequest(url, data, error){
+    async sendRequest(url, data, error) {
       app.$setError(error, null)
 
       try {
-          const resp = await $axios.$post(url.includes('://') ? url : (this.baseURL + url), data)
-          return resp
+        const resp = await $axios.$post(url.includes('://') ? url : (this.baseURL + url), data)
+        return resp
       } catch (e) {
         app.$setError(error, e.response.data)
         return null

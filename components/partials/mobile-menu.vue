@@ -89,7 +89,7 @@ export default {
             this.$store.commit('menu/SET_MENU_MODAL', false)
         },
         loginLink() {
-          console.log('dsd')
+          // console.log('dsd')
           window.location.assign("https://my.cashu.kz/auth/login");
         },
         setLang(lang) {

@@ -25,8 +25,9 @@
       <textarea v-model="review.review" class="reviews-modal-input" :placeholder="langs[currentLang]['body.your_review']" required></textarea>
       <label class="reviews-modal-file-wrp">
         <input @change="addFile" type="file" />
-        {{ langs[currentLang]['body.put_file'] }}
-        <file-icon />
+        <p v-if="!file">{{ langs[currentLang]['body.put_file'] }}</p>
+        <file-icon v-if="!file" />
+        <p v-if="file">{{ file[0].name }}</p>
       </label>
       <button
         :disabled="!isSending && !isFormValidate"

@@ -10,7 +10,7 @@
     <h1 class="page-title">{{ page.title[currentLang] }}</h1>
     <div class="layout-container">
       <div class="documentation-row">
-        <a href="" download class="documentation-item" v-for="(doc, index) in documents" :key="index">
+        <a href download class="documentation-item" v-for="(doc, index) in documents" :key="index">
           {{ doc.name }}
           <download-icon />
         </a>
@@ -21,23 +21,23 @@
 </template>
 
 <script>
-import downloadIcon from '@/static/icons/open.svg'
-import getMoney from '@/components/partials/get-money'
-import { mapGetters } from 'vuex'
+import downloadIcon from "@/static/icons/open.svg";
+import getMoney from "@/components/partials/get-money";
+import { mapGetters } from "vuex";
 
 export default {
-  middleware: ['page'],
+  middleware: ["page"],
   components: {
     downloadIcon,
-    getMoney
+    getMoney,
   },
   computed: {
     ...mapGetters({
-      page: 'pages/GET_PAGE',
-      documents: 'pages/GET_DOCS',
-      currentLang: 'lang/GET_CURRENT_LANG',
-      langs: 'lang/GET_LANGS',
+      page: "pages/GET_PAGE",
+      documents: "pages/GET_DOCS",
+      currentLang: "lang/GET_CURRENT_LANG",
+      langs: "lang/GET_LANGS",
     }),
-  }
-}
+  },
+};
 </script>

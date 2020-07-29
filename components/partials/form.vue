@@ -1,19 +1,33 @@
 <template>
-    <div class="form">
-        <p class="form-label animation-item">{{ langs[currentLang]['contacts.your_name'] }}</p>
-        <input v-model="data.name" type="text" name="name" class="form-input animation-item" :placeholder="langs[currentLang]['contacts.input_name']">
-        <p class="form-label animation-item">{{ langs[currentLang]['contacts.email'] }}</p>
-        <input v-model="data.email" type="email" name="mail" class="form-input animation-item" :placeholder="langs[currentLang]['contacts.input_email']">
-        <button
-          :disabled="!isSending && !isFormValidate"
-          class="button animation-item"
-          :class="{ '--disabled-button': !isSending && !isFormValidate }"
-          @click.prevent="send"
-          >{{ langs[currentLang]['body.subscribe'] }}</button>
-    </div>
+  <div class="form">
+    <p class="form-label animation-item">{{ langs[currentLang]['contacts.your_name'] }}</p>
+    <input
+      v-model="data.name"
+      type="text"
+      name="name"
+      class="form-input animation-item"
+      :placeholder="langs[currentLang]['contacts.input_name']"
+      autocomplete="off"
+    />
+    <p class="form-label animation-item">{{ langs[currentLang]['contacts.email'] }}</p>
+    <input
+      v-model="data.email"
+      type="email"
+      name="mail"
+      class="form-input animation-item"
+      :placeholder="langs[currentLang]['contacts.input_email']"
+      autocomplete="off"
+    />
+    <button
+      :disabled="!isSending && !isFormValidate"
+      class="button animation-item"
+      :class="{ '--disabled-button': !isSending && !isFormValidate }"
+      @click.prevent="send"
+    >{{ langs[currentLang]['body.subscribe'] }}</button>
+  </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
   data() {
@@ -23,12 +37,12 @@ export default {
         email: null,
       },
       isSending: false,
-    }
+    };
   },
   computed: {
     ...mapGetters({
-      currentLang: 'lang/GET_CURRENT_LANG',
-      langs: 'lang/GET_LANGS',
+      currentLang: "lang/GET_CURRENT_LANG",
+      langs: "lang/GET_LANGS",
     }),
     isFormValidate() {
       const regexp = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gm;
@@ -39,7 +53,10 @@ export default {
     async send() {
       try {
         this.isSending = true;
-        const resp = await this.$axios.post('https://admin.cashu.kz/api/subscribe', this.data);
+        const resp = await this.$axios.post(
+          "https://admin.cashu.kz/api/subscribe",
+          this.data
+        );
       } catch (error) {
         console.log(error);
       } finally {
@@ -47,7 +64,7 @@ export default {
         this.data.name = null;
         this.data.email = null;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>

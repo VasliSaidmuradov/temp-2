@@ -25,7 +25,7 @@
                     </p>
                 </div>
                 <div class="loan-steps-right animation-item">
-                    <img :src="step.image ? $imageLink(step.image) : require('@/static/img/loan-steps1.png')" alt="CashU image">
+                    <img v-if="step.image" :src="step.image ? $imageLink(step.image) : ''" alt="CashU image">
                 </div>
             </div>
 

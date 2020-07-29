@@ -75,7 +75,7 @@ export default {
       window.scrollTo(0, 0);
     },
     async changePage() {
-      console.log('change page')
+      // console.log('change page')
       try {
         this.isBusy = true;
         // await this.paginate(this.paginator);

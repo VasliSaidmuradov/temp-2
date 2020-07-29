@@ -11,7 +11,7 @@
       <nuxt-link to>{{ page.title[currentLang] }}</nuxt-link>
     </div>
 
-    <!-- <pre>{{ page }}</pre> -->
+    <!-- <pre>{{ reviews }}</pre> -->
     <!-- <pre>{{ langs[currentLang] }}</pre> -->
 
     <div class="layout-container">
@@ -55,7 +55,12 @@
               <p class="reviews-city">{{ review.city }}</p>
             </div>
             <p class="reviews-text">{{ review.review }}</p>
-            <video v-if="review.file" :src="review.file"></video>
+            <video
+              class="reviews-video"
+              v-if="review.file"
+              :src="'https://admin.cashu.kz/uploads/' + review.file"
+              controls
+            ></video>
             <!-- <vue-plyr>
                             <div data-plyr-provider="youtube" data-plyr-embed-id="gysSvbIxB4Q"></div>
             </vue-plyr>-->

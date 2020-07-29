@@ -10,15 +10,16 @@
       <div class="faq-text animation-item" v-html="langs[currentLang]['body.security_ur_money']"></div>
       <div class="faq-container">
         <div
-          v-for="(faq, index) in faqList.data" :key="index"
+          v-for="(faq, index) in faqList.data"
+          :key="index"
           class="faq-dropdown animation-item"
           @click="toggleDropdown(index)"
-          >
+        >
           <div class="faq-question">{{ faq.name[currentLang] }}</div>
           <transition name="dropdown-fade">
             <div class="faq-answer" v-if="index === activeDropdownIndex">
               <p>{{ faq.description[currentLang] }}</p>
-              <img :src="faq.image ? faq.image : require('@/static/img/faq.png')" alt="CashU image">
+              <img :src="faq.image ? faq.image : require('@/static/img/faq.png')" alt="CashU image" />
             </div>
           </transition>
         </div>
@@ -28,33 +29,33 @@
 </template>
 
 <script>
-import animation from '@/mixins/animation'
-import { mapGetters } from 'vuex'
+import animation from "@/mixins/animation";
+import { mapGetters } from "vuex";
 
 export default {
   mixins: [animation],
-  middleware: ['page', 'faq'],
+  middleware: ["page", "faq"],
   data() {
     return {
-      activeDropdownIndex: null
-    }
+      activeDropdownIndex: null,
+    };
   },
   computed: {
     ...mapGetters({
-      page: 'pages/GET_PAGE',
-      currentLang: 'lang/GET_CURRENT_LANG',
-      langs: 'lang/GET_LANGS',
-      faqList: 'faq/GET_FAQ',
+      page: "pages/GET_PAGE",
+      currentLang: "lang/GET_CURRENT_LANG",
+      langs: "lang/GET_LANGS",
+      faqList: "faq/GET_FAQ",
     }),
   },
   methods: {
     toggleDropdown(i) {
       if (i === this.activeDropdownIndex) {
-        this.activeDropdownIndex = null
+        this.activeDropdownIndex = null;
       } else {
-        this.activeDropdownIndex = i
+        this.activeDropdownIndex = i;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
