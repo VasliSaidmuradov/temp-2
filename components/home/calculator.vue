@@ -1,6 +1,6 @@
 <template>
     <div class="calculator">
-        <!-- <pre>{{ $roundMoney(5002.9) }}</pre> -->
+          <!-- <pre>{{ $roundMoney(5002.9) }}</pre> -->
         <div class="calculator-nav">
             <button class="calculator-btn"
                 :class="{'--active' : currentTab === 'first'}"

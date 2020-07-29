@@ -5,9 +5,9 @@
                 <img src="/icons/logo.svg" alt="CashU logo">
             </nuxt-link>
             <h4 class="header-title animation-item" v-html="langs[currentLang]['header.fast_microcredits']"></h4>
-            <a href="" class="header-phone animation-item">
+            <a v-if="settings.phone" :href="`tel:${settings.phone.value[currentLang]}`" class="header-phone animation-item">
                 <phone-icon />
-                +7 (701) 885-80-80
+                {{ settings.phone.value[currentLang] }}
             </a>
             <p class="header-text animation-item">
                 <schedule-icon />
@@ -63,6 +63,15 @@ import animation from '@/mixins/animation'
 import { mapGetters } from 'vuex'
 
 export default {
+    components: {
+        mobMenu,
+        phoneIcon,
+        scheduleIcon,
+        profileIcon,
+        ruIcon,
+        arrow,
+        kzIcon
+    },
     mixins: [animation],
     data() {
         return {
@@ -74,6 +83,7 @@ export default {
         ...mapGetters({
             langs: 'lang/GET_LANGS',
             currentLang: 'lang/GET_CURRENT_LANG',
+            settings: 'settings/GET_SETTINGS',
         })
     },
     methods: {
@@ -91,15 +101,6 @@ export default {
             localStorage.setItem('lang', this.currentLang)
           }
         }
-    },
-    components: {
-        mobMenu,
-        phoneIcon,
-        scheduleIcon,
-        profileIcon,
-        ruIcon,
-        arrow,
-        kzIcon
     },
 }
 </script>

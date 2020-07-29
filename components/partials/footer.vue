@@ -27,12 +27,12 @@
                 </div>
                 <div class="footer-col">
                     <p class="footer-subtitle animation-item">{{ langs[currentLang]['footer.phone'] }}</p>
-                    <a href="" class="footer-link animation-item --icon">
+                    <a v-if="settings.phone" :href="`tel:${settings.phone.value[currentLang]}`" class="footer-link animation-item --icon">
                         <phone />
                         <span>{{ settings.phone.value[currentLang] }}</span>
                     </a>
                     <p class="footer-subtitle animation-item">{{ langs[currentLang]['footer.email'] }}</p>
-                    <a href="" class="footer-link animation-item --icon">
+                    <a v-if="settings.email" :href="`mailto:${settings.email.value[currentLang]}`" class="footer-link animation-item --icon">
                         <email />
                         <span>{{ settings.email.value[currentLang] }}</span>
                     </a>
