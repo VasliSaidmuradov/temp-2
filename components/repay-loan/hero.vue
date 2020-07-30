@@ -1,5 +1,7 @@
 <template>
   <div class="loan-hero --yellow" ref="animationBlock">
+    <!-- <pre>{{ page }}</pre> -->
+    <p v-if="page.extras" class="loan-hero-title animation-item --black">{{ page.extras[currentLang].title_repay }}</p>
     <div class="loan-hero-image">
       <img
         v-if="page.extras[currentLang].image"
