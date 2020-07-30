@@ -15,22 +15,3 @@ export default {
   props: ["error"],
 };
 </script>
-
-<style lang="sass">
-.error-page
-	height: calc(100vh - 150px)
-	.layout-container
-		height: 100%
-		display: flex
-		align-items: center
-		justify-content: center
-		text-align: center
-		&-image
-			margin: auto
-		&-title
-			font-size: 20px
-			font-weight: 600
-			color: var(--text-color)
-			margin-top: 40px
-			margin-bottom: 40px
-</style>
