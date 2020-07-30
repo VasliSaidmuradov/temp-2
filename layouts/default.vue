@@ -68,7 +68,7 @@ export default {
     scroll() {
       let lastScrollTop = 0;
       let st = window.pageYOffset || document.documentElement.scrollTop;
-      let windowHeight = window.innerWidth < 1025 ? window.innerHeight * 1.5 : window.innerHeight;
+      let windowHeight = window.innerWidth < 1025 ? window.innerHeight * 2 : window.innerHeight;
       // if (window.innerWidth < 1025) return windowHeight * 2
       if (st > windowHeight) {
         document.querySelector(".floating-btn").classList.remove("--hidden");

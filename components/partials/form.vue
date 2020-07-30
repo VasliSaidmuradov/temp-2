@@ -8,6 +8,8 @@
       class="form-input animation-item"
       :placeholder="langs[currentLang]['contacts.input_name']"
       autocomplete="off"
+      @focus="hideCalc"
+      @blur="showCalc"
     />
     <p class="form-label animation-item">{{ langs[currentLang]['contacts.email'] }}</p>
     <input
@@ -17,6 +19,8 @@
       class="form-input animation-item"
       :placeholder="langs[currentLang]['contacts.input_email']"
       autocomplete="off"
+      @focus="hideCalc"
+      @blur="showCalc"
     />
     <button
       :disabled="!isSending && !isFormValidate"
@@ -50,6 +54,12 @@ export default {
     },
   },
   methods: {
+    hideCalc() {
+        document.querySelector('.floating-btn').classList.add('--hidden')
+    },
+    showCalc() {
+        document.querySelector('.floating-btn').classList.remove('--hidden')
+    },
     async send() {
       try {
         this.isSending = true;

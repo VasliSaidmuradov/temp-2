@@ -111,11 +111,11 @@
               <li v-if="paymentShedule && paymentShedule.promoCodeStatus === 'ok'">
                 <p class="calculator-list-text">{{ langs[currentLang]['calculator.reward'] }}</p>
                 <p
-                  class="calculator-list-text --large --red"
-                >{{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.interestWithDiscount)) : 0 }} ₸</p>
-                <p
                   class="calculator-list-text --large --gray"
-                >{{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.interestWithoutDiscount)) : 0 }} ₸</p>
+                >
+                  <span class="--red">{{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.interestWithDiscount)) : 0 }} ₸</span>
+                  <span class="--gray">{{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.interestWithoutDiscount)) : 0 }} ₸</span>
+                </p>
               </li>
               <li v-if="paymentShedule && paymentShedule.promoCodeStatus === 'ok'">
                 <p class="calculator-list-text --red">{{ langs[currentLang]['body.discount'] }}</p>
@@ -123,10 +123,10 @@
                   class="calculator-list-text --large --red"
                 >{{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.interestDiscountPercent)) : 0 }} %</p>
               </li>
-              <!-- <li v-if="paymentShedule && paymentShedule.promoCodeStatus !== 'ok'">
-                                <p class="calculator-list-text">{{ langs[currentLang]['calculator.reward'] }}</p>
-                                <p class="calculator-list-text --large">{{ paymentShedule ? $formatMoney($roundMoney(400)) : 0 }} ₸</p>
-              </li>-->
+              <li v-if="paymentShedule && paymentShedule.promoCodeStatus !== 'ok'">
+                <p class="calculator-list-text">{{ langs[currentLang]['calculator.reward'] }}</p>
+                <p class="calculator-list-text --large">{{ paymentShedule ? $formatMoney($roundMoney(paymentShedule.interestWithoutDiscount)) : 0 }} ₸</p>
+              </li>
               <li>
                 <p class="calculator-list-text">{{ langs[currentLang]['calculator.refund_amount'] }}</p>
                 <p
