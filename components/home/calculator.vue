@@ -307,7 +307,7 @@ export default {
     },
     sliderValue: function () {
       try {
-        this.loading = true;
+        // this.loading = true;
         if (this.timeoutId) {
           clearTimeout(this.timeoutId);
         }
@@ -318,13 +318,13 @@ export default {
       } catch (e) {
         console.log(e);
       } finally {
-        setTimeout(() => (this.loading = false), 200);
+        // setTimeout(() => (this.loading = false), 200);
       }
     },
     "dateVal": function (val) {
       try {
         if (val < 5 || val > 30) return
-        this.loading = true;
+        // this.loading = true;
         if (this.timeoutId) {
           clearTimeout(this.timeoutId);
         }
@@ -335,7 +335,7 @@ export default {
       } catch (e) {
         console.log(e);
       } finally {
-        setTimeout(() => (this.loading = false), 200);
+        // setTimeout(() => (this.loading = false), 200);
       }
     },
   },
@@ -391,28 +391,30 @@ export default {
       this.code = this.promoCode;
       this.isCodeApplied = true;
       try {
-        this.loading = true;
         await this.calculate();
       } catch (e) {
         console.log(e);
       } finally {
-        setTimeout(() => (this.loading = false), 200);
       }
     },
     async calculate() {
+      this.loading = true;
+      // this.isSendingRequest = true;
+
       const requestData = {
         amount: this.sliderValue,
         term: this.dateVal,
         promoCode: this.promoCode,
         group: this.currentGroup,
       };
-      this.isSendingRequest = true;
+      
       try {
         await this.fetchPaymentShedule(requestData);
       } catch (error) {
         console.log(error);
       } finally {
-        setTimeout(() => (this.isSendingRequest = false), 200);
+        // setTimeout(() => (this.isSendingRequest = false), 200);
+        setTimeout(() => (this.loading = false), 200);
       }
     },
     reCalc(e) {
