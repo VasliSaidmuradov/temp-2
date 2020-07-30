@@ -430,7 +430,7 @@ export default {
           ? "https://my.cashu.kz/auth/registration"
           : "https://my.cashu.kz/auth/login";
       window.open(
-        `${url}?loanAmount=${this.sliderValue}&period=${this.dateVal}&group=${this.currentGroup}&lang=${this.currentLang}`,
+        `${url}?loanAmount=${this.sliderValue}&period=${this.dateVal}&group=${this.currentGroup}&promoCode=${this.promoCode}&lang=${this.currentLang}`,
         "_blank"
       );
     },
