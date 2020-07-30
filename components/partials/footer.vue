@@ -14,13 +14,13 @@
             v-html="langs[currentLang]['footer.on_social_media']"
           ></div>
           <div class="footer-socials">
-            <a :href="settings.instagram.value[currentLang]" class="animation-item" target="_blank">
+            <a v-if="settings.instagram.value[currentLang]" :href="settings.instagram.value[currentLang]" class="animation-item" target="_blank">
               <insta />
             </a>
-            <a :href="settings.vk.value[currentLang]" class="animation-item" target="_blank">
+            <a v-if="settings.vk.value[currentLang]" :href="settings.vk.value[currentLang]" class="animation-item" target="_blank">
               <vk />
             </a>
-            <a :href="settings.facebook.value[currentLang]" class="animation-item" target="_blank">
+            <a v-if="settings.facebook.value[currentLang]" :href="settings.facebook.value[currentLang]" class="animation-item" target="_blank">
               <facebook />
             </a>
           </div>

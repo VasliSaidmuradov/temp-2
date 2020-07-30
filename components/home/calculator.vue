@@ -54,8 +54,6 @@
         </div>
         <div class="calculator-date-wrp">
           <p class="--error-text">{{ errorMsg }}</p>
-          <!-- <pre>{{ sliderValue }}</pre> -->
-          <!-- <div class="calculator-date-tooltip">{{ term.text[currentLang] }} </div> -->
 
           <input
             type="number"
@@ -82,9 +80,11 @@
           </client-only>
 
           <div class="calculator-date-marks">
-            <span v-for="(mark, index) in marks" :key="index">{{ mark[currentLang] }}</span>
+            <div class="--web"  v-for="(mark) in marks" :key="mark.id">{{ mark[currentLang] }}</div>
+            <div class="--mobile" v-for="(markMobile) in marksMobile" :key="markMobile.id">{{ markMobile[currentLang] }}</div>
           </div>
         </div>
+        <!-- Mobile calc start -->
         <div class="calculator-mobile">
           <div class="calculator-promo-wrp">
             <input v-model="promoCode" type="text" class="calculator-input" placeholder="Промокод" />
@@ -136,6 +136,7 @@
             </ul>
           </div>
         </div>
+        <!-- Mobile calc end -->
         <div class="calculator-btn-wrp">
           <button class="button" @click="sendMoney">
             {{ langs[currentLang]['calculator.get_money'] }}
@@ -188,7 +189,7 @@
           <div class="calculator-col">
             <div class="calculator-col-inner">
               <p class="calculator-label">{{ langs[currentLang]['calculator.for_period'] }}</p>
-              <p class="calculator-text">{{ dateVal }} {{ langs[currentLang]['calculator.days'] }}</p>
+              <p class="calculator-text">{{ days }} {{ langs[currentLang]['calculator.days'] }}</p>
             </div>
           </div>
         </div>
@@ -264,13 +265,17 @@ export default {
       step: 25000,
       radius: 450,
       daysLang: { ru: "дней", kk: "күн" },
-      term: { val: 5, text: { ru: "5 дней", kk: "5 күн" } },
+      // term: { val: 5, text: { ru: "5 дней", kk: "5 күн" } },
       marks: [
         { ru: "5 дней", kk: "5 күн" },
         { ru: "10 дней", kk: "10 күн" },
         { ru: "15 дней", kk: "15 күн" },
         { ru: "20 дней", kk: "20 күн" },
         { ru: "25 дней", kk: "25 күн" },
+        { ru: "30 дней", kk: "30 күн" },
+      ],
+      marksMobile: [
+        { ru: "5 дней", kk: "5 күн" },
         { ru: "30 дней", kk: "30 күн" },
       ],
       minMaxTerm: [5, 30],
@@ -316,8 +321,9 @@ export default {
         setTimeout(() => (this.loading = false), 200);
       }
     },
-    "term.val": function () {
+    "dateVal": function (val) {
       try {
+        if (val < 5 || val > 30) return
         this.loading = true;
         if (this.timeoutId) {
           clearTimeout(this.timeoutId);
@@ -339,6 +345,9 @@ export default {
       langs: "lang/GET_LANGS",
       currentLang: "lang/GET_CURRENT_LANG",
     }),
+    days() {
+      return this.dateVal < this.minMaxTerm[0] || this.dateVal > this.minMaxTerm[1] ? this.minMaxTerm[0] : this.dateVal
+    }
   },
   methods: {
     ...mapActions({
@@ -393,7 +402,7 @@ export default {
     async calculate() {
       const requestData = {
         amount: this.sliderValue,
-        term: this.term.val,
+        term: this.dateVal,
         promoCode: this.promoCode,
         group: this.currentGroup,
       };
@@ -419,7 +428,7 @@ export default {
           ? "https://my.cashu.kz/auth/registration"
           : "https://my.cashu.kz/auth/login";
       window.open(
-        `${url}?loanAmount=${this.sliderValue}&period=${this.term.val}&group=${this.currentGroup}&lang=${this.currentLang}`,
+        `${url}?loanAmount=${this.sliderValue}&period=${this.dateVal}&group=${this.currentGroup}&lang=${this.currentLang}`,
         "_blank"
       );
     },

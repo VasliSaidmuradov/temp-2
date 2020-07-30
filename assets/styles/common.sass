@@ -55,7 +55,15 @@
         margin-right: 12px
     &-next svg
         transform: rotate(-180deg)
+.--web
+    display: block
+.--mobile
+    display: none
 @media (max-width: 426px)
+    .--web
+        display: none
+    .--mobile
+        display: block
     .button
         padding: 16px 20px
     .page-title
