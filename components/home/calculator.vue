@@ -81,6 +81,8 @@
             step="1"
             @change="onDateChange"
             @input="clearErrorMsg"
+            @focus="hideCalc"
+            @blur="showCalc"
             class="calculator-date-tooltip"
           />
           <client-only>
@@ -106,7 +108,7 @@
         <!-- Mobile calc start -->
         <div class="calculator-mobile">
           <div class="calculator-promo-wrp">
-            <input v-model="promoCode" type="text" class="calculator-input" placeholder="Промокод" />
+            <input v-model="promoCode" @focus="hideCalc" @blur="showCalc" type="text" class="calculator-input" placeholder="Промокод" />
             <button
               class="button"
               :disabled="!promoCode"
@@ -458,6 +460,12 @@ export default {
         `${url}?loanAmount=${this.sliderValue}&period=${this.dateVal}&group=${this.currentGroup}&lang=${this.currentLang}`,
         "_self"
       );
+    },
+    hideCalc() {
+      document.querySelector('.floating-btn').classList.add('--hidden')
+    },
+    showCalc() {
+      document.querySelector('.floating-btn').classList.remove('--hidden')
     },
   },
 };

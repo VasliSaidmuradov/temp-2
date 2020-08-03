@@ -60,12 +60,12 @@
         <p
           class="footer-subtitle animation-item"
         >{{ langs[currentLang]['footer.service_fast_loans'] }}</p>
-        <p class="footer-subtitle animation-item">
+        <!-- <p class="footer-subtitle animation-item">
           Разработано в
           <a href="https://brandstudio.kz" target="_blank">
             <b>BRAND</b>STUDIO
           </a>
-        </p>
+        </p> -->
       </div>
     </div>
   </footer>

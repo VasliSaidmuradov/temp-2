@@ -6,6 +6,9 @@
     <transition name="modal-fade">
       <reviews-success v-if="isSuccessOpen" @closeModal="closeSuccess" />
     </transition>
+    <transition name="modal-fade">
+      <reviews-video v-if="isVideoOpen" @closeModal="closeVideo" :review="clickedReview[0]" />
+    </transition>
     <div class="breadcrumbs">
       <nuxt-link to="/">{{ langs[currentLang]['body.main_page'] }}</nuxt-link>
       <nuxt-link to>{{ page.title[currentLang] }}</nuxt-link>
@@ -55,27 +58,32 @@
               <p class="reviews-city">{{ review.city }}</p>
             </div>
             <p class="reviews-text">{{ review.review }}</p>
-            <video
-              class="reviews-video"
-              v-if="review.file"
-              :src="'https://admin.cashu.kz/uploads/' + review.file"
-              controls
-            ></video>
-            <!-- <vue-plyr>
-                            <div data-plyr-provider="youtube" data-plyr-embed-id="gysSvbIxB4Q"></div>
-            </vue-plyr>-->
+            <div class="reviews-video-wrp" v-if="review.file" @click="openVideo(review.id)">
+              <img v-if="/((.jp[e]*g)|(.png)|(.webp))$/gi.test(review.file)" :src="'https://admin.cashu.kz/uploads/' + review.file" alt="CashU image">
+              <div v-if="/(.mp4)$/gi.test(review.file)" class="reviews-video-overlay">
+                <play-icon />
+              </div>
+              <video
+                v-if="/(.mp4)$/gi.test(review.file)"
+                class="reviews-video"
+                :src="'https://admin.cashu.kz/uploads/' + review.file"
+              ></video>
+            </div>
           </div>
         </div>
       </div>
+      <div ref="pagination"></div>
     </div>
   </div>
 </template>
 
 <script>
 import animation from "@/mixins/animation";
+import playIcon from '@/static/icons/play.svg';
 import reviewsModal from "@/components/partials/reviews-modal";
 import reviewsSuccess from "@/components/partials/reviews-success";
-import { mapGetters } from "vuex";
+import reviewsVideo from "@/components/partials/reviews-video";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   mixins: [animation],
@@ -84,9 +92,16 @@ export default {
     return {
       isModalOpen: false,
       isSuccessOpen: false,
+      isVideoOpen: false,
+      clickedReviewId: null,
+      review: null,
+      isBust: false,
     };
   },
   methods: {
+    ...mapActions({
+      paginate: 'pagination/paginate'
+    }),
     openModal() {
       this.isModalOpen = true;
     },
@@ -96,6 +111,13 @@ export default {
     closeSuccess() {
       this.isSuccessOpen = false;
     },
+    openVideo(id) {
+      this.clickedReviewId = id
+      this.isVideoOpen = true
+    },
+    closeVideo() {
+      this.isVideoOpen = false;
+    },
     sendReview() {
       this.closeModal();
       this.isSuccessOpen = true;
@@ -104,6 +126,8 @@ export default {
   components: {
     reviewsModal,
     reviewsSuccess,
+    reviewsVideo,
+    playIcon
   },
   computed: {
     ...mapGetters({
@@ -112,6 +136,28 @@ export default {
       currentLang: "lang/GET_CURRENT_LANG",
       langs: "lang/GET_LANGS",
     }),
+    clickedReview() {
+      return this.reviews.data.filter(review => review.id === this.clickedReviewId)
+    },
   },
+  mounted() {
+    if (process.client) {
+      document.addEventListener("scroll", async () => {
+        if (this.isBusy) {
+          return;
+        }
+
+        if (
+          this.$refs.pagination &&
+          this.$refs.pagination.getBoundingClientRect().bottom - 100 <
+            window.innerHeight
+        ) {
+          this.isBusy = true;
+          await this.paginate(this.reviews);
+          this.isBusy = false;
+        }
+      });
+    }
+  }
 };
 </script>

@@ -65,6 +65,20 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-174168107-1'
+    }],
+    [
+      '@nuxtjs/yandex-metrika',
+      {
+        id: '66105637',
+        webvisor: true,
+        clickmap: true,
+        // useCDN:false,
+        trackLinks: true,
+        accurateTrackBounce: true,
+      }
+    ],
   ],
   /*
   ** Axios module configuration
