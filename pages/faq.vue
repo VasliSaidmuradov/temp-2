@@ -19,7 +19,7 @@
           <transition name="dropdown-fade">
             <div class="faq-answer" v-if="index === activeDropdownIndex">
               <p>{{ faq.description[currentLang] }}</p>
-              <img :src="faq.image ? faq.image : require('@/static/img/faq.png')" alt="CashU image" />
+              <img v-if="faq.image" :src="faq.image" alt="CashU image" />
             </div>
           </transition>
         </div>

@@ -1,7 +1,8 @@
 <template>
   <div class="error-page">
     <div class="layout-container">
-      <div class="error-page-block" v-if="error.statusCode === 404">
+      <!-- page: {{ page }} -->
+      <div class="error-page-block" v-if="!page || error.statusCode === 404">
         <img src="/icons/404.svg" alt="CashU image" class="error-page-image" />
         <h4 class="error-page-title">Извините. Страница, которую вы ищете, не найдена</h4>
         <nuxt-link class="button" to="/">Вернуться на главную</nuxt-link>
@@ -11,7 +12,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   props: ["error"],
+  computed: {
+    ...mapGetters({
+      page: "pages/GET_PAGE",
+    })
+  }
 };
 </script>

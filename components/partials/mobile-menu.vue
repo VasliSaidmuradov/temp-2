@@ -32,7 +32,7 @@
                         v-for="item in headerMenu"
                         :key="item.id"
                         class="mob-menu-link"
-                        :to="`/${item.page.slug}`"
+                        :to="item.page.slug === 'home' ? '/' : `/${item.page.slug}`"
                         >{{ item.name[currentLang] }}
                       </nuxt-link>
                     </nav>

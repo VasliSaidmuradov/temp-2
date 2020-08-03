@@ -16,6 +16,23 @@
     <div class="calculator-row">
       <div class="calculator-left">
         <div class="calculator-slider-wrp">
+          <span class="calculator-slider-tooltip" @click="sliderTooltipShow = true">
+            <input
+              v-show="!sliderTooltipShow"
+              type="text"
+              class="calculator-slider-tooltip-text"
+              :value="sliderValue + '₸'"
+              >
+            <input
+              v-show="sliderTooltipShow"
+              type="number"
+              :min="5000"
+              :max="130000"
+              v-model="sliderValue"
+              step="1000"
+              class="calculator-slider-tooltip-input"
+            >
+          </span>
           <button class="calculator-decrease" @click="decrease">
             <range-arrow />
           </button>
@@ -30,6 +47,7 @@
           <client-only>
             <round-slider
               class="calculator-curved-slider"
+              showTooltip="false"
               editable-tooltip="true"
               handle-size="68"
               line-cap="round"
@@ -53,13 +71,14 @@
           </button>
         </div>
         <div class="calculator-date-wrp">
-          <p class="--error-text">{{ errorMsg }}</p>
+          <!-- <p class="--error-text">{{ errorMsg }}</p> -->
 
           <input
             type="number"
             :min="minMaxTerm[0]"
             :max="minMaxTerm[1]"
             v-model="dateVal"
+            step="1"
             @change="onDateChange"
             @input="clearErrorMsg"
             class="calculator-date-tooltip"
@@ -279,6 +298,8 @@ export default {
         { ru: "30 дней", kk: "30 күн" },
       ],
       minMaxTerm: [5, 30],
+      minMaxLoan: [5000, 130000],
+      sliderTooltipShow: false,
       currentTab: "first",
       promoCode: null,
       currentGroup: "BASIC",
@@ -305,38 +326,41 @@ export default {
       if (val === "first") {
       }
     },
-    sliderValue: function () {
+    sliderValue: function (val) {
       try {
-        // this.loading = true;
         if (this.timeoutId) {
           clearTimeout(this.timeoutId);
         }
 
         this.timeoutId = setTimeout(async () => {
+          if (val < this.minMaxLoan[0]) this.sliderValue = this.minMaxLoan[0]
+          else if (val > this.minMaxLoan[1]) this.sliderValue = this.minMaxLoan[1]
+          else if (val % 1000 !== 0) {
+            this.sliderValue = (val / 1000).toFixed() * 1000;
+          }
+
+          this.sliderTooltipShow = false;
           await this.calculate();
-        }, 500);
+        }, 1000);
       } catch (e) {
         console.log(e);
-      } finally {
-        // setTimeout(() => (this.loading = false), 200);
-      }
+      } finally {}
     },
     "dateVal": function (val) {
       try {
-        if (val < 5 || val > 30) return
-        // this.loading = true;
         if (this.timeoutId) {
           clearTimeout(this.timeoutId);
         }
 
         this.timeoutId = setTimeout(async () => {
+          if(val < this.minMaxTerm[0]) this.dateVal = this.minMaxTerm[0]
+          if(val > this.minMaxTerm[1]) this.dateVal = this.minMaxTerm[1]
+
           await this.calculate();
-        }, 500);
+        }, 1000);
       } catch (e) {
         console.log(e);
-      } finally {
-        // setTimeout(() => (this.loading = false), 200);
-      }
+      } finally {}
     },
   },
   computed: {
@@ -356,12 +380,15 @@ export default {
     formattedTooltip(arg) {
       return arg.value + "₸";
     },
+    displayInput() {
+      this.sliderTooltipShow = true;
+    },
     increase() {
-      if (this.sliderValue >= 130000) return;
+      if (this.sliderValue >= this.minMaxLoan[1]) return;
       this.sliderValue += this.step;
     },
     decrease() {
-      if (this.sliderValue <= 5000) return;
+      if (this.sliderValue <= this.minMaxLoan[0]) return;
       this.sliderValue -= this.step;
     },
     error(type, msg) {
@@ -399,7 +426,6 @@ export default {
     },
     async calculate() {
       this.loading = true;
-      // this.isSendingRequest = true;
 
       const requestData = {
         amount: this.sliderValue,
@@ -407,13 +433,12 @@ export default {
         promoCode: this.promoCode,
         group: this.currentGroup,
       };
-      
+
       try {
         await this.fetchPaymentShedule(requestData);
       } catch (error) {
         console.log(error);
       } finally {
-        // setTimeout(() => (this.isSendingRequest = false), 200);
         setTimeout(() => (this.loading = false), 200);
       }
     },
@@ -431,7 +456,7 @@ export default {
           : "https://my.cashu.kz/auth/login";
       window.open(
         `${url}?loanAmount=${this.sliderValue}&period=${this.dateVal}&group=${this.currentGroup}&lang=${this.currentLang}`,
-        "_blank"
+        "_self"
       );
     },
   },

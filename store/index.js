@@ -13,7 +13,7 @@ export const actions = {
 
 		const queue = [
 			dispatch('lang/fetchLangs'),
-			dispatch('calculator/fetchPaymentShedule', paymentRequestData),
+			// dispatch('calculator/fetchPaymentShedule', paymentRequestData),
 			dispatch('menu/fetchMenu'),
 			dispatch('settings/fetchSettings'),
 			dispatch('banners/fetchBanners'),

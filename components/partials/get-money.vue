@@ -3,7 +3,7 @@
         <div class="layout-container">
           <!-- <pre>{{ langs[currentLang] }}</pre> -->
             <h3 class="get-money-title animation-item">{{ langs[currentLang]['body.much_easier'] }}</h3>
-            <a class="button animation-item" href="https://my.cashu.kz/auth/registration" target="_blank">{{ langs[currentLang]['body.get_money'] }}</a>
+            <a class="button animation-item" href="https://my.cashu.kz/auth/registration">{{ langs[currentLang]['body.get_money'] }}</a>
         </div>
     </div>
 </template>
