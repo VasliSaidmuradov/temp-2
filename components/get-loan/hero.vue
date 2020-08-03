@@ -1,7 +1,7 @@
 <template>
   <div class="loan-hero" ref="animationBlock">
     <!-- <pre>{{ page }}</pre> -->
-    <p class="loan-hero-title animation-item">{{ page.extras[currentLang].title_take }}</p>
+    <p class="breadcrumbs loan-hero-title animation-item">{{ page.extras[currentLang].title_take }}</p>
     <div class="loan-hero-image">
       <img :src="page.extras[currentLang].image
               ? $imageLink(page.extras[currentLang].image)

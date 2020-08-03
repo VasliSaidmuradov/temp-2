@@ -18,7 +18,7 @@
           <div class="posts-img">
             <img v-if="article.image" :src="article.image" :alt="article.name[currentLang]" />
           </div>
-          <p class="posts-date">{{ $formatDate(article.created_at) }}</p>
+          <p class="posts-date">{{ $formatDate(article.updated_at) }}</p>
           <h4 class="posts-heading">{{ article.name[currentLang] }}</h4>
           <p
             class="posts-text"

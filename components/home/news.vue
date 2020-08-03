@@ -23,7 +23,7 @@
                     <div class="home-news-img-wrp">
                         <img :src="post.image ? post.image : require('@/static/img/news.png')" alt="CashU image">
                     </div>
-                    <p class="home-news-date">{{ $formatDate(post.created_at) }}</p>
+                    <p class="home-news-date">{{ $formatDate(post.updated_at) }}</p>
                     <p class="home-news-text">
                         {{ post.name[currentLang] }}
                     </p>

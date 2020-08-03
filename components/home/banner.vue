@@ -1,13 +1,17 @@
 <template>
   <div class="home-banner" ref="animationBlock">
     <!-- <pre>{{ langs[currentLang] }}</pre> -->
-    <!-- <pre>{{ page }}</pre> -->
+    <!-- ::<pre>{{ page }}</pre> -->
     <div v-swiper:banner="options">
       <div class="home-banner-pagination"></div>
       <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="slide in 1" :key="slide.id">
+        <div
+          class="swiper-slide"
+          v-for="slide in slides"
+          :key="slide.id"
+          :data-swiper-autoplay="page.extras[currentLang].timer * 1000">
           <div class="home-banner-inner">
-            <!-- {{ slide }} -->
+            <!-- <pre>{{ page }}</pre> -->
             <!-- <h2 class="home-banner-title animation-item" v-html="slide.name"></h2> -->
             <!-- <ul v-if="slide.options" class="home-banner-list">
               <li v-for="option in slide.options">
@@ -28,15 +32,15 @@
           </div>
           <div class="home-banner-img">
             <img
-              v-if="page.extras[currentLang].image"
-              :src="page.extras[currentLang].image ? $imageLink(page.extras[currentLang].image) : ''"
+              v-if="slide.image"
+              :src="slide.image ? $imageLink(slide.image) : ''"
               alt="CashU image"
             />
           </div>
           <div class="home-banner-img-mob">
             <img
-              v-if="page.extras[currentLang].mob_image"
-              :src="page.extras[currentLang].mob_image ? $imageLink(page.extras[currentLang].mob_image) : ''"
+              v-if="slide.mob_image"
+              :src="slide.mob_image ? $imageLink(slide.mob_image) : ''"
               alt="CashU image"
             />
           </div>
@@ -57,6 +61,9 @@ export default {
     return {
       options: {
         spaceBetween: 20,
+        loop: true,
+        speed: 1000,
+        autoplay: {},
         pagination: {
           el: ".home-banner-pagination",
           type: "bullets",
