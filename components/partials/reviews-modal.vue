@@ -57,7 +57,7 @@ export default {
         city: null,
         review: null,
       },
-			file: null,
+		  file: null,
       isSending: false,
     };
   },

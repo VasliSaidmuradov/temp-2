@@ -6,6 +6,9 @@
     <transition name="modal-fade">
       <reviews-success v-if="isSuccessOpen" @closeModal="closeSuccess" />
     </transition>
+    <transition name="modal-fade">
+      <reviews-video v-if="isVideoOpen" @closeModal="closeVideo" :review="clickedReview[0]" />
+    </transition>
     <div class="breadcrumbs">
       <nuxt-link to="/">{{ langs[currentLang]['body.main_page'] }}</nuxt-link>
       <nuxt-link to>{{ page.title[currentLang] }}</nuxt-link>
@@ -55,15 +58,15 @@
               <p class="reviews-city">{{ review.city }}</p>
             </div>
             <p class="reviews-text">{{ review.review }}</p>
-            <video
-              class="reviews-video"
-              v-if="review.file"
-              :src="'https://admin.cashu.kz/uploads/' + review.file"
-              controls
-            ></video>
-            <!-- <vue-plyr>
-                            <div data-plyr-provider="youtube" data-plyr-embed-id="gysSvbIxB4Q"></div>
-            </vue-plyr>-->
+            <div class="reviews-video-wrp" v-if="review.file">
+              <div class="reviews-video-overlay" @click="openVideo(review.id)">
+                <play-icon />
+              </div>
+              <video
+                class="reviews-video"
+                :src="'https://admin.cashu.kz/uploads/' + review.file"
+              ></video>
+            </div>
           </div>
         </div>
       </div>
@@ -73,8 +76,10 @@
 
 <script>
 import animation from "@/mixins/animation";
+import playIcon from '@/static/icons/play.svg';
 import reviewsModal from "@/components/partials/reviews-modal";
 import reviewsSuccess from "@/components/partials/reviews-success";
+import reviewsVideo from "@/components/partials/reviews-video";
 import { mapGetters } from "vuex";
 
 export default {
@@ -84,6 +89,9 @@ export default {
     return {
       isModalOpen: false,
       isSuccessOpen: false,
+      isVideoOpen: false,
+      clickedReviewId: null,
+      review: null
     };
   },
   methods: {
@@ -96,6 +104,13 @@ export default {
     closeSuccess() {
       this.isSuccessOpen = false;
     },
+    openVideo(id) {
+      this.clickedReviewId = id
+      this.isVideoOpen = true
+    },
+    closeVideo() {
+      this.isVideoOpen = false;
+    },
     sendReview() {
       this.closeModal();
       this.isSuccessOpen = true;
@@ -104,6 +119,8 @@ export default {
   components: {
     reviewsModal,
     reviewsSuccess,
+    reviewsVideo,
+    playIcon
   },
   computed: {
     ...mapGetters({
@@ -112,6 +129,9 @@ export default {
       currentLang: "lang/GET_CURRENT_LANG",
       langs: "lang/GET_LANGS",
     }),
+    clickedReview() {
+      return this.reviews.data.filter(review => review.id === this.clickedReviewId)
+    }
   },
 };
 </script>
