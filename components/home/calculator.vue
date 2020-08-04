@@ -328,6 +328,17 @@ export default {
       if (val === "first") {
       }
     },
+    currentGroup() {
+      try {
+        if (this.timeoutId) clearTimeout(this.timeoutId);
+
+        this.timeoutId = setTimeout(async () => {
+          await this.calculate();
+        }, 300);
+      } catch (e) {
+        console.log(e);
+      } finally {}
+    },
     sliderValue: function (val) {
       try {
         if (this.timeoutId) {
