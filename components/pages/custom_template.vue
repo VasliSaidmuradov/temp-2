@@ -27,11 +27,11 @@
     </div>
   </div>
 </template>
+
 <script>
 import { mapGetters } from "vuex";
 
 export default {
-  middleware: ["page"],
   computed: {
     ...mapGetters({
       page: "pages/GET_PAGE",

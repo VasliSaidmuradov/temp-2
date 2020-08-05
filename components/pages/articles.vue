@@ -7,7 +7,9 @@
       <nuxt-link to>{{ page.title[currentLang] }}</nuxt-link>
     </div>
     <h1 class="page-title animation-item">{{ page.title[currentLang] }}</h1>
-    <div class="layout-container">
+    <!-- <pre>{{ page }}</pre> -->
+    <!-- <pre>{{ posts }}</pre> -->
+    <div class="layout-container" v-if="1">
       <div class="posts-row" v-for="(articles, i) in $chunk(posts.data, 3)" :key="i">
         <nuxt-link
           class="posts-item animation-item"
@@ -37,7 +39,6 @@ import Pagination from "@/components/partials/pagination.vue";
 import { mapGetters } from "vuex";
 
 export default {
-  middleware: ["posts", "page"],
   mixins: [animation],
   components: {
     Pagination,

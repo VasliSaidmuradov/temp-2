@@ -1,10 +1,11 @@
 <template>
   <div class="faq" ref="animationBlock">
-    <div class="breadcrumbs">
+    <div v-if="false" class="breadcrumbs">
       <nuxt-link to="/">{{ langs[currentLang]['body.main_page'] }}</nuxt-link>
       <nuxt-link to>{{ page.title[currentLang] }}</nuxt-link>
     </div>
-    <!-- <pre>{{ faqList.data }}</pre> -->
+    <!-- <pre>{{ page }}</pre> -->
+    <!-- :: <pre>{{ faqList }}</pre> -->
     <div class="layout-container">
       <h1 class="section-title animation-item">{{ page.title[currentLang] }}</h1>
       <div class="faq-text animation-item" v-html="langs[currentLang]['body.security_ur_money']"></div>
@@ -34,7 +35,7 @@ import { mapGetters } from "vuex";
 
 export default {
   mixins: [animation],
-  middleware: ["page", "faq"],
+  // middleware: ["page", "faq"],
   data() {
     return {
       activeDropdownIndex: null,

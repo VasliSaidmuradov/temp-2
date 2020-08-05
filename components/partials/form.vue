@@ -1,5 +1,6 @@
 <template>
   <div class="form">
+    <!-- <pre>{{ page }}</pre> -->
     <p class="form-label animation-item">{{ langs[currentLang]['contacts.your_name'] }}</p>
     <input
       v-model="data.name"
@@ -47,6 +48,7 @@ export default {
     ...mapGetters({
       currentLang: "lang/GET_CURRENT_LANG",
       langs: "lang/GET_LANGS",
+      page: 'pages/GET_PAGE',
     }),
     isFormValidate() {
       const regexp = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gm;
@@ -55,10 +57,12 @@ export default {
   },
   methods: {
     hideCalc() {
-        document.querySelector('.floating-btn').classList.add('--hidden')
+        if (this.page && this.page.template !== 'main')
+          document.querySelector('.floating-btn').classList.add('--hidden')
     },
     showCalc() {
-        document.querySelector('.floating-btn').classList.remove('--hidden')
+        if (this.page && this.page.template !== 'main') 
+          document.querySelector('.floating-btn').classList.remove('--hidden')
     },
     async send() {
       try {

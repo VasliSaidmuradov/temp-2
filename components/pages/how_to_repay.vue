@@ -1,36 +1,31 @@
 <template>
-  <div class="get-loan">
+  <div class="repay-loan">
     <div class="breadcrumbs">
       <nuxt-link to="/">{{ langs[currentLang]['body.main_page'] }}</nuxt-link>
       <nuxt-link to>{{ page.title[currentLang] }}</nuxt-link>
     </div>
 
-    <!-- <pre>{{ page }}</pre> -->
-    <!-- <pre>{{ langs[currentLang] ]}}</pre>
-    <pre>{{ page ]}}</pre>-->
-
     <hero :page="page" />
+    <type :page="page" />
     <easy :page="page" />
-    <steps :page="page" />
-
     <get-money />
   </div>
 </template>
 
 <script>
-import hero from "@/components/get-loan/hero";
+import hero from "@/components/repay-loan/hero";
+import easy from "@/components/repay-loan/easy";
+import type from "@/components/repay-loan/type";
 import getMoney from "@/components/partials/get-money";
-import easy from "@/components/get-loan/easy";
-import steps from "@/components/get-loan/steps";
 import { mapGetters } from "vuex";
 
 export default {
-  middleware: ["page"],
+  // middleware: ["page"],
   components: {
     hero,
-    getMoney,
-    steps,
+    type,
     easy,
+    getMoney,
   },
   computed: {
     ...mapGetters({

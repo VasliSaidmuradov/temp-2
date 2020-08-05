@@ -6,7 +6,7 @@
       <nuxt-link to="/">{{ langs[currentLang]['body.main_page'] }}</nuxt-link>
       <nuxt-link to>{{ page.title[currentLang] }}</nuxt-link>
     </div>
-    <!-- :: <pre>{{ extras }}</pre> -->
+    <!-- :: <pre>{{ page }}</pre> -->
     <div v-for="(blocks, index) in $chunk(extras, 2)" :key="index">
       <div v-if="blocks[0]" class="about-page-inner --white">
         <div class="about-page-row">
@@ -48,7 +48,7 @@ import subscribe from "@/components/partials/subscribe";
 import { mapGetters } from "vuex";
 
 export default {
-  middleware: ["page"],
+  // middleware: ["page"],
   mounted() {
     let block = document.querySelectorAll(".about-page-row");
     block.forEach((b) => {

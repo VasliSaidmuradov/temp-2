@@ -7,8 +7,8 @@ export const mutations = {
 }
 
 export const actions = {
-	async fetchFaq(store, payload) {
-		const resp = await this.$api.get(`/faq`);
+  async fetchFaq(store) {
+    const resp = await this.$api.get(`/faq`);
 		store.commit('SET_FAQ', resp);
 	},
 }

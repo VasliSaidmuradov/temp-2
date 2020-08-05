@@ -14,7 +14,7 @@
       <nuxt-link to>{{ page.title[currentLang] }}</nuxt-link>
     </div>
 
-    <!-- <pre>{{ reviews }}</pre> -->
+    <!-- <pre>{{ page }}</pre> -->
     <!-- <pre>{{ langs[currentLang] }}</pre> -->
 
     <div class="layout-container">
@@ -87,7 +87,7 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   mixins: [animation],
-  middleware: ["reviews", "page"],
+  // middleware: ["reviews", "page"],
   data() {
     return {
       isModalOpen: false,
