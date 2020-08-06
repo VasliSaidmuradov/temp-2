@@ -5,13 +5,13 @@
     <div class="loan-hero-image">
       <img :src="page.extras[currentLang].image
               ? $imageLink(page.extras[currentLang].image)
-              : ''"
+              : $imageLink(page.extras[currentLang].mob_image)"
         alt="CashU image">
     </div>
     <div class="loan-hero-image-mob">
       <img :src="page.extras[currentLang].mob_image
                 ? $imageLink(page.extras[currentLang].mob_image)
-                : ''"
+                : $imageLink(page.extras[currentLang].image)"
         alt="CashU image">
     </div>
     <!-- <div class="layout-container">

@@ -11,7 +11,7 @@
           :key="slide.id"
           :data-swiper-autoplay="page.extras[currentLang].timer * 1000">
           <div class="home-banner-inner">
-            <!-- <pre>{{ page }}</pre> -->
+            <!-- {{ slide }} -->
             <!-- <h2 class="home-banner-title animation-item" v-html="slide.name"></h2> -->
             <!-- <ul v-if="slide.options" class="home-banner-list">
               <li v-for="option in slide.options">
@@ -32,15 +32,13 @@
           </div>
           <div class="home-banner-img">
             <img
-              v-if="slide.image"
-              :src="slide.image ? $imageLink(slide.image) : ''"
+              :src="slide.image ? $imageLink(slide.image) : $imageLink(slide.mob_image)"
               alt="CashU image"
             />
           </div>
           <div class="home-banner-img-mob">
             <img
-              v-if="slide.mob_image"
-              :src="slide.mob_image ? $imageLink(slide.mob_image) : ''"
+              :src="slide.mob_image ? $imageLink(slide.mob_image) : $imageLink(slide.image)"
               alt="CashU image"
             />
           </div>

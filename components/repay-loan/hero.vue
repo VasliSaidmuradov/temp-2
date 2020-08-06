@@ -4,19 +4,17 @@
     <p v-if="page.extras" class="loan-hero-title animation-item --black">{{ page.extras[currentLang].title_repay }}</p>
     <div class="loan-hero-image">
       <img
-        v-if="page.extras[currentLang].image"
         :src="page.extras[currentLang].image
                 ? $imageLink(page.extras[currentLang].image)
-                : require('@/static/img/repay-loan-hero.png')"
+                : $imageLink(page.extras[currentLang].mob_image)"
         alt="CashU image"
       />
     </div>
-    <div class="loan-hero-image-mob" v-if="page.extras[currentLang].mob_image">
+    <div class="loan-hero-image-mob">
       <img
-        v-if="page.extras[currentLang].mob_image"
         :src="page.extras[currentLang].mob_image
                 ? $imageLink(page.extras[currentLang].mob_image)
-                : require('@/static/img/repay-loan-hero.png')"
+                : $imageLink(page.extras[currentLang].image)"
         alt="CashU image"
       />
     </div>
