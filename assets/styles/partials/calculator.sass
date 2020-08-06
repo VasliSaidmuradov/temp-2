@@ -196,26 +196,24 @@
             border-color: #000
 
     &-tooltip-wrp
-        width: 900px
-        height: 900px
-        border-radius: 1000px
+        width: 100%
         position: absolute
         display: flex
-        justify-content: center
-        align-items: flex-end
+        justify-content: space-between
         bottom: 125px
         left: 50%
         transform: translateX(-50%)
-        p
-            margin-right: 40px
-            &:last-child
-                 margin-right: 0
-            &:nth-child(2),
-            &:nth-child(5)
-                transform: translateY(30px)
-            &:nth-child(3),
-            &:nth-child(4)
-                transform: translateY(50px)
+        padding: 0 75px
+        // p
+        //     margin-right: 40px
+        //     &:last-child
+        //          margin-right: 0
+        //     &:nth-child(2),
+        //     &:nth-child(5)
+        //         transform: translateY(30px)
+        //     &:nth-child(3),
+        //     &:nth-child(4)
+        //         transform: translateY(50px)
     &-curved-slider
         margin-top: -760px
         margin-left: -150px
@@ -407,16 +405,17 @@
         &-date-wrp
             padding: 0 20px
         &-tooltip-wrp
-            bottom: 110px
-            p
-                margin-right: 30px
-                font-size: em(10)
-                &:nth-child(2),
-                &:nth-child(5)
-                    transform: translateY(30px)
-                &:nth-child(3),
-                &:nth-child(4)
-                    transform: translateY(45px)
+            bottom: 105px
+            padding: 0 30px
+            // p
+            //     margin-right: 30px
+            //     font-size: em(10)
+            //     &:nth-child(2),
+            //     &:nth-child(5)
+            //         transform: translateY(30px)
+            //     &:nth-child(3),
+            //     &:nth-child(4)
+            //         transform: translateY(45px)
         &-input
             padding-right: 16px
         &-list,

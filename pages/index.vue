@@ -29,6 +29,28 @@ export default {
     subscribe,
   },
   middleware: ["home"],
+  head() {
+    const page = this.page ? this.page.extras[this.currentLang] : {}
+    let metas = []
+    if (page.meta_description) {
+      metas.push({
+        hid: 'description',
+        name: 'description',
+        content: page.meta_description
+      })
+    }
+    if (page.meta_keywords) {
+      metas.push({
+        hid: 'keywords',
+        name: 'keywords',
+        content: page.meta_keywords
+      })
+    }
+    return {
+      title: page.meta_title,
+      meta: metas
+    }
+  },
   computed: {
     ...mapGetters({
       langs: "lang/GET_LANGS",

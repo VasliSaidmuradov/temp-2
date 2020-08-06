@@ -15,7 +15,6 @@
     </div>
     <app-footer />
     <button
-      ref="floatingBtn"
       class="floating-btn"
       v-if="$route.name != 'index'"
       @click="openCalcModal"

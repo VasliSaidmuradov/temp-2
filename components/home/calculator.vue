@@ -1,6 +1,6 @@
 <template>
   <div class="calculator">
-    <!-- <pre>{{ $roundMoney(5002.9) }}</pre> -->
+    <!-- <pre>{{ minMax }}</pre> -->
     <div class="calculator-nav">
       <button
         class="calculator-btn"
@@ -37,12 +37,12 @@
             <range-arrow />
           </button>
           <div class="calculator-tooltip-wrp">
-            <p class="calculator-label">5 000</p>
-            <p class="calculator-label">30 000</p>
+            <p class="calculator-label">{{ minMaxLoan[0] }}</p>
+            <!-- <p class="calculator-label">30 000</p>
             <p class="calculator-label">55 000</p>
             <p class="calculator-label">80 000</p>
-            <p class="calculator-label">105 000</p>
-            <p class="calculator-label">130 000</p>
+            <p class="calculator-label">105 000</p> -->
+            <p class="calculator-label">{{ minMaxLoan[1] }}</p>
           </div>
           <client-only>
             <round-slider
@@ -101,8 +101,8 @@
           </client-only>
 
           <div class="calculator-date-marks">
-            <div class="--web"  v-for="(mark) in marks" :key="mark.id">{{ mark[currentLang] }}</div>
-            <div class="--mobile" v-for="(markMobile) in marksMobile" :key="markMobile.id">{{ markMobile[currentLang] }}</div>
+            <div class="" v-for="(mark) in marks" :key="mark.id">{{ mark }} {{ daysLang[currentLang] }}</div>
+            <!-- <div class="--mobile" v-for="(markMobile) in marksMobile" :key="markMobile.id">{{ markMobile }} {{ daysLang[currentLang] }}</div> -->
           </div>
         </div>
         <!-- Mobile calc start -->
@@ -286,18 +286,13 @@ export default {
       step: 25000,
       radius: 450,
       daysLang: { ru: "дней", kk: "күн" },
-      // term: { val: 5, text: { ru: "5 дней", kk: "5 күн" } },
       marks: [
-        { ru: "5 дней", kk: "5 күн" },
-        { ru: "10 дней", kk: "10 күн" },
-        { ru: "15 дней", kk: "15 күн" },
-        { ru: "20 дней", kk: "20 күн" },
-        { ru: "25 дней", kk: "25 күн" },
-        { ru: "30 дней", kk: "30 күн" },
+        5,
+        30,
       ],
       marksMobile: [
-        { ru: "5 дней", kk: "5 күн" },
-        { ru: "30 дней", kk: "30 күн" },
+        5,
+        30,
       ],
       minMaxTerm: [5, 30],
       minMaxLoan: [5000, 130000],
@@ -340,14 +335,29 @@ export default {
       } finally {}
     },
     sliderValue: function (val) {
+      const _minMaxBasic = this.minMax.filter(el => el.group === 'BASIC');
+      const _minMaxRegular = this.minMax.filter(el => el.group === 'REGULAR');
+      let _minMax = null;
+
+      if (this.currentGroup === 'BASIC') {
+        // console.log(_minMaxBasic);
+        _minMax = _minMaxBasic.find(el => val >= el.minAmount && val <= el.maxAmount);
+      }
+      if (this.currentGroup === 'REGULAR') {
+        // console.log(_minMaxRegular);
+        _minMax = _minMaxRegular.find(el => val >= el.minAmount && val <= el.maxAmount);
+      }
+      
+      // console.log('_minMax: ', _minMax);
+
       try {
         if (this.timeoutId) {
           clearTimeout(this.timeoutId);
         }
 
         this.timeoutId = setTimeout(async () => {
-          if (val < this.minMaxLoan[0]) this.sliderValue = this.minMaxLoan[0]
-          else if (val > this.minMaxLoan[1]) this.sliderValue = this.minMaxLoan[1]
+          if (val < this.minMaxLoan[0]) this.sliderValue = this.minMaxLoan[0];
+          else if (val > this.minMaxLoan[1]) this.sliderValue = this.minMaxLoan[1];
           else if (val % 1000 !== 0) {
             this.sliderValue = (val / 1000).toFixed() * 1000;
           }
@@ -366,8 +376,8 @@ export default {
         }
 
         this.timeoutId = setTimeout(async () => {
-          if(val < this.minMaxTerm[0]) this.dateVal = this.minMaxTerm[0]
-          if(val > this.minMaxTerm[1]) this.dateVal = this.minMaxTerm[1]
+          if(val < this.minMaxTerm[0]) this.dateVal = this.minMaxTerm[0];
+          if(val > this.minMaxTerm[1]) this.dateVal = this.minMaxTerm[1];
 
           await this.calculate();
         }, 1000);
@@ -381,9 +391,10 @@ export default {
       paymentShedule: "calculator/GET_PAYMENT_SHEDULE",
       langs: "lang/GET_LANGS",
       currentLang: "lang/GET_CURRENT_LANG",
+      minMax: "calculator/GET_MIN_MAX",
     }),
     days() {
-      return this.dateVal < this.minMaxTerm[0] || this.dateVal > this.minMaxTerm[1] ? this.minMaxTerm[0] : this.dateVal
+      return this.dateVal < this.minMaxTerm[0] || this.dateVal > this.minMaxTerm[1] ? this.minMaxTerm[0] : this.dateVal;
     }
   },
   methods: {
@@ -473,10 +484,10 @@ export default {
       );
     },
     hideCalc() {
-      document.querySelector('.floating-btn').classList.add('--hidden')
+      document.querySelector('.floating-btn').classList.add('--hidden');
     },
     showCalc() {
-      document.querySelector('.floating-btn').classList.remove('--hidden')
+      document.querySelector('.floating-btn').classList.remove('--hidden');
     },
   },
 };
