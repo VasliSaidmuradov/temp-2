@@ -25,7 +25,7 @@
                     </div>
                     <p class="home-news-date">{{ $formatDate(post.updated_at) }}</p>
                     <p class="home-news-text">
-                        {{ post.name[currentLang] }}
+                        {{ post.name[currentLang].length > 40 ? post.name[currentLang].slice(0, 35) + '...' : post.name[currentLang] }}
                     </p>
                 </nuxt-link>
             </div>
