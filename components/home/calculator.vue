@@ -1,6 +1,6 @@
 <template>
   <div class="calculator">
-    <!-- <pre>{{ minMax }}</pre> -->
+    <pre>{{ loading }}</pre>
     <div class="calculator-nav">
       <button
         class="calculator-btn"
@@ -303,7 +303,7 @@ export default {
       isSendingRequest: false,
       isCodeApplied: false,
       timeoutId: null,
-      loading: false,
+      // loading: false,
       errorMsg: "",
     };
   },
@@ -380,6 +380,7 @@ export default {
       langs: "lang/GET_LANGS",
       currentLang: "lang/GET_CURRENT_LANG",
       minMax: "calculator/GET_MIN_MAX",
+      loading: "calculator/GET_LOADING",
     }),
     days() {
       return this.dateVal < this.minMaxTerm[0] || this.dateVal > this.minMaxTerm[1] ? this.minMaxTerm[0] : this.dateVal;
@@ -388,26 +389,32 @@ export default {
   methods: {
     ...mapActions({
       fetchPaymentShedule: "calculator/fetchPaymentShedule",
+      setLoading: 'calculator/loading',
     }),
     applyMinMaxTerm(val) {
-      const _minMaxBasic = this.minMax.filter(el => el.group === 'BASIC');
-      const _minMaxRegular = this.minMax.filter(el => el.group === 'REGULAR');
-      let _minMax = null;
+      try {
+        const _minMaxBasic = this.minMax.filter(el => el.group === 'BASIC');
+        const _minMaxRegular = this.minMax.filter(el => el.group === 'REGULAR');
+        let _minMax = null;
 
-      if (this.currentGroup === 'BASIC') {
-        // console.log(_minMaxBasic);
-        _minMax = _minMaxBasic.find(el => val >= el.minAmount && val <= el.maxAmount);
-      }
-      if (this.currentGroup === 'REGULAR') {
-        // console.log(_minMaxRegular);
-        _minMax = _minMaxRegular.find(el => val >= el.minAmount && val <= el.maxAmount);
-      }
-      // console.log('_minMax: ', _minMax);
-      // console.log('minMaxTerm: ', this.minMaxTerm);
-      this.minMaxTerm[0] = _minMax.minTerm;
-      this.minMaxTerm[1] = _minMax.maxTerm;
+        if (this.currentGroup === 'BASIC') {
+          // console.log(_minMaxBasic);
+          _minMax = _minMaxBasic.find(el => val >= el.minAmount && val <= el.maxAmount);
+        }
+        if (this.currentGroup === 'REGULAR') {
+          // console.log(_minMaxRegular);
+          _minMax = _minMaxRegular.find(el => val >= el.minAmount && val <= el.maxAmount);
+        }
+        // console.log('_minMax: ', _minMax);
+        // console.log('minMaxTerm: ', this.minMaxTerm);
+        this.minMaxTerm[0] = _minMax.minTerm;
+        this.minMaxTerm[1] = _minMax.maxTerm;
 
-      if (this.dateVal > this.minMaxTerm[1]) this.dateVal = this.minMaxTerm[1];
+        if (this.dateVal > this.minMaxTerm[1]) this.dateVal = this.minMaxTerm[1];
+      } catch (e) {
+        this.setLoading(true);
+        console.log(e)
+      }
       // console.log('minMaxTerm: ', this.minMaxTerm);
     },
     formattedTooltip(arg) {
@@ -458,7 +465,7 @@ export default {
       }
     },
     async calculate() {
-      this.loading = true;
+      this.setLoading(true);
 
       const requestData = {
         amount: this.sliderValue,
@@ -469,10 +476,10 @@ export default {
 
       try {
         await this.fetchPaymentShedule(requestData);
+        setTimeout(() => (this.setLoading(false)), 200);
       } catch (error) {
         console.log(error);
-      } finally {
-        setTimeout(() => (this.loading = false), 200);
+        this.setLoading(true);
       }
     },
     reCalc(e) {

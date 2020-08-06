@@ -1,11 +1,13 @@
 export const state = () => ({
   paymentShedule: null,
-  minMax: null,
+  minMax: [],
+  loading: false,
 })
 
 export const mutations = {
   SET_PAYMENT_SHEDULE: (state, payload) => state.paymentShedule = payload,
   SET_MIN_MAX: (state, payload) => state.minMax = payload,
+  SET_LOADING: (state, payload) => state.loading = payload,
 }
 
 export const actions = {
@@ -23,6 +25,9 @@ export const actions = {
     const url = "https://api.cashu.kz/public/availableProduct";
     const resp = await this.$axios.$get(url);
     store.commit('SET_MIN_MAX', resp);
+  },
+  loading(store, payload) {
+    store.commit('SET_LOADING', payload)
   }
 }
 
@@ -31,5 +36,6 @@ export const getters = {
 		...state.paymentShedule,
 		interest: Math.round(state.paymentShedule.interest)
   } : null,
-  GET_MIN_MAX: state => state.minMax
+  GET_MIN_MAX: state => state.minMax,
+  GET_LOADING: state => state.loading,
 }
