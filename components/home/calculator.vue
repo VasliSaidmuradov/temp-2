@@ -337,6 +337,12 @@ export default {
       } finally {}
     },
     sliderValue: function (val) {
+      if (val < this.minMaxLoan[0]) this.sliderValue = this.minMaxLoan[0];
+      else if (val > this.minMaxLoan[1]) this.sliderValue = this.minMaxLoan[1];
+      else if (val % 1000 !== 0) {
+        this.sliderValue = (val / 1000).toFixed() * 1000;
+      }
+      this.applyMinMaxTerm(this.sliderValue);
 
       try {
         if (this.timeoutId) {
@@ -344,14 +350,7 @@ export default {
         }
 
         this.timeoutId = setTimeout(async () => {
-          if (val < this.minMaxLoan[0]) this.sliderValue = this.minMaxLoan[0];
-          else if (val > this.minMaxLoan[1]) this.sliderValue = this.minMaxLoan[1];
-          else if (val % 1000 !== 0) {
-            this.sliderValue = (val / 1000).toFixed() * 1000;
-          }
-          this.applyMinMaxTerm(this.sliderValue);
           this.sliderTooltipShow = false;
-
           await this.calculate();
         }, 1000);
       } catch (e) {
