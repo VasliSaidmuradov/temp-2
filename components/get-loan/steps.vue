@@ -76,7 +76,7 @@
             <div class="get-steps-left">
               <h3 class="section-title animation-item">{{ stepList[3].name }}</h3>
               <div class="get-steps-text animation-item" v-html="stepList[3].desription"></div>
-              <p class="get-steps-text animation-item">
+              <p class="get-steps-heading animation-item">
                 {{ stepList[3].footer_word }}
                 <b>{{ stepList[3].footer_word_b }}</b>
               </p>
