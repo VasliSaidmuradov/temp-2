@@ -20,7 +20,7 @@ export const actions = {
 		store.commit('SET_PAYMENT_SHEDULE', resp.data);
   },
   async fetchMinMax(store) {
-    const url = "http://test-api.cashu.kz/public/product";
+    const url = "https://api.cashu.kz/public/availableProduct";
     const resp = await this.$axios.$get(url);
     store.commit('SET_MIN_MAX', resp);
   }

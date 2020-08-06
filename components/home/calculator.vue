@@ -101,7 +101,7 @@
           </client-only>
 
           <div class="calculator-date-marks">
-            <div class="" v-for="(mark) in marks" :key="mark.id">{{ mark }} {{ daysLang[currentLang] }}</div>
+            <div class="" v-for="(mark) in minMaxTerm" :key="mark.id">{{ mark }} {{ daysLang[currentLang] }}</div>
             <!-- <div class="--mobile" v-for="(markMobile) in marksMobile" :key="markMobile.id">{{ markMobile }} {{ daysLang[currentLang] }}</div> -->
           </div>
         </div>
@@ -317,14 +317,16 @@ export default {
     if (document.body.clientWidth <= 321) {
       this.radius = 270;
     }
+    // this.applyMinMaxTerm(this.sliderValue);
   },
   watch: {
     currentTab(val) {
       if (val === "first") {
       }
     },
-    currentGroup() {
+    currentGroup(val) {
       try {
+        this.applyMinMaxTerm(this.sliderValue);
         if (this.timeoutId) clearTimeout(this.timeoutId);
 
         this.timeoutId = setTimeout(async () => {
@@ -335,20 +337,6 @@ export default {
       } finally {}
     },
     sliderValue: function (val) {
-      const _minMaxBasic = this.minMax.filter(el => el.group === 'BASIC');
-      const _minMaxRegular = this.minMax.filter(el => el.group === 'REGULAR');
-      let _minMax = null;
-
-      if (this.currentGroup === 'BASIC') {
-        // console.log(_minMaxBasic);
-        _minMax = _minMaxBasic.find(el => val >= el.minAmount && val <= el.maxAmount);
-      }
-      if (this.currentGroup === 'REGULAR') {
-        // console.log(_minMaxRegular);
-        _minMax = _minMaxRegular.find(el => val >= el.minAmount && val <= el.maxAmount);
-      }
-      
-      // console.log('_minMax: ', _minMax);
 
       try {
         if (this.timeoutId) {
@@ -361,8 +349,9 @@ export default {
           else if (val % 1000 !== 0) {
             this.sliderValue = (val / 1000).toFixed() * 1000;
           }
-
+          this.applyMinMaxTerm(this.sliderValue);
           this.sliderTooltipShow = false;
+
           await this.calculate();
         }, 1000);
       } catch (e) {
@@ -401,6 +390,27 @@ export default {
     ...mapActions({
       fetchPaymentShedule: "calculator/fetchPaymentShedule",
     }),
+    applyMinMaxTerm(val) {
+      const _minMaxBasic = this.minMax.filter(el => el.group === 'BASIC');
+      const _minMaxRegular = this.minMax.filter(el => el.group === 'REGULAR');
+      let _minMax = null;
+
+      if (this.currentGroup === 'BASIC') {
+        // console.log(_minMaxBasic);
+        _minMax = _minMaxBasic.find(el => val >= el.minAmount && val <= el.maxAmount);
+      }
+      if (this.currentGroup === 'REGULAR') {
+        // console.log(_minMaxRegular);
+        _minMax = _minMaxRegular.find(el => val >= el.minAmount && val <= el.maxAmount);
+      }
+      // console.log('_minMax: ', _minMax);
+      // console.log('minMaxTerm: ', this.minMaxTerm);
+      this.minMaxTerm[0] = _minMax.minTerm;
+      this.minMaxTerm[1] = _minMax.maxTerm;
+
+      if (this.dateVal > this.minMaxTerm[1]) this.dateVal = this.minMaxTerm[1];
+      // console.log('minMaxTerm: ', this.minMaxTerm);
+    },
     formattedTooltip(arg) {
       return arg.value + "₸";
     },
