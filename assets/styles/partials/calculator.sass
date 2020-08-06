@@ -241,7 +241,7 @@
         font-weight: 600
         color: var(--text-color)
         margin-bottom: -30px
-        width: 100%;
+        width: 100%
     &-date-wrp
         max-width: 556px
         margin: auto
@@ -435,14 +435,6 @@
             margin-left: -113px
         &-tooltip-wrp
             bottom: 105px
-            p
-                margin-right: 25px
-                &:nth-child(2),
-                &:nth-child(5)
-                    transform: translateY(20px)
-                &:nth-child(3),
-                &:nth-child(4)
-                    transform: translateY(35px)
         &-slider-wrp
             .rs-handle:after
                 width: 70px
@@ -455,6 +447,10 @@
         &-right
             .calculator-row
                 padding: 20px
+@media (max-width: 361px)
+    .calculator
+        &-curved-slider
+            margin-left: -118px
 @media (max-width: 321px)
     .calculator
         &-btn
@@ -464,8 +460,6 @@
             margin-top: -410px
         &-tooltip-wrp
             bottom: 100px
-            p
-                margin-right: 17px
         &-label
             font-size: 0.7em
         &-icon
