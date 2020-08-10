@@ -70,6 +70,11 @@ export default {
       },
     };
   },
+  mounted() {
+    if (this.slides.length == 1) {
+        this.banner.destroy(true, true)
+    }
+  },
   components: {
     check,
   },
