@@ -4,13 +4,14 @@
       <nuxt-link to="/">{{ langs[currentLang]['body.main_page'] }}</nuxt-link>
       <nuxt-link to>{{ page.title[currentLang] }}</nuxt-link>
     </div>
-    <!-- <pre>{{ documents }}</pre> -->
+    <pre>{{ documents }}</pre>
     <!-- <pre>{{ page }}</pre> -->
 
     <h1 class="page-title">{{ page.title[currentLang] }}</h1>
     <div class="layout-container">
       <div class="documentation-row">
-        <a href download class="documentation-item" v-for="(doc, index) in documents" :key="index">
+        <a :href="$imageLink(doc.file)" class="documentation-item" v-for="(doc, index) in documents" :key="index">
+          <!-- <iframe :src="'https://docs.google.com/gview?url=https://cashu.kz/' + $imageLink(doc.file)"></iframe> -->
           {{ doc.name }}
           <download-icon />
         </a>

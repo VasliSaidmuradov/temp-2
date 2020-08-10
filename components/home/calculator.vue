@@ -1,6 +1,6 @@
 <template>
   <div class="calculator">
-    <pre>{{ loading }}</pre>
+    <!-- <pre>{{ loading }}</pre> -->
     <div class="calculator-nav">
       <button
         class="calculator-btn"

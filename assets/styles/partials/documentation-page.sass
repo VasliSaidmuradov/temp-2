@@ -14,15 +14,18 @@
         flex-wrap: wrap
     &-item
         width: 200px
-        height: 240px
+        // height: 240px
         margin-right: 44px
         background-color: #F7F9FA
-        padding: 50px 16px 0 16px
+        padding: 50px 16px 30px 16px
         position: relative
         font-size: em(14)
         font-weight: 500
         color: var(--text-color)
         border-radius: 8px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
         &:after
             content: ''
             width: 0
@@ -36,7 +39,8 @@
         svg
             width: 24px
             height: 24px
-            position: absolute
+            margin-top: 20px 
+            position: static
             left: 16px
             bottom: 24px
             z-index: 1
