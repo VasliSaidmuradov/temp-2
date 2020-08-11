@@ -66,7 +66,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     ['@nuxtjs/google-analytics', {
-      id: 'UA-174168107-1'
+      id: 'UA-175172093-1'
     }],
     [
       '@nuxtjs/yandex-metrika',
