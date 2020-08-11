@@ -27,8 +27,6 @@ export const actions = {
 			console.log(e);
 		}
 		try {
-			// const ee = 1
-			// ee = 2
 			await dispatch('calculator/fetchPaymentShedule', paymentRequestData)
 			await dispatch('calculator/fetchMinMax')
 		} catch (e) {

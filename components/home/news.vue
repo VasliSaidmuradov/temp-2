@@ -4,7 +4,7 @@
 
 <div class="home-news layout-container" ref="animationBlock">
     <div class="home-slider-title">
-        <h3 class="animation-item">Акции и новости</h3>
+        <h3 class="animation-item">{{ langs[currentLang]['body.articles'] }}</h3>
         <!-- {{ currentLang }} -->
         <div class="home-slider-nav">
             <button class="home-slider-prev animation-item home-news-prev">
@@ -71,6 +71,7 @@ export default {
       ...mapGetters({
         posts: 'posts/GET_POSTS',
         currentLang: 'lang/GET_CURRENT_LANG',
+        langs: 'lang/GET_LANGS',
       }),
     }
 }

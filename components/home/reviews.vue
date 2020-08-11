@@ -1,7 +1,7 @@
 <template>
     <div class="home-reviews layout-container" ref="animationBlock">
         <div class="home-slider-title">
-            <h3 class="animation-item">Отзывы</h3>
+            <h3 class="animation-item">{{ langs[currentLang]['body.reviews'] }}</h3>
             <!-- <pre>{{ reviews }}</pre> -->
 
             <div class="home-slider-nav">
@@ -69,6 +69,8 @@ export default {
   computed: {
     ...mapGetters({
       reviews: 'reviews/GET_REVIEWS',
+      langs: 'lang/GET_LANGS',
+      currentLang: 'lang/GET_CURRENT_LANG',
     }),
   }
 }
