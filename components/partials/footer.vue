@@ -66,7 +66,10 @@
           </a>
         </p> -->
       </div>
-      <a href="https://pr-cy.ru/" target="_blank"><img src="//s.pr-cy.ru/counters/cashu.kz" width="88" height="31" alt="Анализ сайта - PR-CY Rank"></a>
+      <div class="footer-row">
+        <a class="animation-item" href="https://pr-cy.ru/" target="_blank"><img src="//s.pr-cy.ru/counters/cashu.kz" width="88" height="31" alt="Анализ сайта - PR-CY Rank"></a>
+        <a class="animation-item" href="https://webmaster.yandex.ru/siteinfo/?site=https://cashu.kz"><img width="88" height="31" alt="" border="0" src="https://yandex.ru/cycounter?https://cashu.kz&theme=light&lang=ru"/></a>
+      </div>
     </div>
   </footer>
 </template>
