@@ -4,19 +4,19 @@
       <calc-modal v-if="isCalcModalOpen" @closeModal="closeCalcModal" />
     </transition>
     <notification />
-    <lang-modal />
+    <lang-modal v-if="$route.name != 'stub'" />
     <mob-menu />
-    <app-header />
-    <app-nav />
+    <app-header v-if="$route.name != 'stub'" />
+    <app-nav v-if="$route.name != 'stub'" />
     <div class="layout-content">
       <transition name="fade">
         <nuxt />
       </transition>
     </div>
-    <app-footer />
+    <app-footer v-if="$route.name != 'stub'" />
     <button
       class="floating-btn"
-      v-if="$route.name != 'index'"
+      v-if="$route.name != 'index' && $route.name != 'stub'"
       @click="openCalcModal"
     >
       <icon />Калькулятор

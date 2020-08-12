@@ -59,6 +59,9 @@ export default {
   */
   buildModules: [
   ],
+  router: {
+    middleware: ['stub'],
+  },
   /*
   ** Nuxt.js modules
   */
