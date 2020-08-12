@@ -15,15 +15,19 @@ export const mutations = {
 export const actions = {
 	async fetchLangs(store) {
 		const resp = await this.$api.get('/langs')
-		store.commit('SET_LANGS', resp)
+		store.commit('SET_LANGS', resp);
 	},
 	getLangFromLocalStorage() {
 		if (process.browser) {
 			if (localStorage.getItem('lang')) {
-				const lang = localStorage.getItem('lang')
+				const lang = localStorage.getItem('lang');
 				// console.log(lang)
 			}
 		}
+	},
+	fetchCurrentLang(store, payload) {
+		console.log(payload);
+		store.commit('SET_CURRENT_LANG', payload);
 	}
 }
 

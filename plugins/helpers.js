@@ -11,7 +11,7 @@ export default function ({ app, store }, inject) {
     return arr
   })
 
-  inject('formatDate', (value, format = 'D MMMM YYYY') => {
+  inject('formatDate', (value, format = 'L') => {
     return moment(value).format(format)
   })
 

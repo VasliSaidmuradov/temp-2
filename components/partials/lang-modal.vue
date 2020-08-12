@@ -39,7 +39,7 @@ export default {
         })
     },
     mounted() {
-        if (!localStorage.getItem('lang')) {
+        if (this.$cookiz.get('lang') !== 'ru' && this.$cookiz.get('lang') !== 'kk') {
           setTimeout(() => {
             this.$store.commit('lang/setModal', true)
           }, 1000)
@@ -52,9 +52,10 @@ export default {
         changeLang(lang) {
             this.$store.commit('lang/SET_CURRENT_LANG', lang)
             this.closeModal()
-            if (process.browser) {
-              localStorage.setItem('lang', this.currentLang)
-            }
+            // if (process.browser) {
+            //   localStorage.setItem('lang', this.currentLang)
+            // }
+            this.$cookiz.set('lang', lang);
         }
     },
 }

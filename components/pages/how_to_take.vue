@@ -4,7 +4,7 @@
       <nuxt-link to="/">{{ langs[currentLang]['body.main_page'] }}</nuxt-link>
       <nuxt-link to>{{ page.title[currentLang] }}</nuxt-link>
     </div>
-   
+
     <!-- <pre>{{ page }}</pre> -->
     <!-- <pre>{{ langs[currentLang] ]}}</pre>
     <pre>{{ page ]}}</pre>-->

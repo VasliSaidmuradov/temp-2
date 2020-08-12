@@ -63,6 +63,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    ['cookie-universal-nuxt', { alias: 'cookiz', parseJSON: true }],
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     ['@nuxtjs/google-analytics', {

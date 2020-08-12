@@ -40,11 +40,11 @@
                         <phone-icon />
                         {{ settings.phone.value[currentLang] }}
                     </a>
-                    <p class="mob-menu-schedule">
+                    <div class="mob-menu-schedule">
                         <schedule-icon />
-                        <span v-html="langs[currentLang]['header.schedule']"></span>
-                    </p>
-                    <h3 class="mob-menu-heading" v-html="langs[currentLang]['header.fast_microcredits']"></h3>
+                        <div v-html="langs[currentLang]['header.schedule']"></div>
+                    </div>
+                    <div class="mob-menu-heading" v-html="langs[currentLang]['header.fast_microcredits']"></div>
                 </div>
             </transition>
         </div>
@@ -94,9 +94,10 @@ export default {
         },
         setLang(lang) {
           this.$store.commit('lang/SET_CURRENT_LANG', lang)
-          if (process.browser) {
-            localStorage.setItem('lang', this.currentLang)
-          }
+          // if (process.browser) {
+          //   localStorage.setItem('lang', this.currentLang)
+          // }
+          this.$cookiz.set('lang', lang);
         }
     }
 }

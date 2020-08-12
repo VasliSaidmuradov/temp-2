@@ -12,7 +12,7 @@
           :data-swiper-autoplay="page.extras[currentLang].timer * 1000">
           <div class="home-banner-inner">
             <!-- {{ slide }} -->
-            <!-- <h2 class="home-banner-title animation-item" v-html="slide.name"></h2> -->
+            <!-- <div class="home-banner-title animation-item" v-html="slide.name"></div> -->
             <!-- <ul v-if="slide.options" class="home-banner-list">
               <li v-for="option in slide.options">
                 <check />
@@ -71,8 +71,11 @@ export default {
     };
   },
   mounted() {
+    // console.log(this.slides.length)
+    // console.log(this.banner)
+
     if (this.slides.length == 1) {
-        this.banner.destroy(true, true)
+        this.banner.destroy()
     }
   },
   components: {

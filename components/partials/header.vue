@@ -4,15 +4,15 @@
             <nuxt-link to="/" class="header-logo animation-item">
                 <img src="/icons/logo.svg" alt="CashU logo">
             </nuxt-link>
-            <h4 class="header-title animation-item" v-html="langs[currentLang]['header.fast_microcredits']"></h4>
+            <div class="header-title animation-item" v-html="langs[currentLang]['header.fast_microcredits']"></div>
             <a v-if="settings.phone" :href="`tel:${settings.phone.value[currentLang]}`" class="header-phone animation-item">
                 <phone-icon />
                 {{ settings.phone.value[currentLang] }}
             </a>
-            <p class="header-text animation-item">
+            <div class="header-text animation-item">
                 <schedule-icon />
-                <span v-html="langs[currentLang]['header.schedule']"></span>
-            </p>
+                <div class="header-text__text" v-html="langs[currentLang]['header.schedule']"></div>
+            </div>
             <a class="header-profile animation-item" :href="`https://my.cashu.kz/auth/login?lang=${currentLang}`" target="_blank">
                 <profile-icon />
                 {{ langs[currentLang]['header.lc'] }}
@@ -89,14 +89,15 @@ export default {
             this.isLangOpen = !this.isLangOpen
         },
         openMenu() {
-            this.$store.commit('menu/SET_MENU_MODAL', true)
+            this.$store.commit('menu/SET_MENU_MODAL', true);
         },
         changeLang(lang) {
-          this.$store.commit('lang/SET_CURRENT_LANG', lang)
-          this.toggleLang()
-          if (process.browser) {
-            localStorage.setItem('lang', this.currentLang)
-          }
+          this.$store.commit('lang/SET_CURRENT_LANG', lang);
+          this.toggleLang();
+          // if (process.browser) {
+          //   localStorage.setItem('lang', this.currentLang);
+          // }
+          this.$cookiz.set('lang', lang);
         }
     },
 }
