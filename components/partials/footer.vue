@@ -57,9 +57,8 @@
         </div>
       </div>
       <div class="footer-copyright">
-        <p
-          class="footer-subtitle animation-item"
-        >{{ langs[currentLang]['footer.service_fast_loans'] }}</p>
+        <div v-html="langs[currentLang]['footer.service_fast_loans']" class="footer-subtitle animation-item">
+      </div>
         <!-- <p class="footer-subtitle animation-item">
           Разработано в
           <a href="https://brandstudio.kz" target="_blank">
