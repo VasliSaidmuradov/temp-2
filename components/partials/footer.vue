@@ -66,6 +66,7 @@
           </a>
         </p> -->
       </div>
+      <a href="https://pr-cy.ru/" target="_blank"><img src="//s.pr-cy.ru/counters/cashu.kz" width="88" height="31" alt="Анализ сайта - PR-CY Rank"></a>
     </div>
   </footer>
 </template>
