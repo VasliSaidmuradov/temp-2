@@ -1,5 +1,29 @@
 <template>
   <div class="layout">
+    <div style="display: none;">
+        <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="rating-container d-md-inline-flex mr-md-8" data-rating="4,8">
+
+        <div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Thing">
+            <span class="sr-only">
+                <meta itemprop="name" content="CASHU"/>
+                <a itemprop="url" href="https://cashu.kz">CASHU</a>
+            </span>
+        </div>
+        <meta itemprop="worstRating" content="1"/>
+        <meta itemprop="bestRating" content="5"/>
+        <meta itemprop="ratingValue" content="4.8">
+        <meta itemprop="reviewCount" content="4">
+
+        <select class="rating rating-star">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        </div>
+        <a class="scroll-link" href="https://cashu.kz/">4 отзыва</a>
+    </div>
     <transition name="modal-fade">
       <calc-modal v-if="isCalcModalOpen" @closeModal="closeCalcModal" />
     </transition>
