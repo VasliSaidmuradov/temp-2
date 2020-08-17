@@ -23,7 +23,8 @@ export default {
     ],
     script: [
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js' },
-      { src: '//code.jivosite.com/widget/tnygxt5TGD', async: true },
+      { src: '//web.webpushs.com/js/push/b6c91db106f83861eb35da8eca7c858c_1.js', charset: 'UTF-8', async: true },
+      { src: '//code.jivosite.com/widget/tnygxt5TGD', async: true }
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: '/favicon.png' }
@@ -61,7 +62,7 @@ export default {
   buildModules: [
   ],
   router: {
-    middleware: ['stub'],
+    // middleware: ['stub'],
   },
   /*
   ** Nuxt.js modules
