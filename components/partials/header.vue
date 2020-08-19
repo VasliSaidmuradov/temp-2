@@ -64,7 +64,6 @@ import ruIcon from '@/static/icons/ru.svg'
 import kzIcon from '@/static/icons/kz.svg'
 import arrow from '@/static/icons/arrow.svg'
 import animation from '@/mixins/animation'
-
 import { mapGetters } from 'vuex'
 
 export default {

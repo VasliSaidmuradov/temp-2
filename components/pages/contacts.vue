@@ -21,6 +21,14 @@
           <phone />
           {{ settings.phone.value[currentLang] }}
         </a>
+        <a
+          v-if="settings.whatsapp_phone"
+          :href="`https://wa.me/${$getNumbers(settings.whatsapp_phone.value[currentLang])}`"
+          class="contacts-text --icon animation-item"
+        >
+          <whatsapp-icon />
+          {{ settings.whatsapp_phone.value[currentLang] }}
+        </a>
         <p class="contacts-label animation-item">{{ langs[currentLang]['contacts.email'] }}</p>
         <a
           :href="`mailto:${settings.email.value[currentLang]}`"
@@ -42,6 +50,7 @@
 <script>
 import appForm from "@/components/partials/form";
 import phone from "@/static/icons/phone-filled.svg";
+import whatsappIcon from '@/static/icons/whatsapp.svg';
 import email from "@/static/icons/mail.svg";
 import pin from "@/static/icons/pin.svg";
 import animation from "@/mixins/animation";
@@ -53,6 +62,7 @@ export default {
   components: {
     appForm,
     phone,
+    whatsappIcon,
     email,
     pin,
   },
