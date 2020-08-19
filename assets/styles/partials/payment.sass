@@ -48,12 +48,16 @@
             font-size: em(16)
             font-weight: 400
             color: var(--text-color)
+        img
+            margin: 30px auto
+            max-width: 500px
+            width: auto !important
+            height: auto !important
 @media ( max-width: 769px )
     .payment
         .layout-container
             width: auto
             padding: 0 20px
-@media ( max-width: 426px )
-    .payment
-        &-image
-            margin-bottom: 40px
+        &-block
+            img
+                max-width: 100%
