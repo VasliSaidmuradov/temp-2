@@ -45,6 +45,14 @@
             <phone />
             <span>{{ settings.phone.value[currentLang] }}</span>
           </a>
+          <a
+            v-if="settings.whatsapp_phone"
+            :href="`https://wa.me/${$getNumbers(settings.whatsapp_phone.value[currentLang])}`"
+            class="footer-link animation-item --icon"
+          >
+            <whatsapp-icon />
+            <span>{{ settings.whatsapp_phone.value[currentLang] }}</span>
+          </a>
           <p class="footer-subtitle animation-item">{{ langs[currentLang]['footer.email'] }}</p>
           <a
             v-if="settings.email"
@@ -79,6 +87,7 @@ import insta from "@/static/icons/insta.svg";
 import vk from "@/static/icons/vk.svg";
 import facebook from "@/static/icons/facebook.svg";
 import phone from "@/static/icons/phone-filled.svg";
+import whatsappIcon from "@/static/icons/whatsapp.svg";
 import email from "@/static/icons/mail.svg";
 import { mapGetters } from "vuex";
 
@@ -107,6 +116,7 @@ export default {
     vk,
     facebook,
     phone,
+    whatsappIcon,
     email,
   },
   computed: {

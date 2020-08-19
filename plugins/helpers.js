@@ -31,4 +31,9 @@ export default function ({ app, store }, inject) {
   inject('roundMoney', (value, fixTo = 0) => {
     return value ? +value.toFixed(fixTo) : 0
   })
+
+  inject('getNumbers', (value) => {
+    const re = /[0-9]/gi
+    return value.match(re).join('');
+  })
 }

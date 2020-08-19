@@ -5,10 +5,16 @@
                 <img src="/icons/logo.svg" alt="CashU logo">
             </nuxt-link>
             <div class="header-title animation-item" v-html="langs[currentLang]['header.fast_microcredits']"></div>
-            <a v-if="settings.phone" :href="`tel:${settings.phone.value[currentLang]}`" class="header-phone animation-item">
-                <phone-icon />
-                {{ settings.phone.value[currentLang] }}
-            </a>
+            <div class="">
+              <a v-if="settings.phone" :href="`tel:${settings.phone.value[currentLang]}`" class="header-phone animation-item">
+                  <phone-icon />
+                  {{ settings.phone.value[currentLang] }}
+              </a>
+              <a v-if="settings.whatsapp_phone" :href="`https://wa.me/${$getNumbers(settings.whatsapp_phone.value[currentLang])}`" class="header-phone animation-item">
+                  <whatsapp-icon />
+                  {{ settings.whatsapp_phone.value[currentLang] }}
+              </a>
+            </div>
             <div class="header-text animation-item">
                 <schedule-icon />
                 <div class="header-text__text" v-html="langs[currentLang]['header.schedule']"></div>
@@ -51,6 +57,7 @@
 
 <script>
 import phoneIcon from '@/static/icons/phone-filled.svg'
+import whatsappIcon from '@/static/icons/whatsapp.svg'
 import scheduleIcon from '@/static/icons/clock.svg'
 import profileIcon from '@/static/icons/user.svg'
 import ruIcon from '@/static/icons/ru.svg'
@@ -63,6 +70,7 @@ import { mapGetters } from 'vuex'
 export default {
     components: {
         phoneIcon,
+        whatsappIcon,
         scheduleIcon,
         profileIcon,
         ruIcon,
@@ -75,6 +83,9 @@ export default {
             isLangOpen: false,
             isOpen: false,
         }
+    },
+    mounted() {
+      console.log('settings: ', this.settings);
     },
     computed: {
         ...mapGetters({

@@ -40,6 +40,10 @@
                         <phone-icon />
                         {{ settings.phone.value[currentLang] }}
                     </a>
+                    <a v-if="settings.whatsapp_phone" :href="`https://wa.me/${$getNumbers(settings.whatsapp_phone.value[currentLang])}`" class="mob-menu-phone">
+                        <whatsapp-icon />
+                        {{ settings.whatsapp_phone.value[currentLang] }}
+                    </a>
                     <div class="mob-menu-schedule">
                         <schedule-icon />
                         <div v-html="langs[currentLang]['header.schedule']"></div>
@@ -54,6 +58,7 @@
 <script>
 import profileIcon from '@/static/icons/user.svg'
 import phoneIcon from '@/static/icons/phone-filled.svg'
+import whatsappIcon from '@/static/icons/whatsapp.svg'
 import scheduleIcon from '@/static/icons/clock.svg'
 import closeIcon from '@/static/icons/close.svg'
 import ruIcon from '@/static/icons/ru.svg'
@@ -71,6 +76,7 @@ export default {
       kzIcon,
       profileIcon,
       phoneIcon,
+      whatsappIcon,
       scheduleIcon,
       closeIcon
     },
