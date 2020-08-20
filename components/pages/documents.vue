@@ -10,7 +10,7 @@
     <h1 class="page-title">{{ page.title[currentLang] }}</h1>
     <div class="layout-container">
       <div class="documentation-row">
-        <a :href="$imageLink(doc.file)" class="documentation-item" v-for="(doc, index) in documents" :key="index">
+        <a :href="$imageLink(doc.file)" target="_blank" class="documentation-item" v-for="(doc, index) in documents" :key="index">
           <!-- <iframe :src="'https://docs.google.com/gview?url=https://cashu.kz/' + $imageLink(doc.file)"></iframe> -->
           {{ doc.name }}
           <download-icon />
