@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "cashu",
   "version": "1.0.0",
@@ -34,3 +35,42 @@
   },
   "devDependencies": {}
 }
+=======
+{
+  "name": "cashu",
+  "version": "1.0.0",
+  "description": "My slick Nuxt.js project",
+  "author": "Tamerlan",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/google-analytics": "^2.4.0",
+    "@nuxtjs/yandex-metrika": "^1.2.0",
+    "cookie-parser": "^1.4.5",
+    "cookie-universal-nuxt": "^2.1.4",
+    "gsap": "^3.3.4",
+    "moment": "^2.27.0",
+    "node-sass": "^4.14.1",
+    "nuxt": "^2.0.0",
+    "nuxt-lazy-load": "^1.2.4",
+    "plyr": "^3.6.2",
+    "sass-loader": "^8.0.2",
+    "swiper": "^5.4.5",
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-plyr": "^6.0.4",
+    "vue-round-slider": "^1.0.0",
+    "vue-scrollmagic": "^1.2.0",
+    "vue-slider-component": "^3.1.5",
+    "vue-star-rating": "^1.6.1",
+    "vue-svg-loader": "^0.16.0",
+    "vue-the-mask": "^0.11.1"
+  },
+  "devDependencies": {}
+}
+>>>>>>> f4f1e112bca5ff58db630ca37bad25596ce819ac
