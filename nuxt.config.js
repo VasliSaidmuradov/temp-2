@@ -17,7 +17,7 @@ export default {
       {
           hid: 'yandex-v',
           name: 'yandex-verification',
-          content: '0a2739bfab55c1ec',
+          content: 'b00d41f28a4172f4',
       },
     ],
     script: [
