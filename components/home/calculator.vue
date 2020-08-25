@@ -317,6 +317,8 @@ export default {
     if (document.body.clientWidth <= 321) {
       this.radius = 270;
     }
+
+    // console.log('GA__>>', this.$ga)
     // this.applyMinMaxTerm(this.sliderValue);
   },
   watch: {

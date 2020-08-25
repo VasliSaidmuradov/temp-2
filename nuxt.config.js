@@ -1,10 +1,10 @@
 export default {
   mode: 'universal',
-  server: {
-    port: 3001, // default: 3000
-    host: '0.0.0.0', // default: localhost,
-    timing: false
-  },
+  // server: {
+  //   port: 3001, // default: 3000
+  //   host: '0.0.0.0', // default: localhost,
+  //   timing: false
+  // },
   /*
   ** Headers of the page
   */
@@ -46,9 +46,8 @@ export default {
     { src: '~/plugins/api' },
     { src: '~/plugins/error' },
     { src: '~/plugins/helpers' },
-
+    { src: '~plugins/ga.js', mode: 'client' },
     { src: '~/plugins/swiper.js', mode: 'client' },
-    { src: '~/plugins/ga.js', mode: 'client' },
     { src: '~/plugins/vue-the-mask.js', ssr: false },
     { src: '~/plugins/vue-star-component.js', ssr: false },
     { src: '~/plugins/vue-plyr.js', ssr: false },
@@ -71,9 +70,9 @@ export default {
     ['cookie-universal-nuxt', { alias: 'cookiz', parseJSON: true }],
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    // ['@nuxtjs/google-analytics', {
-    //   id: 'UA-174168107-1'
-    // }],
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-174168107-1'
+    }],
     [
       '@nuxtjs/yandex-metrika',
       {
