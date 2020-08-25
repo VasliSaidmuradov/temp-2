@@ -19,7 +19,7 @@
                 <schedule-icon />
                 <div class="header-text__text" v-html="langs[currentLang]['header.schedule']"></div>
             </div>
-            <a class="header-profile animation-item" :href="`https://my.cashu.kz/auth/login?lang=${currentLang}`" target="_blank">
+            <a class="header-profile animation-item" onclick="ga('send', 'event', 'knopka', 'LK')" :href="`https://my.cashu.kz/auth/login?lang=${currentLang}`" target="_blank">
                 <profile-icon />
                 {{ langs[currentLang]['header.lc'] }}
             </a>

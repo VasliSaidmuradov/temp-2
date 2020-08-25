@@ -159,7 +159,7 @@
         </div>
         <!-- Mobile calc end -->
         <div class="calculator-btn-wrp">
-          <button class="button" @click="sendMoney">
+          <button class="button" id="calc-send-btn" @click="sendMoney">
             {{ langs[currentLang]['calculator.get_money'] }}
             <span
               class="calculator-btn-amount"
@@ -504,7 +504,7 @@ export default {
     },
     showCalc() {
       document.querySelector('.floating-btn').classList.remove('--hidden');
-    },
+    }
   },
 };
 </script>

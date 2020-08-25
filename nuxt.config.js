@@ -48,6 +48,7 @@ export default {
     { src: '~/plugins/helpers' },
 
     { src: '~/plugins/swiper.js', mode: 'client' },
+    { src: '~/plugins/ga.js', mode: 'client' },
     { src: '~/plugins/vue-the-mask.js', ssr: false },
     { src: '~/plugins/vue-star-component.js', ssr: false },
     { src: '~/plugins/vue-plyr.js', ssr: false },
@@ -70,9 +71,9 @@ export default {
     ['cookie-universal-nuxt', { alias: 'cookiz', parseJSON: true }],
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    ['@nuxtjs/google-analytics', {
-      id: 'UA-174168107-1'
-    }],
+    // ['@nuxtjs/google-analytics', {
+    //   id: 'UA-174168107-1'
+    // }],
     [
       '@nuxtjs/yandex-metrika',
       {
