@@ -8,7 +8,7 @@ export default ({ app }) => {
      ** Include Google Analytics Script
      */
 
-  (function (i, s, o, g, r, a, m) {
+ ;(function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r
     ;(i[r] =
       i[r] ||
@@ -28,11 +28,11 @@ export default ({ app }) => {
     'ga'
   )
 
-  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-  m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-  (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+//  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+//m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+//(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-  ym(66105637, "init", {clickmap: true, webvisor: true});
+// ym(66105637, "init", {clickmap: true, webvisor: true});
 
 
 
@@ -47,8 +47,8 @@ export default ({ app }) => {
    */
   app.router.afterEach((to, from) => {
     // console.log(to, from, ym)
-    // console.log(document.getElementById('header-profile'))
-    // console.log(document.getElementById('calc-send-btn'))
+     console.log(document.getElementById('header-profile'))
+     console.log(document.getElementById('calc-send-btn'))
     /*
      ** We tell Google Analytics to add a `pageview`
      */
@@ -58,12 +58,12 @@ export default ({ app }) => {
     document.getElementById('calc-send-btn').addEventListener('click', function() {
       console.log(to, from)
       ga('send', 'event', 'knopka', 'Poluchit dengi');
-      ym(66105637,'reachGoal','zayavka');
+     // ym(66105637,'reachGoal','zayavka');
     })
     document.getElementById('header-profile').addEventListener('click', function() {
       console.log(document.getElementById('header-profile'))
       ga('send', 'event', 'knopka', 'LK');
-      ym(66105637,'reachGoal','cabinet');
+     // ym(66105637,'reachGoal','cabinet');
     })
   })
 }

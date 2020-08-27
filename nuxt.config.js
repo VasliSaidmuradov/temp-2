@@ -92,7 +92,7 @@ export default {
       iframes: true,
       native: false,
       polyfill: true,
-      directiveOnly: false,
+      directiveOnly: true,
 
       // Default image must be in the static folder
       defaultImage: '/images/default-image.jpg',
